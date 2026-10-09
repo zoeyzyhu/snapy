@@ -1,4 +1,10 @@
-# Issue #289, item 2: the $O(\Delta x_1^2)$ covariance term in the horizontal energy flux, on curved grids and on $x_3$
+# Issue #289, item 2: the $O(\Delta x_1^2)$ error of the horizontal energy flux on curved grids and on $x_3$
+
+> **Read §2A before implementing.** On a curved grid the complete $O(\Delta r^2)$
+> correction has **two** terms, eq. (2A.9): the #289 covariance term *and* a
+> centroid term of the same order. §2 derives the first; §2A derives the second
+> and corrects the earlier claim that the first was the whole story. In
+> Cartesian the second vanishes identically and §2 is complete.
 
 **Scope.** Issue [#289](https://github.com/chengcli/snapy/issues/289) item 2: derive
 the face average of the horizontal energy flux *with the face metric* for
@@ -619,6 +625,211 @@ a correction of relative size $(\Delta r/\bar r)^2/12$ to $\epsilon_{\rm spur}$.
 
 ---
 
+## 2A. CORRECTION: a second $O(\Delta r^2)$ term on curved faces
+
+**This section corrects §2.5–§2.8 of an earlier revision of this file, which
+claimed that the covariance term (2.10) is the complete $O(h^2)$ correction on
+a curved grid and that the metric enters only at $O(h^4)$. That claim was
+wrong.** The covariance algebra of §2 is correct as far as it goes, but it
+expands *both* sides about the face area centroid $r_c$, and a finite-volume
+cell does not store the value at $r_c$.
+
+### 2A.1 The two measures, and the two centroids
+
+Two different measures are in play on the same cell:
+
+$$
+\text{CELL measure (what a stored value averages):}\quad
+\mathrm{d}V \;\propto\; r^2\,\mathrm{d}r \times (\text{angular}),
+$$
+$$
+\text{FACE measure (what the flux needs, eq. 1.2):}\quad
+\mathrm{d}A_{2,3} \;\propto\; r\,\mathrm{d}r \times (\text{angular}).
+$$
+
+One power of $r$ apart — see `cell_volume()` versus `face_area2()`/`face_area3()`
+in §1.3. Their $x_1$ centroids therefore differ. With $h=\Delta r$,
+$\bar r=\tfrac12(r_-+r_+)$:
+
+$$
+r_c = \frac{2}{3}\frac{r_+^3-r_-^3}{r_+^2-r_-^2} = \frac{12\bar r^2+h^2}{12\bar r}
+    = \bar r + \frac{h^2}{12\bar r}+O\!\Big(\frac{h^4}{\bar r^3}\Big)
+\quad\text{(area, weight } r),
+\tag{2A.1}
+$$
+
+$$
+r_v = \frac{3}{4}\frac{r_+^4-r_-^4}{r_+^3-r_-^3}
+    = \frac{3\bar r\,(4\bar r^2+h^2)}{12\bar r^2+h^2}
+    = \bar r + \frac{h^2}{6\bar r}+O\!\Big(\frac{h^4}{\bar r^3}\Big)
+\quad\text{(volume, weight } r^2),
+\tag{2A.2}
+$$
+
+and doing the subtraction algebraically, so that no cancellation of two
+$O(\bar r)$ numbers is needed,
+
+$$
+\boxed{\;
+\delta \;\equiv\; r_v - r_c
+\;=\; \frac{h^2\,\big(12\bar r^2 - h^2\big)}{12\,\bar r\,\big(12\bar r^2+h^2\big)}
+\;=\; \frac{h^2}{12\,\bar r} + O\!\Big(\frac{h^4}{\bar r^3}\Big)
+\;}
+\tag{2A.3}
+$$
+
+$r_v$ is exactly snapy's `x1v` on the spherical-polar grid
+(`src/coord/spherical_polar.cpp:17-21`, `:61`), i.e. the cell centre the code
+already uses. In **Cartesian** both measures are the same uniform weight, so
+$r_v = r_c = $ the cell mid-point and $\delta \equiv 0$ **exactly**: nothing in
+this section changes the Cartesian result.
+
+### 2A.2 Redoing the expansion from the cell value
+
+Let $\bar q$ be the stored cell value, $\bar q=\langle q\rangle_V$, and expand
+it about $r_c$, writing $\sigma_v^2$ for the volume-weighted second central
+moment and using $\delta=O(h^2)$ so that $\delta^2=O(h^4)$:
+
+$$
+\bar q = q(r_v) + \tfrac12\sigma_v^2 q'' + O(h^4)
+      = q_c + \delta\,q'_c + \tfrac12\sigma_v^2 q''_c + O(h^4).
+\tag{2A.4}
+$$
+
+The face average is (2.1) with the area moments:
+$\langle q\rangle_A = q_c + \tfrac12\sigma_c^2 q''_c+O(h^4)$. Now
+$\sigma_c^2 = h^2/12 - h^4/(144\bar r^2)$ from (2.14) and, by the same
+elementary integrals with weight $r^2$,
+$\sigma_v^2 = h^2/12 - h^4/(45\bar r^2)$, so
+
+$$
+\sigma_c^2-\sigma_v^2 = h^4\Big(\frac{1}{45}-\frac{1}{144}\Big)\frac{1}{\bar r^2}
+= O(h^4) \;\Longrightarrow\;
+\sigma_c^2=\sigma_v^2=\frac{h^2}{12}\ \text{to the order kept.}
+\tag{2A.5}
+$$
+
+Take the quotient first. With $m=\rho u_n$ and
+$u_n''=m''/\rho-2m'\rho'/\rho^2+2m\rho'^2/\rho^3-m\rho''/\rho^2$, so that
+$m''/\rho-m\rho''/\rho^2=u_n''+2(\rho'/\rho)u_n'$:
+
+$$
+\frac{\bar m}{\bar\rho}
+=\frac{m_c+\delta m'+\tfrac12\sigma_v^2m''}{\rho_c+\delta\rho'+\tfrac12\sigma_v^2\rho''}
+= u_{n,c} + \delta\,u_n' + \tfrac12\sigma_v^2\Big(u_n''+\frac{2\rho'}{\rho}u_n'\Big)+O(h^4),
+\tag{2A.6}
+$$
+
+every $\delta^2$ and $\delta\sigma^2$ cross term being $O(h^4)$. Multiply by
+$\bar p$ from (2A.4):
+
+$$
+\bar p\,\frac{\bar m}{\bar\rho}
+= p_cu_{n,c} + \delta\big(p'u_n+pu_n'\big)_c
++ \tfrac12\sigma_v^2\Big(p''u_n+pu_n''+\frac{2p\rho'}{\rho}u_n'\Big)_c+O(h^4),
+\tag{2A.7}
+$$
+
+while the exact face average, from (2.4), is
+
+$$
+\langle p\,u_n\rangle_A = p_cu_{n,c}+\sigma_c^2p'u_n'
++\tfrac12\sigma_c^2\big(p''u_n+pu_n''\big)_c+O(h^4).
+\tag{2A.8}
+$$
+
+Subtract. By (2A.5) the $\tfrac12(\sigma_c^2-\sigma_v^2)(p''u_n+pu_n'')$ group is
+$O(h^4)$ and drops, leaving
+
+$$
+\langle pu_n\rangle_A-\bar p\frac{\bar m}{\bar\rho}
+= \sigma_c^2\,p'u_n' - \sigma_v^2\,\frac{p\rho'}{\rho}u_n' - \delta\,\partial_r(pu_n)
+= \sigma_c^2\,p\,u_n'\big[\ln(p/\rho)\big]' - \delta\,\partial_r\!\big(pu_n\big),
+$$
+
+using $\sigma_v^2=\sigma_c^2$ to the order kept. Multiplying by
+$\kappa=\gamma/(\gamma-1)$:
+
+$$
+\boxed{\;
+\Delta F = \kappa\Big[\;\sigma_c^2\;p\;\big[\ln(p/\rho)\big]_{,1}\;(u_n)_{,1}
+\;-\;\delta\;\partial_1\!\big(p\,u_n\big)\;\Big]
+\;}
+\tag{2A.9}
+$$
+
+with $\sigma_c^2$ from (2.14) and $\delta$ from (2A.3). The first term is the
+#289 covariance; the **second is new**. In Cartesian $\delta=0$ and (2A.9)
+reduces to (2.10) exactly.
+
+### 2A.3 Size: it is not a small correction
+
+Relative to the covariance term, the centroid term is
+
+$$
+\frac{|\delta\,\partial_r(pu_n)|}{|\sigma_c^2\,p\,[\ln(p/\rho)]'u_n'|}
+\;\sim\; \frac{h^2/(12\bar r)}{h^2/12}\cdot
+\frac{|\partial_r(pu_n)|}{|p\,[\ln(p/\rho)]'\,u_n'|}
+\;\sim\; \frac{L}{\bar r},
+\tag{2A.10}
+$$
+
+with $L$ the local gradient scale. So it is **$O(L/R)$, not $O(\Delta r/R)$ and
+not $O(1)$ in $\Delta r$** — it is the same order in $\Delta r$ as the term
+#289 identified, and only small when the gradient scale is small compared with
+the radius. Both terms are $O(h^2)$; neither may be dropped.
+
+### 2A.4 Numerical check of (2A.9)
+
+`derivation/verify_exact_curved.py`, 90-point Gauss–Legendre, generic smooth
+profiles with non-constant $\rho$, comparing
+$\kappa\langle pu\rangle_A$ (area average, weight $r$) against
+$\kappa\bar p\,\bar m/\bar\rho$ (every bar a volume average, weight $r^2$):
+
+| $\bar r$ | $h$ | relative residual, covariance only | relative residual, (2A.9) | ratio per halving |
+|---|---|---|---|---|
+| 1.4 | 0.1 | 2.765e-01 | 4.507e-02 | — |
+| 1.4 | 0.05 | 3.095e-01 | 1.149e-02 | 3.92 |
+| 1.4 | 0.025 | 3.179e-01 | 2.887e-03 | 3.98 |
+| 1.4 | 0.0125 | 3.201e-01 | 7.226e-04 | 4.00 |
+| 6 | 0.1 | 2.252e-01 | 3.667e-03 | 4.04 |
+| 6 | 0.0125 | 2.208e-01 | 5.713e-05 | 4.00 |
+| 50 | 0.1 | 5.674e-01 | 1.555e-03 | 3.96 |
+| 50 | 0.0125 | 5.667e-01 | 2.813e-05 | 4.00 |
+
+The covariance term alone leaves a relative residual that **does not converge**
+(16–57 %); with the centroid term the residual falls by exactly $4\times$ per
+halving, i.e. $O(h^4)$ absolute, so (2A.9) is the complete $O(h^2)$ correction.
+Measured $|\text{centroid}|/|\text{covariance}|$: 0.25 at $\bar r=1.4$, 0.18 at
+$\bar r=6$, 1.31 at $\bar r=50$ — confirming (2A.10) and confirming that the
+ratio is set by $L/\bar r$, not by $h$. In a clean test with $\rho$ constant and
+$p,u$ linear in $r$ (`derivation/verify_centroid_term.py`, where the covariance
+is exact with no remainder) the covariance term alone has the **wrong sign** at
+$\bar r=20$; with the centroid term the residual is $1.5\times10^{-5}$ and
+fourth order. $\delta$ from (2A.3) matches the quadrature difference of the two
+centroids to 5 significant digits.
+
+### 2A.5 Properties of the new term
+
+* **Telescoping — unchanged.** It is added to the face flux, so it telescopes
+  exactly in the $x_2$/$x_3$ divergence (1.1) and in the closed-wall $E+PE$ sum,
+  like the covariance term. Energy row only; mass and momentum untouched.
+* **Rest state — unchanged.** $\partial_1(pu_n)$ carries $u_n$, which is exactly
+  zero at rest, so $\Delta F\equiv0$ bitwise and a balanced column keeps its
+  exact zero tendency.
+* **Isothermal state — changed.** The covariance term vanishes when
+  $[\ln(p/\rho)]'=0$; the centroid term does not. The "zero for an isothermal
+  state" property of #289 therefore holds in **Cartesian only**.
+* **The $x_3$ face** carries the same $\delta$: §3's table applies unchanged,
+  since `face_area3` has the same radial measure as `face_area2`.
+* **Relation to H3 (§7).** H3 flagged this centroid mismatch and judged it out
+  of scope. For the *energy* flux that judgement was wrong: it is the same
+  order, at the same face, as the term #289 is about, and it is included here.
+  What remains genuinely separate is the same mismatch in the **mass and
+  momentum** fluxes, which this change does not touch.
+
+---
+
 ## 3. The $x_3$ direction
 
 Nothing in §2 used which horizontal direction the face normal points along; it
@@ -735,24 +946,33 @@ auto un   = wbar[dim == 2 ? IVY : IVZ];         // face-normal velocity, local f
 
 auto x1v  = pcoord->x1v.to(p.device(), p.scalar_type());
 auto s2   = pcoord->face_moment2_x1().to(p.device(), p.scalar_type())
-                   .unsqueeze(0).unsqueeze(1);  // sigma_1^2, one value per x1 cell
-auto dx1  = x1v.narrow(0, 2, n1 - 2) - x1v.narrow(0, 0, n1 - 2);
-auto dlnt = (lnt.narrow(-1, 2, n1 - 2) - lnt.narrow(-1, 0, n1 - 2)) / dx1;
-auto dun  = (un.narrow(-1, 2, n1 - 2)  - un.narrow(-1, 0, n1 - 2))  / dx1;
+                   .unsqueeze(0).unsqueeze(1);  // sigma_c^2, one value per x1 cell
+auto ds   = pcoord->face_centroid_shift_x1().to(p.device(), p.scalar_type())
+                   .unsqueeze(0).unsqueeze(1);  // delta = r_v - r_c, per x1 cell
+auto hflx = enth * un;                          // kappa p u_n, the flux averaged
+
+auto dx1   = x1v.narrow(0, 2, n1 - 2) - x1v.narrow(0, 0, n1 - 2);
+auto dlnt  = (lnt.narrow(-1, 2, n1 - 2)  - lnt.narrow(-1, 0, n1 - 2))  / dx1;
+auto dun   = (un.narrow(-1, 2, n1 - 2)   - un.narrow(-1, 0, n1 - 2))   / dx1;
+auto dhflx = (hflx.narrow(-1, 2, n1 - 2) - hflx.narrow(-1, 0, n1 - 2)) / dx1;
 
 auto dflx = torch::zeros_like(p);
-dflx.narrow(-1, 1, n1 - 2) = enth.narrow(-1, 1, n1 - 2)
-                           * s2.narrow(-1, 1, n1 - 2) * dlnt * dun;
+dflx.narrow(-1, 1, n1 - 2) =
+      enth.narrow(-1, 1, n1 - 2) * s2.narrow(-1, 1, n1 - 2) * dlnt * dun
+    - ds.narrow(-1, 1, n1 - 2) * dhflx;
 ```
 
 and at the call sites, `_flux2[IPR] += dcov` / `_flux3[IPR] += dcov` immediately
 after `priemann->forward(...)`. In symbols, for interior $x_1$ index $i$:
 
 $$
-\Delta F_{kji} = \big(I+p\big)_{kji}\;\sigma^2_{1,i}\;
+\Delta F_{kji} = \big(I+p\big)_{kji}\;\sigma^2_{c,i}\;
 \frac{\ln(p/\rho)_{k j, i+1}-\ln(p/\rho)_{k j, i-1}}
      {\texttt{x1v}_{i+1}-\texttt{x1v}_{i-1}}\;
 \frac{(u_n)_{k j, i+1}-(u_n)_{k j, i-1}}
+     {\texttt{x1v}_{i+1}-\texttt{x1v}_{i-1}}
+\;-\;\delta_i\;
+\frac{\big[(I+p)u_n\big]_{k j, i+1}-\big[(I+p)u_n\big]_{k j, i-1}}
      {\texttt{x1v}_{i+1}-\texttt{x1v}_{i-1}} .
 \tag{5.1}
 $$
@@ -760,9 +980,14 @@ $$
 Correspondence with (2.10): $(I+p)=\rho h=\frac{\gamma}{\gamma-1}p$ exactly for an
 ideal gas, so no $\gamma$ has to be introduced and the form carries over to any
 EOS that supplies an internal energy (see §7, H4);
-$\sigma^2_{1,i}=$ `face_moment2_x1()`, which is `dx1f.square()/12.` in
+$\sigma^2_{c,i}=$ `face_moment2_x1()`, which is `dx1f.square()/12.` in
 `CoordinateImpl` (eq. 2.11) and `radial_face_moment2_(x1f, nc1)` in
-`SphericalPolarImpl` and `GnomonicEquiangleImpl` (eq. 2.14).
+`SphericalPolarImpl` and `GnomonicEquiangleImpl` (eq. 2.14); and
+$\delta_i=$ `face_centroid_shift_x1()`, which is **identically zero** in
+`CoordinateImpl` (Cartesian: the two measures coincide) and
+`radial_face_centroid_shift_(x1f, nc1)` on both curved grids (eq. 2A.3). Setting
+$\delta\equiv0$ recovers the Cartesian-only form, so a reader can check the two
+limits against each other by reading one function.
 
 Only Cartesian is covered by the base value. `CylindricalImpl::reset()` is empty
 at `117e449` and `src/coord/cylindrical.cpp_` is not compiled, so cylindrical is
@@ -869,6 +1094,15 @@ a near-constant relative offset; a wrong **stencil** shows as an error localised
 at the $x_1$ ends; a wrong **frame** on the cubed sphere shows as an error of
 relative size $g_{23}$.
 
+**(T3b) The curved residual must converge FASTER than $\Delta r^2$.** This is the
+test that separates (2A.9) from (2.10). With the covariance term alone the
+residual of the horizontal energy tendency against a quadrature oracle stays
+$O(\Delta r^2)$ — it is merely reduced, not removed (§2A.4: 16–57 % relative,
+non-convergent). With both terms it must drop to $O(\Delta r^3)$ or better. A
+fitted order of 2 on a curved grid is therefore a direct signature of a missing
+centroid term; an order of 2 at *planet* radius would instead indicate a
+Cartesian-side bug, because $\delta\to0$ there.
+
 **(T4) Resolution scaling $n_z: 32\to64$.** $\sigma_1^2\propto\Delta r^2$, so the
 $\Delta F$-induced tendency must fall by a factor $4$. A factor $2$ or $8$ means
 the order is wrong, independently of any coefficient.
@@ -893,10 +1127,19 @@ is itself $O(h^2)$, falling by $4\times$ per halving. If it fell by $2\times$,
 ## 7. Derived, versus hypothesis
 
 **Derived here, with the algebra above:** the metric-weighted covariance identity
-(2.6); the quotient correction (2.9); $\Delta F$ (2.10); the Cartesian
-coefficient (2.11); the exact curved coefficient (2.14) and its Cartesian limit;
-the cancellation of $\sqrt{g}$ and $g_{23}$ (2.8)→(2.16); the $x_3$ extension
-(§3); exact telescoping (§3.1); bitwise preservation of a balanced state (§3.2).
+(2.6); the quotient correction (2.9); the covariance part of $\Delta F$ (2.10);
+the Cartesian coefficient (2.11); the exact curved coefficient (2.14) and its
+Cartesian limit; the cancellation of $\sqrt{g}$ and $g_{23}$ (2.8)→(2.16); the
+**second, centroid term and the complete curved $\Delta F$ (2A.9)**, with its
+$O(L/R)$ relative size (2A.10) and its quadrature check (§2A.4); the $x_3$
+extension (§3); exact telescoping of both terms (§3.1, §2A.5); bitwise
+preservation of a balanced state (§3.2, §2A.5).
+
+**Superseded by §2A:** any statement in §2.5–§2.8 that the covariance term is the
+complete $O(h^2)$ correction on a curved face, or that the metric affects
+$\Delta F$ only at $O(h^4)$. The metric affects the *coefficient* $\sigma_c^2$
+only at $O(h^4)$, which is true; but it also produces the separate $O(h^2)$
+centroid term (2A.9).
 
 **Hypotheses, labelled as such:**
 
