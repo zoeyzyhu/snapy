@@ -162,3 +162,23 @@ covariance term. The metrics differ, so this is consistency, not confirmation.
 - Dropping the velocity-quadratic terms is harmless for turbulent (non-linear) flow. That is item 5's question.
 - The discrete $D_1[h]$ form inherits the exactness above. I have derived the continuous gap only, not checked
   any implementation.
+
+## 7. Known and excluded: quadratic velocity terms
+
+Xi ruled (Slack thread, ts 1791538028) that the velocity-squared parts of the exact gaps in §3 are **not** part of
+#289. They are listed here exactly as derived, so they are on record:
+
+| flux | excluded term (added to the linear form) |
+|---|---|
+| normal momentum | $+\,s_2\,\rho\,u_{n,1}^2-\tfrac{s_2}{2}\,\rho\,\Pi_e\,|v_1|^2$ |
+| transverse momentum | $s_2\,\rho\,u_{n,1}\,u_{t,1}$ |
+| energy | $+\,s_2\,\rho\,u_{n,1}\,(\tfrac12|v|^2)_{,1}-\tfrac{s_2}{2}\,\rho\,u_n\,\Pi_e\,|v_1|^2$ |
+
+**Reason (Xi's ruling).** #289 removes a bias that is linear in the perturbation about a stratified background;
+that bias is what shifts convective onset. The terms above are the scheme's ordinary second-order truncation error
+in nonlinear flow. They are present in every direction, not only on transverse faces, and they vanish in the linear
+problem about a resting state. So they are excluded from the #289 correction.
+
+**J also stays out of the implementation, pending Xi's confirmation.** The bounds:
+- my rough estimate in §6 puts the J piece at about $10^{-3}$ of the covariance piece in the energy row;
+- Xi's metric gives 6e-8 against 1e-5, a ratio of about $6\times10^{-3}$.
