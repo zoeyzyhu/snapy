@@ -1,0 +1,32 @@
+=== mass
+  gap            = 0
+  gap - claim    = 0
+  linear in |v|: gap - claim = 0 -> PASS
+=== mom_normal
+  gap            = rho*s2*(Pi_11*y1_1**2/2 + Pi_12*y1_1*y2_1 + Pi_22*y2_1**2/2 - Pi_e*u_n1**2/2 - Pi_e*u_t1**2/2 + Pi_e1*e_1*y1_1 + Pi_e2*e_1*y2_1 + Pi_ee*e_1**2/2 + u_n1**2)
+  gap - claim    = rho*s2*(-Pi_e*u_n1**2 - Pi_e*u_t1**2 + 2*u_n1**2)/2
+  linear in |v|: gap - claim = 0 -> PASS
+=== mom_transverse
+  gap            = rho*s2*u_n1*u_t1
+  gap - claim    = rho*s2*u_n1*u_t1
+  linear in |v|: gap - claim = 0 -> PASS
+=== energy
+  gap            = rho*s2*(Pi_1*u_n1*y1_1 + Pi_11*u_n*y1_1**2/2 + Pi_12*u_n*y1_1*y2_1 + Pi_2*u_n1*y2_1 + Pi_22*u_n*y2_1**2/2 + Pi_e*e_1*u_n1 - Pi_e*u_n*u_n1**2/2 - Pi_e*u_n*u_t1**2/2 + Pi_e1*e_1*u_n*y1_1 + Pi_e2*e_1*u_n*y2_1 + Pi_ee*e_1**2*u_n/2 + e_1*u_n1 + u01*u_n1*y1_1 + u02*u_n1*y2_1 + u_n*u_n1**2 + u_n1*u_t*u_t1)
+  gap - claim    = rho*s2*(-Pi_e*u_n*u_n1**2 - Pi_e*u_n*u_t1**2 + 2*u_n*u_n1**2 + 2*u_n1*u_t*u_t1)/2
+  linear in |v|: gap - claim = 0 -> PASS
+=== tracer1
+  gap            = rho*s2*u_n1*y1_1
+  gap - claim    = 0
+  linear in |v|: gap - claim = 0 -> PASS
+=== tracer2
+  gap            = rho*s2*u_n1*y2_1
+  gap - claim    = 0
+  linear in |v|: gap - claim = 0 -> PASS
+=== energy exact identity: gap = s2 rho u_n1 (h + |v|^2/2)_1 + u_n * [p gap]  -> PASS
+=== p gap (full, incl. kinetic part of e) = rho*s2*(Pi_11*y1_1**2/2 + Pi_12*y1_1*y2_1 + Pi_22*y2_1**2/2 - Pi_e*u_n1**2/2 - Pi_e*u_t1**2/2 + Pi_e1*e_1*y1_1 + Pi_e2*e_1*y2_1 + Pi_ee*e_1**2/2)
+    p gap - rho J = -Pi_e*rho*s2*(u_n1**2 + u_t1**2)/2
+=== prefactor: (I+p) d ln(p/rho) - rho d h  ==  rho ell d ln(p/rho) - p d kappa - rho d ell  -> PASS
+=== dry uniform ratio e7/exact = (e*kappa(y1, y2) + e + u01*y1*kappa(y1, y2) + u02*y2*kappa(y1, y2))/(e*(kappa(y1, y2) + 1))  claim 1 + ell/((kappa+1) p/rho): PASS
+=== dry, uniform, zero-offset limit e7 - exact = 0 -> PASS
+=== offset shift of the h-differenced energy row == c . (tracer rows) -> PASS
+=== offset shift of the e7f9904 energy row = -rho*s2*u_n1*(c1*y1 + c2*y2)*(e*y1_1*Derivative(kappa(y1, y2), y1) + e*y2_1*Derivative(kappa(y1, y2), y2) - e_1*kappa(y1, y2))/(e*kappa(y1, y2)) ; equals c.(tracer rows)? no

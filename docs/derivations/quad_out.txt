@@ -1,0 +1,22 @@
+h, then per flux: measured gap, (measured - predicted)/|measured|
+h = 0.04
+  mass            gap            0.0  rel.resid        0.0
+  mom_normal      gap    -0.00471226  rel.resid    -0.0104
+  mom_transverse  gap    -0.00100552  rel.resid   0.000651
+  energy          gap       -540.282  rel.resid    6.24e-5
+  tracer1         gap    -2.08991e-5  rel.resid  -0.000466
+  tracer2         gap     5.13609e-6  rel.resid  -0.000362
+h = 0.02
+  mass            gap            0.0  rel.resid        0.0
+  mom_normal      gap     -0.0011689  rel.resid   -0.00261  shrink x3.97
+  mom_transverse  gap   -0.000251503  rel.resid   0.000163  shrink x4.001
+  energy          gap       -135.077  rel.resid    1.56e-5  shrink x4.0
+  tracer1         gap    -5.22295e-6  rel.resid  -0.000116  shrink x3.999
+  tracer2         gap     1.28437e-6  rel.resid   -9.04e-5  shrink x4.001
+h = 0.01
+  mass            gap            0.0  rel.resid        0.0
+  mom_normal      gap   -0.000291651  rel.resid  -0.000655  shrink x3.992
+  mom_transverse  gap    -6.28833e-5  rel.resid    4.07e-5  shrink x4.0
+  energy          gap       -33.7696  rel.resid     3.9e-6  shrink x4.0
+  tracer1         gap    -1.30562e-6  rel.resid   -2.91e-5  shrink x4.0
+  tracer2         gap     3.21115e-7  rel.resid   -2.26e-5  shrink x4.0
