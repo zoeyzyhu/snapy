@@ -1,0 +1,23 @@
+[HydroOptions] -- constant gravity options --
+* grav1 = -9.81
+* grav2 = 0
+* grav3 = 0
+* non-hydrostatic = 1
+* gravity-work = face
+* gravity-work-fixer = 0
+bryan: balance-ic pass 0 residual -1.000000e+00 sweeps 0 | saturation max|drho|/max|rho| 1.848318e-16 max|dp/p| 2.831549e-10 max|dp| 2.460515e-05
+bryan: balance-ic pass 1 residual 1.210005e-14 sweeps 16 | saturation max|drho|/max|rho| 1.848790e-16 max|dp/p| 8.552850e-06 max|dp| 8.537800e-01
+bryan: balance-ic pass 2 residual 1.209989e-14 sweeps 14 | saturation max|drho|/max|rho| 1.848765e-16 max|dp/p| 4.516848e-07 max|dp| 4.508922e-02
+bryan: balance-ic pass 3 residual 7.555550e-14 sweeps 12 | saturation max|drho|/max|rho| 1.848766e-16 max|dp/p| 2.094694e-08 max|dp| 2.091018e-03
+bryan: balance-ic pass 4 residual 3.629969e-14 sweeps 10 | saturation max|drho|/max|rho| 1.848766e-16 max|dp/p| 9.077154e-10 max|dp| 9.061224e-05
+bryan: balance-ic pass 5 residual 1.209990e-14 sweeps 9 | saturation max|drho|/max|rho| 1.848766e-16 max|dp/p| 3.769989e-11 max|dp| 3.763373e-06
+bryan: balance-ic pass 6 residual 1.209990e-14 sweeps 7 | saturation max|drho|/max|rho| 1.848766e-16 max|dp/p| 1.520725e-12 max|dp| 1.518056e-07
+bryan: balance-ic pass 7 residual 1.209990e-14 sweeps 5 | saturation max|drho|/max|rho| 1.848766e-16 max|dp/p| 6.078816e-14 max|dp| 6.068149e-09
+
+Terminating on cycle limit
+time=0 cycle=0
+tlim=1000 nlim=0
+
+million cells-per-cycle = 0
+cpu time used (s) = 0.000666
+million cell-updates/second = 0

@@ -1,0 +1,3587 @@
+[HydroOptions] -- constant gravity options --
+* grav1 = -9.81
+* grav2 = 0
+* grav3 = 0
+* non-hydrostatic = 1
+* gravity-work = face
+* gravity-work-fixer = 0
+[W1109 14:45:33.950885428 thermo_y.cpp:532] Warning: ThermoYImpl::_intEng_to_temp: max iterations reached (function _intEng_to_temp)
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = -4.74281e+72.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = -1.40591e+13.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = -1.40591e+13.
+Warning: Negative concentration for species 1 = -0.629896.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Warning: Negative concentration for species 1 = -0.353097.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Setting it to zero.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = -1.40591e+13.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = -271452.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = -5.3875e+27.
+Warning: Negative concentration for species 1 = -0.0634283.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Warning: Negative concentration for species 1 = -0.450155.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Setting it to zero.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.526709.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = -1.43138e+15.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1196.03.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Setting it to zero.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0489744.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = -4.86242e+80.
+Warning: Negative concentration for species 1 = -2.67247.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = -4.20194e+81.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Setting it to zero.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = -2.99039e+07.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Warning: Negative concentration for species 1 = -0.228434.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Setting it to zero.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = -1.40591e+13.
+Warning: Negative concentration for species 1 = -0.547223.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Error: Non-positive temperature = -5.78033e+26.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -2.44104e+42.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.629896.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = -2.75803e+21.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0634283.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.526709.
+Error: Non-positive temperature = -5.78033e+26.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0489744.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Setting it to zero.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.0489744.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -2.67247.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Error: Non-positive temperature = -1.43138e+15.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -4.86197e+26.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.075527.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Setting it to zero.
+Error: Non-positive temperature = -1.742e+78.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -52437.8.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.365595.
+Error: Non-positive temperature = 0.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.69941e+28.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40591e+13.
+Error: Non-positive temperature = -271452.
+Error: Non-positive temperature = -5.3875e+27.
+Error: Non-positive temperature = -7.25843e+06.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.526709.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.450155.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.0635868.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.353097.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -5.78033e+26.
+Warning: Negative concentration for species 1 = -26.8693.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23716e+06.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0489744.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.228434.
+Setting it to zero.
+Error: Non-positive temperature = -2.44104e+42.
+Warning: Negative concentration for species 1 = -2.67247.
+Setting it to zero.
+Error: Non-positive temperature = -5.85112e+41.
+Warning: Negative concentration for species 1 = -0.547223.
+Setting it to zero.
+Error: Non-positive temperature = -4.86197e+26.
+Warning: Negative concentration for species 1 = -0.075527.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -1.23152.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0887293.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.42146.
+Setting it to zero.
+Error: Non-positive temperature = -1.43138e+15.
+Error: Non-positive temperature = -1345.19.
+Error: Non-positive temperature = -6.46103e+06.
+Error: Non-positive temperature = -2.75803e+21.
+Warning: Negative concentration for species 1 = -1196.03.
+Setting it to zero.
+Error: Non-positive temperature = -2.99039e+07.
+Error: Non-positive temperature = -304296.
+Error: Non-positive temperature = -52437.8.
+Warning: Negative concentration for species 1 = -0.0910122.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.629896.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.403365.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.0634283.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.365595.
+Setting it to zero.
+Error: Non-positive temperature = -1.29446e+110.
+Error: Non-positive temperature = -2.90878e+142.
+Error: Non-positive temperature = -1.742e+78.
+Error: Non-positive temperature = -4.20194e+81.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -8.15818e+79.
+Error: Non-positive temperature = -3.82447e+73.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -4.74281e+72.
+Error: Non-positive temperature = -1.58804e+91.
+Error: Non-positive temperature = -4.86242e+80.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+[W1109 14:45:33.954383701 thermo_y.cpp:387] Warning: ThermoYImpl::forward: saturation adjustment failed in 2575 cell(s); diag = -(100 * status + iterations) (function forward)
+[MeshBlock] rank=0 vapor repair failed; check_redo will redo the step.
+runs/uni_dt0.8_s0_rest.npz: status=redo step=6 steps_done=5/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=0s check_redo returned 1
+[MeshBlock] Density/pressure at or within 0.1% of the floor, the VIC dry-gas clamp emptied a cell, the limiter patched one or found a NaN, or the saturation adjustment left a cell unadjusted, or the VIC solve rejected a singular/near-singular or nonfinite column. Redoing the step with smaller dt (causes: floor limiter saturation).

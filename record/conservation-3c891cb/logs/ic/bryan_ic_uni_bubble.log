@@ -1,0 +1,15 @@
+[HydroOptions] -- constant gravity options --
+* grav1 = -9.81
+* grav2 = 0
+* grav3 = 0
+* non-hydrostatic = 1
+* gravity-work = face
+* gravity-work-fixer = 0
+
+Terminating on cycle limit
+time=0 cycle=0
+tlim=1000 nlim=0
+
+million cells-per-cycle = 0
+cpu time used (s) = 0.001328
+million cell-updates/second = 0

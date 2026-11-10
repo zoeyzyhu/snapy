@@ -1,0 +1,122 @@
+[HydroOptions] -- constant gravity options --
+* grav1 = -9.81
+* grav2 = 0
+* grav3 = 0
+* non-hydrostatic = 1
+* gravity-work = face
+* gravity-work-fixer = 0
+[W1109 14:40:04.350456673 thermo_y.cpp:532] Warning: ThermoYImpl::_intEng_to_temp: max iterations reached (function _intEng_to_temp)
+Error: Non-positive temperature = -1.33972e+70.
+Error: Non-positive temperature = -4.23171e+85.
+Error: Non-positive temperature = -1.13006e+69.
+Error: Non-positive temperature = -7.68702e+83.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.33782e+70.
+Error: Non-positive temperature = -4.23385e+85.
+Error: Non-positive temperature = -3.32287e+70.
+Error: Non-positive temperature = -1.32396e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.33981e+70.
+Error: Non-positive temperature = -4.2247e+85.
+Error: Non-positive temperature = -1.34386e+70.
+Error: Non-positive temperature = -4.3131e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.3393e+70.
+Error: Non-positive temperature = -4.26505e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.83185e+69.
+Error: Non-positive temperature = -1.25057e+98.
+Error: Non-positive temperature = -1.33097e+84.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.33929e+70.
+Warning: Negative concentration for species 1 = -368.183.
+Setting it to zero.
+Error: Non-positive temperature = -1.12271e+70.
+Warning: Negative concentration for species 1 = -5.13358e+26.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -3.41207e+12.
+Setting it to zero.
+Warning: Negative concentration for species 1 = -0.214936.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -141227.
+Error: Non-positive temperature = -932.715.
+Error: Non-positive temperature = -1.33742e+70.
+Error: Non-positive temperature = -4.2658e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.40247e+70.
+Error: Non-positive temperature = -9.6587e+84.
+Error: Non-positive temperature = -1.34009e+70.
+Error: Non-positive temperature = -4.20307e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.33862e+70.
+Error: Non-positive temperature = -4.32577e+85.
+Error: Non-positive temperature = -1.3393e+70.
+Warning: Negative concentration for species 1 = -368.18.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.3149e+70.
+Error: Non-positive temperature = -1.33952e+85.
+Error: Non-positive temperature = -1.33981e+70.
+Error: Non-positive temperature = -4.2247e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.74041e+70.
+Warning: Negative concentration for species 1 = -368.329.
+Setting it to zero.
+Error: Non-positive temperature = -1.3397e+70.
+Error: Non-positive temperature = -4.23385e+85.
+Warning: Negative concentration for species 1 = -3.41077e+12.
+Setting it to zero.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Warning: Negative concentration for species 1 = -0.222575.
+Setting it to zero.
+Error: Non-positive temperature = -1304.21.
+Error: Non-positive temperature = -932.731.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -1.07246e+83.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -3.03437e+70.
+Error: Non-positive temperature = -1.32123e+85.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = -2.98726e+69.
+Error: Non-positive temperature = -4.91788e+84.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+Error: Non-positive temperature = 0.
+[W1109 14:40:04.350931608 thermo_y.cpp:387] Warning: ThermoYImpl::forward: saturation adjustment failed in 94 cell(s); diag = -(100 * status + iterations) (function forward)
+[MeshBlock] rank=0 vapor repair failed; check_redo will redo the step.
+runs/str_dt1.6_s0_bubble.npz: status=redo step=3 steps_done=2/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=0s check_redo returned 1
+[MeshBlock] Density/pressure at or within 0.1% of the floor, the VIC dry-gas clamp emptied a cell, the limiter patched one or found a NaN, or the saturation adjustment left a cell unadjusted, or the VIC solve rejected a singular/near-singular or nonfinite column. Redoing the step with smaller dt (causes: floor limiter saturation).

@@ -1,0 +1,24 @@
+uni_dt1.6_s0_rest exit=0 runs/uni_dt1.6_s0_rest.npz: status=redo step=4 steps_done=3/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=0s check_redo returned 1
+uni_dt1.6_s0_bubble exit=0 runs/uni_dt1.6_s0_bubble.npz: status=redo step=3 steps_done=2/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=0s check_redo returned 1
+uni_dt0.8_s0_bubble exit=0 runs/uni_dt0.8_s0_bubble.npz: status=redo step=4 steps_done=3/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=0s check_redo returned 1
+uni_dt0.8_s0_rest exit=0 runs/uni_dt0.8_s0_rest.npz: status=redo step=6 steps_done=5/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=0s check_redo returned 1
+str_dt1.6_s9_bubble exit=0 runs/str_dt1.6_s9_bubble.npz: status=ok step=-1 steps_done=625/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=10s 
+str_dt1.6_s9_rest exit=0 runs/str_dt1.6_s9_rest.npz: status=ok step=-1 steps_done=625/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=10s 
+str_dt1.6_s0_bubble exit=0 runs/str_dt1.6_s0_bubble.npz: status=redo step=3 steps_done=2/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=0s check_redo returned 1
+str_dt1.6_s0_rest exit=0 runs/str_dt1.6_s0_rest.npz: status=redo step=5 steps_done=4/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=0s check_redo returned 1
+uni_dt1.6_s9_bubble exit=0 runs/uni_dt1.6_s9_bubble.npz: status=ok step=-1 steps_done=625/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=34s 
+str_dt0.8_s0_bubble exit=0 runs/str_dt0.8_s0_bubble.npz: status=redo step=4 steps_done=3/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=0s check_redo returned 1
+uni_dt1.6_s9_rest exit=0 runs/uni_dt1.6_s9_rest.npz: status=ok step=-1 steps_done=625/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=37s 
+str_dt0.8_s9_rest exit=0 runs/str_dt0.8_s9_rest.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=20s 
+str_dt0.8_s0_rest exit=0 runs/str_dt0.8_s0_rest.npz: status=redo step=6 steps_done=5/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=0s check_redo returned 1
+str_dt0.8_s9_bubble exit=0 runs/str_dt0.8_s9_bubble.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=22s 
+uni_dt0.8_s9_bubble exit=0 runs/uni_dt0.8_s9_bubble.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=58s 
+uni_dt0.8_s9_rest exit=0 runs/uni_dt0.8_s9_rest.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=58s 
+str_dt1.6_s9_bubble_f32 exit=0 runs/str_dt1.6_s9_bubble_f32.npz: status=ok step=-1 steps_done=625/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=10s 
+str_dt1.6_s9_rest_f32 exit=0 runs/str_dt1.6_s9_rest_f32.npz: status=ok step=-1 steps_done=625/625 Cv=21.24 Ch=0.678 ratio=1.0500 dz/H=0.0769 wall=10s 
+str_dt0.8_s9_bubble_f32 exit=0 runs/str_dt0.8_s9_bubble_f32.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=19s 
+uni_dt1.6_s9_rest_f32 exit=0 runs/uni_dt1.6_s9_rest_f32.npz: status=ok step=-1 steps_done=625/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=31s 
+uni_dt1.6_s9_bubble_f32 exit=0 runs/uni_dt1.6_s9_bubble_f32.npz: status=ok step=-1 steps_done=625/625 Cv=21.68 Ch=0.678 ratio=1.0000 dz/H=0.0039 wall=31s 
+str_dt0.8_s9_rest_f32 exit=0 runs/str_dt0.8_s9_rest_f32.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=19s 
+uni_dt0.8_s9_rest_f32 exit=0 runs/uni_dt0.8_s9_rest_f32.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=51s 
+uni_dt0.8_s9_bubble_f32 exit=0 runs/uni_dt0.8_s9_bubble_f32.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.84 Ch=0.339 ratio=1.0000 dz/H=0.0039 wall=51s 

@@ -1,0 +1,8 @@
+runs/str_dt0.8_s9_rest.npz: status=ok step=-1 steps_done=1250/1250 Cv=10.62 Ch=0.339 ratio=1.0500 dz/H=0.0769 wall=19s 
+[HydroOptions] -- constant gravity options --
+* grav1 = -9.81
+* grav2 = 0
+* grav3 = 0
+* non-hydrostatic = 1
+* gravity-work = face
+* gravity-work-fixer = 0
