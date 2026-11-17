@@ -3,9 +3,12 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.3 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.4 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.3: second last-stage limiter F1b (pin
+           ``d874dd2b``). Rev 3.4: F6 decided by Cheng (delete
+           ``src/turbulence``), so the budget has no condition; section 10
+           lists what names it outside the directory. F3, F4, F5 and D8
+           stay FOR CHENG. Rev 3.3: second last-stage limiter F1b (pin
            ``meshblock.cpp:950-952``); EfStatus dtypes; census drop hook;
            K rev 2.1 answers (Q-K1, Q-K2, section 8); Q-X1 bit table.
            Rev 3.2: re-cited to lane R rev 2.2 FROZEN
@@ -467,8 +470,8 @@ floor, and its eddy viscosity has no consumer: the live diffusion is
 new forcing on two passive-scalar channels. Its sink would then be a
 registered correction (requirement 7), and ``k`` and ``eps`` would get
 floors that go through ``Floors``. That would be new code with its own
-budget. It is not a port of this code. F6 proceeds on EF's proposal
-(recorded for Cheng).
+budget. It is not a port of this code. **F6 is decided: delete** (Cheng,
+EF lane thread).
 
 **Species energy (C21).** ``MoistEOSImpl`` gets one ``species_energy(w)``.
 It returns ``rho*y*(species_enthalpy - pressure share)``, which replaces the
@@ -1108,8 +1111,8 @@ Deletion ids:
 * **D8**: the single sedimentation kernel.
 * **D9**: dimension loops in the positivity primitives.
 * **D10**: register reads (R2) replace clones and caches.
-* **D11**: ``src/turbulence``, not compiled (C24; F6, proceeding on EF's
-  proposal, deletion counted, recorded for Cheng).
+* **D11**: ``src/turbulence``, not compiled (C24). F6 is decided: Cheng
+  approved the deletion, so it is counted with no condition.
 * **D12**: one ``W->U``/``U->W`` dispatch and momentum helper in the base,
   used by ideal-gas, shallow-water, the moist base and ANEOS.
 * **D13**: one YAML reader for the three per-particle sedimentation keys.
@@ -1314,17 +1317,17 @@ Deletion ids:
      - 218
      - 0
      - -218
-     - D11 not compiled, no caller (C24); F6 proceeding, recorded for Cheng
+     - D11 not compiled, no caller (C24); F6 decided (delete)
    * - ``turbulence/turbulence_model.cpp``
      - 68
      - 0
      - -68
-     - D11 not compiled, no caller (C24); F6 proceeding, recorded for Cheng
+     - D11 not compiled, no caller (C24); F6 decided (delete)
    * - ``turbulence/turbulence_model.hpp``
      - 116
      - 0
      - -116
-     - D11 not compiled, no caller (C24); F6 proceeding, recorded for Cheng
+     - D11 not compiled, no caller (C24); F6 decided (delete)
    * - **EF lane total (40 rows)**
      - **4971**
      - **3896**
@@ -1375,12 +1378,10 @@ Deletion ids:
 
 **Honesty notes.**
 
-* The lane reaches 20% with ANEOS kept **only with D11** (deleting
-  ``src/turbulence``, F6, proceeding on EF's proposal). With turbulence kept, "after" is 4,298
-  (13.5%), **322 lines over** the ceiling. I know of no other dead or
-  duplicated EF code that large. The candidates would be F5 (a standalone
-  proposal, below) and typed EOS methods (section 3, Q5). Neither is
-  counted, and neither would close 322 lines.
+* **The budget carries no condition.** Cheng decided F6 (delete
+  ``src/turbulence``), so D11's -402 is settled, and the lane is 4,971 ->
+  3,896 (-21.6%) with ANEOS kept. *Superseded:* earlier revisions said
+  the lane would be 13.5% without F6; that alternative no longer applies.
 * The margin is 80 lines. The largest estimate is D8 (-400 across seven
   sedimentation files). If D8 delivers 81 or more lines (20%) less than its
   target, the lane misses. I will replace the D8 target with a measured
@@ -1469,7 +1470,9 @@ CPU and CUDA at the same dtype, on the gates of section 5.
    * - EF-10
      - D11: remove ``src/turbulence``.
      - bitwise (not compiled)
-     - F6 (proceeding; recorded for Cheng). No build, test or deck changes.
+     - F6 decided (delete). EF deletes the three files. The other lines
+       that name it outside ``src/turbulence`` are other lanes' (section 10,
+       "F6, settled"). No build, test or deck changes.
    * - EF-11
      - D12: the base ``W->U``/``U->W`` dispatch and ``_mom_from_vel_``.
      - bitwise
@@ -1484,7 +1487,7 @@ CPU and CUDA at the same dtype, on the gates of section 5.
 
 **Order:** EF-1, EF-2, EF-5, EF-11 (independent) → [lane R register] →
 EF-3 → EF-4 → EF-6 → EF-12 → EF-7 → [kintera K] → EF-8. EF-10 merges
-on its own (F6 proceeds; nothing waits on it). (There is no EF-9 any more: it was the ANEOS
+on its own (F6 decided; nothing waits on it). (There is no EF-9 any more: it was the ANEOS
 removal.)
 
 **Absorbing #370.** #370 ("sync positivity-carry enthalpy and donor velocity
@@ -1542,8 +1545,9 @@ No YAML key is removed. No default changes.
 FOR CHENG
 ---------
 
-**Decided.** *F1 (remove ANEOS): no, ANEOS stays* (Cheng, in the EF lane
-thread, 2026-11-17). It is off the kill list. It stays in the class tree on
+**Decided.** *F6 (delete* ``src/turbulence``*): yes* (Cheng, EF lane
+thread). It is settled below and in section 9. *F1 (remove ANEOS): no,
+ANEOS stays* (Cheng, in the EF lane thread, 2026-11-17). It is off the kill list. It stays in the class tree on
 the shared base, and section 9 counts its 281 lines as kept (``aneos.cpp``
 111 -> 98, a target, from D12). *F2 is withdrawn*: #370 is not in the
 baseline, and section 10, "Absorbing #370", covers it.
@@ -1658,28 +1662,71 @@ it, and its result change is likely beyond round-off.
 (seven sedimentation files) carries the 80-line margin. It is a target and
 not measured, and it stays FOR CHENG until EF-6 is prototyped.
 
-**F6. Remove ``src/turbulence``** (D11, 402 lines). **Status: proceeding on
-EF's proposal. The deletion is counted in section 9, the rows are kept, and
-it is recorded for Cheng; nothing waits on it** (PM, EF lane thread).
-Evidence at pin ``9e5de2d4``:
+**F6, settled: delete** ``src/turbulence`` (D11, 402 lines; Cheng: yes).
+It is no longer FOR CHENG. Evidence at pin ``9e5de2d4``: the build glob
+``src/CMakeLists.txt:35-53`` has no ``turbulence/`` entry, and
+``git show 9e5de2d4:src/CMakeLists.txt | grep -c turbulence`` gives 0
+(nor does the CUDA glob at ``:122-134``). It is a k-epsilon model in
+Athena++ form (C24), so removing it changes no result. If a turbulence
+closure is wanted in V3, I propose a new one on the register (section 3,
+"Turbulence").
 
-* the build glob ``src/CMakeLists.txt:35-53`` lists ``bc``, ``coord``,
-  ``eos``, ``eos/aneos``, ``hydro``, ``riemann``, ``recon``, ``mesh``,
-  ``output``, ``scalar``, ``utils``, ``forcing``, ``implicit``, ``input``,
-  ``sedimentation`` and ``layout``. It has no ``turbulence/`` entry, and
-  ``git show 9e5de2d4:src/CMakeLists.txt | grep -c turbulence`` gives 0
-  (the CUDA glob at ``:122-134`` has none either);
-* ``git grep -lE 'turbulence|TurbulenceModel|NTURBULENCE|KEpsilon' 9e5de2d4 -- . ':!src/turbulence'``
-  finds only ``docs/doxygen/SUMMARY.md:33-34``, a documentation listing
-  that goes with the deletion. No source, test, Python file or deck refers
-  to it.
+**What goes with it outside** ``src/turbulence``. These were found by
+reading only, with no build or run. The names defined under
+``src/turbulence`` are:
 
-It is a k-epsilon model in Athena++ form (C24). Removing it changes no
-result. This is the same case as uncompiled ``src/diagnostics`` in lane
-O. If a turbulence closure is wanted in V3, I propose writing a new one on
-the register (section 3, "Turbulence") rather than porting this. With ANEOS
-kept, the lane reaches 20% only with F6 (section 9: 3,896 with it, 4,298
-without).
+* files ``turbulence_model.hpp``, ``turbulence_model.cpp`` and
+  ``k_epsilon_turbulence.cpp``;
+* classes ``TurbulenceModel``, ``KEpsilonTurbulence`` and
+  ``TurbulenceFactory``, and the alias ``TurbulenceModelPtr``;
+* the members ``DriveTurbulence``, ``SetDiffusivity`` and ``mut``;
+* the macro used ``NTURBULENCE`` (defined nowhere); and the
+  ParameterInput keys ``hydro/turbulence`` and ``turbulence/kepsilon.*``.
+
+The search, over the whole tree at the pin (``src``, ``python``, ``tests``,
+``examples``, ``docs``, CMake, ``.pyi``, YAML):
+``git grep -n -i -E 'turbulen|TurbulenceModel|KEpsilon|k_epsilon|TurbulenceFactory|TurbulenceModelPtr|turbulence_model|NTURBULENCE|DriveTurbulence|kepsilon' 9e5de2d4 -- . ':!src/turbulence'``,
+plus ``git grep -n -E '"(tke|mut|eps)"'`` for the output names. Results:
+
+.. list-table:: References to the deleted module outside ``src/turbulence`` (pin ``9e5de2d4``)
+   :header-rows: 1
+   :widths: 30 26 14 30
+
+   * - file:line
+     - what
+     - owner lane
+     - lines counted
+   * - ``src/output/output_utils.cpp:53-55``
+     - output-name table entries ``eps``, ``tke`` and ``mut``
+       ("turbulent ..."). No code at the pin produces them (the ``"mut"``
+       grep's only other hit is a test variable, below).
+     - O (output; Jiachen)
+     - 3 lines, counted by O, not by EF. To post in lane O's thread.
+   * - ``docs/doxygen/SUMMARY.md:33-34``
+     - Doxygen summary heading "Turbulence Module (``src/turbulence/``)" and
+       the ``turbulence_model.hpp`` entry
+     - **unclear**. ``docs/`` is outside every lane's ``src/`` baseline
+       I know of. O owns "output, input, utils, diagnostics", not docs.
+     - 2 lines, not in any ``src/`` budget; the owner is to be named by the
+       PM.
+   * - ``docs/doxygen/Doxyfile:121,130``
+     - ``INPUT = ../../src`` and ``RECURSIVE = YES``. These pick the module
+       up implicitly and do not name it; ``EXCLUDE`` (``:131``) is empty.
+     - unclear (as above)
+     - 0 lines: no edit needed after the deletion
+
+None in CMake, the ``#include``\ s outside the directory, ``python/``,
+``.pyi`` stubs, tests, examples or YAML decks: the grep above returns no
+hit there. Not references:
+
+* ``docs/derivations/289-covariance-x3-curved.md:1226`` and ``.tex:1267``:
+  the word "turbulent" in prose about flow, not the module;
+* ``tests/test_gravity_work_radial_exact.py:315,381,386,388``: the key
+  ``"mut"`` is short for "mutation".
+
+**EF's count** is unchanged: the 402 lines of ``src/turbulence`` (D11), and
+no EF file outside it names the module. The other lanes' lines are not in
+EF's budget.
 
 11. Open questions to other lanes
 =================================
@@ -1784,7 +1831,8 @@ Round-2 notes from Xinyue (against ``b58e12bb``; lane I side her rev 2 ``c6f9d95
 ------------------------------------------------------------------------------------
 
 Her summary: the budget 4,971 -> 3,896 (-21.63%) reproduces at the pin
-across all 40 rows (``wc -l``), and passes 20% only with F6. The skeleton
+across all 40 rows (``wc -l``), and passes 20% only with F6 (now decided:
+delete; section 10). The skeleton
 was 296 lines (299 at rev 3). She did not check rev 1's 3,680 or #370's +8.
 Her status is quoted first; EF's answer follows.
 
@@ -1803,8 +1851,9 @@ Her status is quoted first; EF's answer follows.
      - No change.
    * - N3
      - request / open (Cheng)
-     - F6 (``src/turbulence``, -402, counted) and D8 (-400 target) stay FOR
-       CHENG (section 10). Without F6 the cut is 13.5%, and that is stated
+     - F6 is now decided (delete, -402, settled; section 10). D8 (-400
+       target) stays FOR CHENG. The 13.5%-without-F6 alternative is
+       superseded, and was stated
        in section 9.
    * - N4
      - request / changed
@@ -1885,7 +1934,7 @@ Her status is quoted first; EF's answer follows.
      - conflict / withdrawn
      - As N13.
    * - F6, D8
-     - open (Cheng)
+     - F6 decided; D8 open (Cheng)
      - As N3.
 
 Questions by lane (ready to post)
