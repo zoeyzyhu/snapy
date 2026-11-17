@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.5.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.6.
 // Q5 (EF decides): typed EOS methods + capabilities; the register never calls
 // the EOS. Replaces compute("W->A") etc. and the 16 type-string branches.
 #pragma once

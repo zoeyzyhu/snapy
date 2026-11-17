@@ -3,9 +3,11 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.5 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.6 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.5: RULING V3-2 (census in R's monitor from
+           ``d874dd2b``). Rev 3.6: PM ruling, the pin is authoritative:
+           solid fill runs every stage when a solid field exists
+           (``meshblock.cpp:936-938``), and K is ``:954-972``. Rev 3.5: RULING V3-2 (census in R's monitor from
            R-1, accepted steps only, no interim hook; one "what changes"
            row); ``docs/doxygen/SUMMARY.md:33-34`` goes with the
            turbulence PR, uncounted; Xi takes EF's retry names (per the
@@ -511,10 +513,11 @@ Scalar module has its own.
    scalars (own register): add "scalar.upper_bound" (P4); scale (P5)
    [after_combine] EOS conserved limiter, borrow, fix_vapor  (every stage, :907-909)
                 -> reg.cell_amount("eos.floor"|"eos.borrow"|"eos.fix_vapor", vol_du, 1.0, floor)
-   [after_combine, last stage, reactions only] S's solid fill (:937)
+   [every stage, when a solid field exists] S's solid fill (:936-938)
+   [after_combine, last stage, reactions only]
                 -> F1b: EOS conserved limiter again, whole column (:950-952)
                 -> reg.cell_amount("eos.floor"|"eos.fix_vapor", vol_du, 1.0, floor)
-                -> K: saturation adjustment, thermo.forward (:953-970)
+                -> K: saturation adjustment, thermo.forward (:954-972)
    step end: monitor counters, amounts, retry_flags in X's one read (meshblock.cpp:1566)
 
 4. Flux-register contract
@@ -551,7 +554,8 @@ of K rev 2.1; EF takes option (a)). On the last stage the pin runs the
 conserved limiter a second time when thermo has reactions
 (``meshblock.cpp:950-952``: ``stage == stages - 1``, ``thermo()`` and
 ``reactions().size() > 0``). This pass comes after S's solid fill
-(``:937-939``) and before the saturation adjustment
+(``:936-938``, which runs every stage when a solid field exists) and
+before the saturation adjustment
 (``pthermo->forward``, ``:969-970``; K.rst cites ``:965``). EF owns it, as F1b. In the last
 ``after_combine`` it runs after the solid fill and before K's
 ``thermo.forward``, only when reactions are present. It posts
