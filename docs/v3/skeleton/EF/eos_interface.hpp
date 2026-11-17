@@ -1,10 +1,10 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
 // Q5 (EF decides): typed EOS methods + capabilities; the register never calls
 // the EOS. Replaces compute("W->A") etc. and the 16 type-string branches.
 #pragma once
 #include <cstdint>
 #include <torch/torch.h>
-namespace snap::v3 {
+namespace snap {
 enum EosCap : uint32_t {
   kHasTemperature = 1u << 0,   // false: shallow-water
   kHasSpecies = 1u << 1,       // moist types
@@ -23,4 +23,4 @@ struct EosInterface {
   //! W->A + WA->L, or ANEOS's W->L + WL->A: one contract for all solvers
   virtual void gamma_sound_(torch::Tensor w, torch::Tensor gamma, torch::Tensor cs) = 0;
 };
-}  // namespace snap::v3
+}  // namespace snap

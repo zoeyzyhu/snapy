@@ -1,39 +1,35 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4.
-// Register names are PROVISIONAL until lane R posts its interface (EF.rst s4).
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
+// Register API = lane R's PROVISIONAL header, happysky19/snapy 543ff84f
+// docs/v3/skeleton/R/flux_register.hpp (Tianhao). EF calls it directly.
 #pragma once
 #include <torch/torch.h>
 
-namespace snap::v3 {
+namespace snap {
 
-class FluxRegister;  // owned by lane R; EF only posts and reads
+class FluxRegister;     // lane R: add, scale, total, cell_amount, enter
+class RegisterMonitor;  // lane R: amounts, counters, retry_flags (read only)
 
-//! What EF posts. Each post is a named contribution or correction.
-enum class EfPostKind {
-  kSedimentation,        // P1: x1; species, IVX..IVZ, IPR (sed_hydro.cpp:36-40)
-  kPositivityWithhold,   // P2: species rows, all dims (flux_positivity.cpp:92-122)
-  kPositivityCarry,      // P3: IPR, IVX..IVZ (flux_positivity.cpp:124-167)
-  kScalarUpperBound,     // P4: scalar rows (scalar.cpp:212-214)
-  kScalarPositivity,     // P5: scalar rows (scalar.cpp:239)
-};
+//! EF's post names (the header leaves names to the poster; Q-R-h).
+namespace EfPost {
+// P1 sweep:  add(1, kSedimentation, {species hydro_ids, IVX..IVZ, IPR}, sed)
+constexpr char const* kSedimentation = "sedimentation";
+// P3 limit:  add(d, kCarry, {IPR}, -c_E); add(d, kCarry, {IVX,IVY,IVZ}, -c_m)
+//            x1: advected pair first, then settling pair (in post order)
+constexpr char const* kCarry = "positivity.carry";
+// P2 limit:  scale(d, kWithhold, species, where(F > 0, th_lo, th_hi))
+constexpr char const* kWithhold = "positivity.withhold";
+// P4/P5 on the scalar register (Q-R-b): add, then scale
+constexpr char const* kScalarUpper = "scalar.upper_bound";
+constexpr char const* kScalarWithhold = "scalar.positivity.withhold";
+// cell_amount(name, vol_du): floors and repairs, after the RK combine (Q-R-e)
+constexpr char const* kFloor = "eos.floor";
+constexpr char const* kBorrow = "eos.borrow";
+constexpr char const* kFixVapor = "eos.fix_vapor";
+}  // namespace EfPost
 
-//! What EF reads (R1-R4, EF.rst s4). Each returns a view; the caller never
-//! writes through it.
-//!  R1 total(dim) species + IDN rows  -> theta, td
-//!  R2 part(x1, kSedimentation) species rows -> carry split, phi mask
-//!  R3 total(dim)[IDN] of the hydro register -> scalar upwind mass flux
-//!  R4 total(dim)[IDN] without the covariance post -> scalar laterals
-//! Ordering (EF.rst s4):
-//!  riemann(x1) < P1 < seam-avg(x1) < riemann(x2,x3), cov < R1,R2
-//!  < theta sync < {P2,P3} < divergence, AAM, gravity work
-//!  scalar register: riemann_s, cov_s < P4 < P5 < divergence_s
+//! Reads: total(d) in phase limit (R1); R2 is EF's own P1 buffer, not a
+//! register read; R3/R4 for scalars: Q-R-c. Order (header :25-28):
+//!  x1 riemann < P1 < x1 seam replace < x2/x3 riemann, cov < [limit]
+//!  theta sync (Q-R-d) < {P3, P2} < divergence
 
-//! Post a correction that scales rows by `factor` (Q-R2). Needed for P2 and
-//! P5 to stay bitwise against `F *= theta`.
-void ef_post_scale(FluxRegister& reg, int dim, EfPostKind kind,
-                   torch::Tensor const& rows, torch::Tensor const& factor);
-
-//! Post an additive increment.
-void ef_post_add(FluxRegister& reg, int dim, EfPostKind kind,
-                 torch::Tensor const& rows, torch::Tensor const& increment);
-
-}  // namespace snap::v3
+}  // namespace snap

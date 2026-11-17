@@ -1,8 +1,8 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 1.1.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
 #pragma once
 #include <torch/torch.h>
 
-namespace snap::v3 {
+namespace snap {
 
 //! One persistent device tensor per MeshBlock. Every write is in place
 //! (logical_or_, add_, minimum_out), so a CUDA-graph replay updates it the
@@ -47,4 +47,4 @@ class EfStatus {
   torch::Tensor data_;  // (kNumSlots,), never reallocated after allocate()
 };
 
-}  // namespace snap::v3
+}  // namespace snap

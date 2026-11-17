@@ -1,8 +1,8 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
 #pragma once
 #include <torch/torch.h>
 
-namespace snap::v3 {
+namespace snap {
 
 class EfStatus;
 
@@ -33,4 +33,4 @@ struct Floors {
 //! Primitive limiter (equation_of_state.cpp:394-418): NaN, density floor,
 //! species clamp (mark if below -positivity_roundoff), pressure floor.
 
-}  // namespace snap::v3
+}  // namespace snap

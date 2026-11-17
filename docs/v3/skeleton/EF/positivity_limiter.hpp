@@ -1,11 +1,11 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 1.1.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
 #pragma once
 #include <string>
 #include <torch/torch.h>
 #include "ef_register_use.hpp"
 #include "ef_status.hpp"
 
-namespace snap::v3 {
+namespace snap {
 
 class MeshBlockImpl;
 
@@ -13,9 +13,9 @@ class MeshBlockImpl;
 struct PositivityInputs {
   torch::Tensor u;        // channel densities (nchan, nc3, nc2, nc1)
   torch::Tensor rho_dry;  // total dry density (1, nc3, nc2, nc1)
-  torch::Tensor flux[3];  // R1: register totals of the channel rows
-  torch::Tensor mass[3];  // R1/R3: register totals of the IDN row
-  torch::Tensor fsed1;    // R2: settling part (x1); undefined for scalars
+  torch::Tensor flux[3];  // R1: reg.total(d), channel rows, phase limit
+  torch::Tensor mass[3];  // R1/R3: reg.total(d)[IDN]
+  torch::Tensor fsed1;    // R2: EF's own P1 buffer (x1); undefined for scalars
   torch::Tensor hspec;    // energy per unit species mass; undefined: no carry
   torch::Tensor vel;      // donor momentum per unit mass; with hspec
   torch::Tensor vface[2]; // x2/x3 seam donor velocity per face (#370, merged
@@ -45,15 +45,15 @@ class PositivityLimiter {
   //! After #370, hspec and vface ride in the same batched exchange.
   void sync_(torch::Tensor const& theta, std::string const& key) const;
 
-  //! Post P3 (carry; when hspec is defined), then P2 or P5 (withhold, as a
-  //! scale post, Q-R2). Both are computed from the same pre-limit read, so
-  //! the posting order does not change the result.
+  //! In phase limit: reg.add(d, EfPost::kCarry, ...) when hspec is defined
+  //! (x1: advected pair, then settling pair), then reg.scale(d, withhold_name,
+  //! rows, factor). Both from one pre-scale read of reg.total(d).
   void post_(FluxRegister& reg, PositivityInputs const& in,
-             torch::Tensor const& theta, EfPostKind withhold_kind) const;
+             torch::Tensor const& theta, char const* withhold_name) const;
 
   //! The whole sequence: theta, census_, sync_, post_.
   void apply(FluxRegister& reg, PositivityInputs const& in,
-             std::string const& key, EfPostKind withhold_kind) const;
+             std::string const& key, char const* withhold_name) const;
 
  private:
   MeshBlockImpl const* pmb_;
@@ -65,4 +65,4 @@ class PositivityLimiter {
 //! flux_positivity_theta, _share, _relax, _scale_, _carry_, _sync_theta_.
 //! Their per-dimension blocks become one loop over dims (D9).
 
-}  // namespace snap::v3
+}  // namespace snap

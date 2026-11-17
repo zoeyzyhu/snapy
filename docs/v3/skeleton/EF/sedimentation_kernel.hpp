@@ -1,9 +1,9 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 2.3.
 #pragma once
 #include <torch/torch.h>
 #include "ef_register_use.hpp"
 
-namespace snap::v3 {
+namespace snap {
 
 //! Built once at SedHydro::reset() and again on to(device/dtype): persistent
 //! device buffers in the compute dtype. Replaces the 23-argument signature
@@ -29,9 +29,10 @@ void sedimentation_flux(torch::Tensor const& w, torch::Tensor const& temp,
                         torch::Tensor const& energy, SedKernelArgs& args,
                         torch::Tensor const& out_increment);
 
-//! Convenience: compute and post P1.
+//! Compute into args' fixed buffer, then reg.add(1, EfPost::kSedimentation,
+//! rows, buffer) in phase sweep (P1). The buffer is also R2.
 void sedimentation_post(FluxRegister& reg, torch::Tensor const& w,
                         torch::Tensor const& temp, torch::Tensor const& energy,
                         SedKernelArgs& args);
 
-}  // namespace snap::v3
+}  // namespace snap
