@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.6.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.7.
 // Register API = lane R's FROZEN header rev 4.2, happysky19/snapy 4c59162a
 // docs/v3/skeleton/R/flux_register.hpp (Tianhao). EF calls it directly.
 #pragma once

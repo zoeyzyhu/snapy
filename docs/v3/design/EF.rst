@@ -3,9 +3,13 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.6 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.7 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.6: PM ruling, the pin is authoritative:
+           ``d874dd2b``). Rev 3.7: int64 census counts; Q-X1 and Q-X4
+           answered by X rev 3.6; Z-K2 (EF-8 sizes ``ivol``/``temp`` once in
+           eager code; the pin rebinds them with ``set_``) and Z-K3 (no
+           ``prepare()`` in ``reset()``; +2 withdrawn). N10 stays open.
+           Rev 3.6: PM ruling, the pin is authoritative:
            solid fill runs every stage when a solid field exists
            (``meshblock.cpp:936-938``), and K is ``:954-972``. Rev 3.5: RULING V3-2 (census in R's monitor from
            R-1, accepted steps only, no interim hook; one "what changes"
@@ -563,8 +567,8 @@ before the saturation adjustment
 AmountKind::floor)``, because the change is already in ``u``, as for F1.
 The order inside the last ``after_combine`` is F1, then S's solid fill,
 then F1b, then K, then the fixers. R's header lists EF floors, K and the
-fixers there (``:22``); the solid fill and F1b placement is X's schedule
-to confirm (Q-X4). **Line booking:** the pin lines ``meshblock.cpp:950-952``
+fixers there (``:22``); X confirms this order against the pin's last
+stage (Q-X4, answered: X rev 3.6 ``fc3b002e``, ``X.rst:333-336, 1166-1169``). **Line booking:** the pin lines ``meshblock.cpp:950-952``
 are X's (``src/mesh``) and leave EF's file set unchanged. The call reuses
 ``apply_conserved_limiter_`` (``equation_of_state.cpp:213-290``), so no
 EF file changes and the section 9 budget is unchanged.
@@ -909,10 +913,13 @@ Names that start with ``G-EF`` are new gates this design adds.
        FP32. Only the branch that ``where`` discards sees it today. The design
        uses ``finfo(dtype).tiny``, which is bitwise in FP64.
    * - positivity census
-     - device counters
-     - FP64 (``wide``); FP32 on MPS
-     - Yes. Sums over the block (``hydro_forward.cpp:373,1196-1222``).
-       Policy: "cast before reductions" (roadmap M4).
+     - device counters: **int64** counts (hits, severe); FP64 sums and
+       minimum (``lim_cut``/``lim_flux``, ``pos_min``); MPS: FP32
+     - int64 counts; FP64 sums (``wide``); FP32 on MPS
+     - Yes for the sums (``hydro_forward.cpp:373,1196-1222``); counts are
+       exact in int64. Per X's diagnostics row (X rev 3.6 ``fc3b002e``,
+       ``X.rst:289`` in the dtype table ``:280-289``). Policy: "cast before
+       reductions" (roadmap M4).
    * - fix_vapor column sums
      - state dtype
      - state dtype today (``fix_vapor_impl.h:32-39``)
@@ -1087,10 +1094,31 @@ No EF change edits kintera's public API. The other keys stay
 (``moist_mixture.cpp:35-36,64,66,81,143,189``). They are not iterative
 (**hypothesis:** no host read, per K's inventory, which lists only the two
 inversions; ``K.rst:41-42``). The two in-stage inversions at
-``moist_mixture.cpp:65,190`` move to K's ``compute_into`` (EF-8). **Line
-booking for that change is pending K's answer:** whether ``compute_into``
-writes into the existing ``temp`` buffer (``moist_mixture.cpp:27``), which
-would make it a one-for-one swap, is a hypothesis.
+``moist_mixture.cpp:65,190`` move to K's ``compute_into`` (EF-8).
+
+**Z-K2 and Z-K3 (K rev 2.6/2.7,** ``UCzhangxi/kintera`` ``v3-design/K`` ``143fedeb`` (rev 2.7; rev 2.6 ``ef93e92d`` for the Z-K answers)**).**
+
+* **Z-K3, settled:** no ``prepare()`` in EF's ``reset()``, and EF books
+  nothing for it. The +2 lines EF proposed for ``prepare()`` in EF-8 are
+  **withdrawn** and were never in section 9. Reason, checked at the pin:
+  ``reset()`` runs at construction (``moist_mixture.hpp:16-19`` calls it;
+  ``moist_mixture.cpp:18-20`` builds ``ThermoY``), before the cell shape
+  is known (the buffers are registered empty, ``:26-27``) and before the
+  block moves to its device (``examples/jupiter_evap_precip_1d.cpp:209``).
+  X calls ``prepare()`` on each kintera module of a segment before
+  warm-up (``X.rst:423-428`` at ``fc3b002e``; ``K.rst:277-286``).
+* **Z-K2, agreed, with the pin read exactly:** ``compute_into`` writes
+  with ``copy_``, which does not resize (``K.rst:170-171``), so it needs a
+  pre-sized ``temp``. **At the pin EF does not size them once:**
+  ``moist_mixture.cpp:26-27`` registers ``ivol`` and ``temp`` as empty
+  (0-element) FP64 buffers, and every call rebinds them with ``set_``
+  (``:64-65`` in ``_cons2prim``, ``:189-190`` in ``_ensure_cache``), as
+  ``K.rst:1062-1065`` also says. **EF-8 takes the obligation:** size
+  ``ivol`` and ``temp`` to the cell shape **once, in eager code before
+  warm-up**, then write them in place (``compute_into``, ``copy_``). The
+  ``set_`` rebinds go. Lines 65 and 190 change line for line
+  (``K.rst:733``). The sizing statement itself is a few lines, a **target
+  not booked** until EF-8 is written; the section 9 budget is unchanged.
 
 9. Line budget
 ==============
@@ -1470,8 +1498,10 @@ CPU and CUDA at the same dtype, on the gates of section 5.
      - bitwise FP64; FP32 rounding only in FP32 fix_vapor (FP64 accumulator)
      - G1/G2. **Proposed PR for** ``compute_into("VU->T" | "PV->T")`` at
        ``moist_mixture.cpp:65,190`` (K rev 2.1, ``K.rst:396-401``). It
-       merges after the kintera release that carries ``SolveMode``. Line
-       booking is pending K's answer.
+       merges after the kintera release that carries ``SolveMode``. Lines
+       65 and 190 change line for line; ``ivol``/``temp`` are sized once in
+       eager code before warm-up (Z-K2). There is no ``prepare()`` in
+       ``reset()`` (Z-K3; the +2 is withdrawn).
    * - EF-10
      - D11: remove ``src/turbulence``.
      - bitwise (not compiled)
@@ -2048,12 +2078,12 @@ is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
 * **Q-X1.** Redo would read EF's retry causes inside the single
   device-to-host copy (``meshblock.cpp:1566``). The ``limiter_hits`` and
   ``floor_hit`` duplicates (``:1417-1446``) would go. Do you book those
-  lines and accept the cause mapping (gate G-EF-2)? **Status:** X rev 3.3
-  (``UCzhangxi/snapy`` ``0fe47c6f``, ``X.rst:204-206``) asks for a name
-  for the NaN mark at bit 3. Per the PM, Xi takes EF's four names
-  (``ef.nan`` for bit 3) and the bit table below. That is settled as far
-  as the PM's message goes; Xi's revision that adopts it is still to
-  come. The name-to-bit table, read from the pin's stack
+  lines and accept the cause mapping (gate G-EF-2)? **Answered** by X rev
+  3.6 (``UCzhangxi/snapy`` ``v3-design/X`` ``fc3b002eb096eece72d78ccdf6d613a2267a01a6``). X maps ``ef.floor_patch``, ``ef.vapor_fail`` and
+  ``ef.heat_capacity`` to bit 2 and ``ef.nan`` to bit 3
+  (``X.rst:214-221``; EF's four names, ``X.rst:1148-1149``), and books the
+  legacy helpers ``meshblock.cpp:1417-1445`` (``X.rst:551-553``). The
+  name-to-bit table, read from the pin's stack
   ``{floor, clamp, marks[0], marks[1], sat, solve, vapor, heat}``
   (``meshblock.cpp:1559-1560``) and ``read_redo_flags``
   (``:1565-1577``):
@@ -2080,7 +2110,10 @@ is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
 
 * **Q-X4.** Inside the last ``after_combine``, is the order F1, then S's
   solid fill, then F1b, then K, then the fixers in your schedule (F1b,
-  section 4)?
+  section 4)? **Answered: confirmed** by X rev 3.6 (``fc3b002e``,
+  ``X.rst:1166-1169``: limiter ``:907-909``, solid fill ``:936-938``,
+  limiter ``:952``, saturation ``:953-981``, fixers ``:983-1004``; segment
+  list ``X.rst:333-336``).
 * **Q-X2.** Solid cells: primitives are marked (``hydro_forward.cpp:521-522``)
   and conserved values filled after the RK combine (``meshblock.cpp:937``),
   after the whole-column limiter (``:907-909``). Should they be excluded from

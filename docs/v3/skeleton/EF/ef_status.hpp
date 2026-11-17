@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.6.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.7.
 #pragma once
 #include <torch/torch.h>
 
@@ -31,7 +31,7 @@ class EfStatus {
     kNumSlots
   };
 
-  //! Allocate once: int64 counts, FP64 sums/min (MPS: FP32), X.rst:235-239.
+  //! Allocate once: int64 counts, FP64 sums/min (MPS: FP32), X.rst:280-289.
   void allocate(torch::Device device);
 
   //! Device view of one slot, for in-place writes inside a stage.
