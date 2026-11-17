@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.2.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.3.
 #pragma once
 #include <torch/torch.h>
 
@@ -24,20 +24,20 @@ class EfStatus {
     kFloorDEnergy,       // same for total energy; the monitor reads both
     kPosHits,            // cumulative (cell, species) with theta < 1
     kPosSevere,          // theta < 0.9 and withheld above round-off
-    kPosMin,             // min theta (FP64 in every precision)
+    kPosMin,             // min theta: FP64 (MPS: FP32)
     kLimCut,             // x1 face flux removed (lifetime sum)
     kLimFlux,            // x1 face flux offered (lifetime sum)
     kScalarPosHits,      // scalars, tracer and complement
     kNumSlots
   };
 
-  //! Allocate once on `device` (FP64 slots; counts are stored exactly).
+  //! Allocate once: int64 counts, FP64 sums/min (MPS: FP32), X.rst:235-239.
   void allocate(torch::Device device);
 
   //! Device view of one slot, for in-place writes inside a stage.
   torch::Tensor slot(Slot s) const;
-
-  //! Zero the per-step slots (kFloorPatch..kFloorDEnergy); keep lifetime ones.
+  //! Zero per-step slots; census (kPosHits..) via StepReset "ef.census"
+  //! commit/drop (X meshblock_parts.hpp:45) until R-1 moves it to R's monitor.
   void reset_step_();
 
   //! The values redo stacks into its single device-to-host copy
@@ -45,7 +45,7 @@ class EfStatus {
   torch::Tensor snapshot() const;
 
  private:
-  torch::Tensor data_;  // (kNumSlots,), never reallocated after allocate()
+  torch::Tensor counts_, sums_;  // int64 / FP64 (MPS: FP32); fixed after allocate()
 };
 
 }  // namespace snap

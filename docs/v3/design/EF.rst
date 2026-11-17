@@ -3,9 +3,12 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.2 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.3 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.2: re-cited to lane R rev 2.2 FROZEN
+           ``d874dd2b``). Rev 3.3: second last-stage limiter F1b (pin
+           ``meshblock.cpp:950-952``); EfStatus dtypes; census drop hook;
+           K rev 2.1 answers (Q-K1, Q-K2, section 8); Q-X1 bit table.
+           Rev 3.2: re-cited to lane R rev 2.2 FROZEN
            ``4c59162a`` only; answers to R's Q-R-i and the tangential
            option. Rev 3: re-cited to lane R's then-current header and lane S
            rev 1.1 ``d03e4888``; ``bflux1`` removed (N13); answers to
@@ -435,8 +438,10 @@ to EF, and states that the register never calls the EOS. EF decides:
    ``src/eos`` there are 53 ``peos->compute("...")``/``eos->compute("...")``
    calls in 14 files (``git grep -n 'peos->compute("\|eos->compute("' -- src``,
    minus ``src/eos``). They move to the typed methods.
-   ``compute(ab)`` stays only **inside** the moist types, where it forwards
-   to kintera (``moist_mixture.cpp:35-36,64-66``).
+   ``compute(ab)`` stays only **inside** the moist types. There the
+   in-stage kintera inversions become ``compute_into("VU->T")`` and
+   ``compute_into("PV->T")`` at ``moist_mixture.cpp:65,190``, per lane K rev
+   2.1 (``K.rst:396-401`` at ``dde24f2c``). That change is EF-8.
 2. **One sound-speed contract.** ``gamma_sound_(w, gamma, cs)`` returns
    both. Ideal types fill them from ``W->A`` and ``WA->L``, ANEOS from
    ``W->L`` and ``WL->A``. The six ANEOS branches in the solvers and
@@ -497,8 +502,12 @@ Scalar module has its own.
                 reg.count("ef.pos_hits", ...) etc.
    [divergence] du reads reg.total(d)
    scalars (own register): add "scalar.upper_bound" (P4); scale (P5)
-   [after_combine] EOS conserved limiter, borrow, fix_vapor
-                -> reg.cell_amount("eos.floor"|"eos.borrow"|"eos.fix_vapor", vol_du)
+   [after_combine] EOS conserved limiter, borrow, fix_vapor  (every stage, :907-909)
+                -> reg.cell_amount("eos.floor"|"eos.borrow"|"eos.fix_vapor", vol_du, 1.0, floor)
+   [after_combine, last stage, reactions only] S's solid fill (:937)
+                -> F1b: EOS conserved limiter again, whole column (:950-952)
+                -> reg.cell_amount("eos.floor"|"eos.fix_vapor", vol_du, 1.0, floor)
+                -> K: saturation adjustment, thermo.forward (:953-970)
    step end: monitor counters, amounts, retry_flags in X's one read (meshblock.cpp:1566)
 
 4. Flux-register contract
@@ -529,6 +538,25 @@ applies them after every combine (``meshblock.cpp:907-909``). The amounts
 accumulate under ``end_stage``'s recursion (``:85``). ``stage_weight =
 1.0``, because the change is already in ``u``. EF does not need
 ``weights()``.
+
+**F1b: second limiter on the last stage** (from the conflicts-only review
+of K rev 2.1; EF takes option (a)). On the last stage the pin runs the
+conserved limiter a second time when thermo has reactions
+(``meshblock.cpp:950-952``: ``stage == stages - 1``, ``thermo()`` and
+``reactions().size() > 0``). This pass comes after S's solid fill
+(``:937-939``) and before the saturation adjustment
+(``pthermo->forward``, ``:969-970``; K.rst cites ``:965``). EF owns it, as F1b. In the last
+``after_combine`` it runs after the solid fill and before K's
+``thermo.forward``, only when reactions are present. It posts
+``cell_amount("eos.floor" | "eos.fix_vapor", vol_du, 1.0,
+AmountKind::floor)``, because the change is already in ``u``, as for F1.
+The order inside the last ``after_combine`` is F1, then S's solid fill,
+then F1b, then K, then the fixers. R's header lists EF floors, K and the
+fixers there (``:22``); the solid fill and F1b placement is X's schedule
+to confirm (Q-X4). **Line booking:** the pin lines ``meshblock.cpp:950-952``
+are X's (``src/mesh``) and leave EF's file set unchanged. The call reuses
+``apply_conserved_limiter_`` (``equation_of_state.cpp:213-290``), so no
+EF file changes and the section 9 budget is unchanged.
 
 **What EF uses from the header:**
 
@@ -606,11 +634,31 @@ accumulate under ``end_stage``'s recursion (``:85``). ``stage_weight =
      - IDN, IPR; species
      - ``equation_of_state.cpp:213-290,307-380``. Not ``Fixer`` subclasses
        (``R.rst``, Q-R-f).
+   * - F1b
+     - ``cell_amount("eos.floor" | "eos.fix_vapor", vol_du, 1.0,
+       AmountKind::floor)``
+     - last ``after_combine``, reactions only, after the solid fill, before
+       K
+     - IDN, IPR; species
+     - pin ``meshblock.cpp:950-952`` (lines are X's); the same EOS calls
+       as F1
    * - C1
      - ``count``/``record_min``/``flag_retry`` for EF's names (below)
      - where each event happens
      - n/a
      - today's ``EfStatus`` slots
+
+**Census across retries.** ``EfStatus::reset_step_()`` zeroes only the
+per-step slots. The census slots (``pos_hits`` through
+``scalar_pos_hits``) are lifetime sums. **Hypothesis:** before R-1, a
+rejected attempt's census is counted again when the step is retried,
+which is a double count; it is not tested. EF's fix, until R-1: register a
+``StepReset`` named ``"ef.census"`` (owner EF, phase ``kStageZero``) with X's
+``commit``/``drop`` hooks (``meshblock_parts.hpp:45`` at X ``bac201d1``).
+The attempt's census is kept apart, added into the lifetime census on
+``commit``, and zeroed on ``drop``. In R-1, the same PR that moves the
+slots, the census moves into R's monitor, where ``begin_step()`` (``:48``)
+and ``rollback()`` (``:86``) give that behaviour, and the hook goes.
 
 **EfStatus becomes monitor entries** (Q-R-a answered). The counts are
 ``count`` names: ``ef.floor_patch``, ``ef.nan``, ``ef.vapor_fail``,
@@ -971,7 +1019,9 @@ generation, roadmap "Execution design").
   (``equation_of_state.cpp:340-347``);
 * B4: kintera's ``VU->T`` and ``PV->T`` iterations, which read on the host
   every iteration (``kintera:src/thermo/thermo_y.cpp:480,525``) and are used
-  by moist-mixture (``moist_mixture.cpp:65,190``).
+  by moist-mixture (``moist_mixture.cpp:65,190``). K rev 2.1 removes B4.
+  Under capture, ``compute_into`` with ``SolveMode::automatic`` resolves to
+  ``fixed``, which makes no host read (``K.rst:135-158``).
 
 B1 and B2 are exchanges (G4 and G6). B3 is G4 with ``nb1 > 1``. B4 is lane K
 (G2). The design asks lane S to batch B1 and B2 into one exchange (Q-S1).
@@ -993,28 +1043,46 @@ B1 and B2 are exchanges (G4 and G6). B3 is G4 with ``nb1 > 1``. B4 is lane K
 
 The provider merges first in every case.
 
-1. **kintera (lane K provides)**:
+1. **kintera (lane K provides).** Answered by K rev 2.1,
+   ``UCzhangxi/kintera`` ``v3-design/K``
+   ``dde24f2c3cd41a469e29f4aaa6b484f36fee97aa``:
 
-   (a) capture-safe ``VU->T`` and ``PV->T`` without a host convergence read
-       each iteration (``kintera:src/thermo/thermo_y.cpp:480,525``);
-   (b) a device failure counter with reset, accumulate and consume. snapy
-       today takes the counter by assigning ``pthermo->nfail_ = Tensor()``
-       (``meshblock.cpp:1544-1547``) and through
-       ``take_saturation_adjustment_failures`` (``kintera:src/thermo/thermo.hpp:166``,
-       which reads at ``thermo_y.cpp:402``).
+   (a) Capture-safe ``VU->T`` and ``PV->T``. K adds ``SolveMode``
+       (``automatic``, ``eager_exit``, ``fixed``): ``fixed`` runs
+       ``max_iter`` passes with no host read, and ``automatic`` resolves to
+       ``fixed`` while a CUDA stream is capturing. ``fixed`` is bitwise
+       equal to ``eager_exit`` (gate K-G2, which includes a NaN cell).
+       There is also an ``exact`` plan, one Newton correction, when
+       options allow (``K.rst:115-158``). snapy calls
+       ``compute_into("VU->T")`` and ``compute_into("PV->T")`` at
+       ``moist_mixture.cpp:65,190`` (``K.rst:396-401``). That is EF-8.
+   (b) The device failure counter. ``forward`` adds to row 0 on the device.
+       X's ``kStageZero`` reset list clears it (``reset_failures``). The
+       retry cause stays slot 4 of X's retry stack through
+       ``consume_failures``, with the one host read at
+       ``meshblock.cpp:1566``. Rows 1-2 (``thermo.temp_solve``,
+       ``pres_solve``) go to R's ``count`` (``K.rst:203-215``).
+       Saturation failures do **not** join ``EfStatus``, and EF consumes
+       nothing from them.
 
-   EF consumes (b) through ``EfStatus`` only if lane K and the mesh lane agree
-   that saturation failures join it. Otherwise EF does not need them. EF needs
-   (a) for moist-mixture graph capture (G2). Ideal-moist does not call these
-   keys on the U->W path (``ideal_moist.cpp:209-231``).
+   Version: K rev 2.1 names no kintera release for these. The pin is
+   v2.6.10 (``K.rst:12``), so the release stays open with lane K. EF-8
+   merges after it. Ideal-moist does not call these keys on the U->W path
+   (``ideal_moist.cpp:209-231``).
 2. **pyharp, pydisort**: no EF change.
 3. **snapy, internal provider order**: lane R's register PR merges before EF-3
    (section 10). The coordinate's cached cell volume merges before EF-4, if
    lane C or R adds one.
 
-No EF change edits kintera's public API. The EOS keeps calling ``ThermoY``
-through ``compute("DY->V" | "VU->T" | "PV->T" | "VT->P" | "VT->U")``
-(``moist_mixture.cpp:35-36,64-66,81,189-190``).
+No EF change edits kintera's public API. The other keys stay
+``compute("DY->V" | "VT->P" | "VT->U" | "VT->cv")``
+(``moist_mixture.cpp:35-36,64,66,81,143,189``). They are not iterative
+(**hypothesis:** no host read, per K's inventory, which lists only the two
+inversions; ``K.rst:41-42``). The two in-stage inversions at
+``moist_mixture.cpp:65,190`` move to K's ``compute_into`` (EF-8). **Line
+booking for that change is pending K's answer:** whether ``compute_into``
+writes into the existing ``temp`` buffer (``moist_mixture.cpp:27``), which
+would make it a one-for-one swap, is a hypothesis.
 
 9. Line budget
 ==============
@@ -1394,8 +1462,10 @@ CPU and CUDA at the same dtype, on the gates of section 5.
        sedimentation; host-cached weights (``moist_base.cpp:19-28``); FP32
        tiny (``flux_positivity.cpp:78``).
      - bitwise FP64; FP32 rounding only in FP32 fix_vapor (FP64 accumulator)
-     - G1/G2. The moist-mixture capture needs kintera's capture-safe
-       ``VU->T``/``PV->T`` (section 8) first.
+     - G1/G2. **Proposed PR for** ``compute_into("VU->T" | "PV->T")`` at
+       ``moist_mixture.cpp:65,190`` (K rev 2.1, ``K.rst:396-401``). It
+       merges after the kintera release that carries ``SolveMode``. Line
+       booking is pending K's answer.
    * - EF-10
      - D11: remove ``src/turbulence``.
      - bitwise (not compiled)
@@ -1891,18 +1961,49 @@ is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
 
 **Lane K (chen sihe):**
 
-* **Q-K1.** When will kintera have capture-safe ``VU->T``/``PV->T`` (no host
-  read per iteration, ``thermo_y.cpp:480,525``) and a device failure counter
-  with reset/accumulate/consume, and in which version?
-* **Q-K2.** Should kintera's saturation failures join ``EfStatus`` (or the
-  monitor), or stay kintera-owned?
+* **Q-K1.** *Closed by K rev 2.1* (``dde24f2c``, ``K.rst:135-158``). There
+  is a capture-safe ``SolveMode::fixed``/``automatic``, bitwise equal to
+  ``eager_exit`` (K-G2), and the device failure counter has
+  reset/accumulate/consume (``K.rst:203-215``). Still open: which
+  kintera release carries them.
+* **Q-K2.** *Closed by K rev 2.1* (``K.rst:203-210``). Saturation failures
+  stay kintera-owned: the retry cause is slot 4 of X's retry stack through
+  ``consume_failures``, not R's ``flag_retry``, and not ``EfStatus``.
 
 **Lane X (Xi):**
 
-* **Q-X1.** Redo would read ``EfStatus.snapshot()`` inside the single
+* **Q-X1.** Redo would read EF's retry causes inside the single
   device-to-host copy (``meshblock.cpp:1566``). The ``limiter_hits`` and
   ``floor_hit`` duplicates (``:1417-1446``) would go. Do you book those
-  lines and accept the cause mapping (gate G-EF-2)?
+  lines and accept the cause mapping (gate G-EF-2)? **Proposed
+  name-to-bit table, pending Xi**, read from the pin's stack
+  ``{floor, clamp, marks[0], marks[1], sat, solve, vapor, heat}``
+  (``meshblock.cpp:1559-1560``) and ``read_redo_flags``
+  (``:1565-1577``):
+
+  .. list-table::
+     :header-rows: 1
+     :widths: 30 20 50
+
+     * - EF cause (``flag_retry`` name)
+       - redo bit
+       - pin source
+     * - ``ef.floor_patch``
+       - 2
+       - stack slot 2, ``marks[0]``
+     * - ``ef.nan``
+       - 3
+       - stack slot 3, ``marks[1]``
+     * - ``ef.vapor_fail``
+       - 2
+       - stack slot 6, folded into bit 2 (``:1571-1575``)
+     * - ``ef.heat_capacity``
+       - 2
+       - stack slot 7, folded into bit 2 (``:1577``)
+
+* **Q-X4.** Inside the last ``after_combine``, is the order F1, then S's
+  solid fill, then F1b, then K, then the fixers in your schedule (F1b,
+  section 4)?
 * **Q-X2.** Solid cells: primitives are marked (``hydro_forward.cpp:521-522``)
   and conserved values filled after the RK combine (``meshblock.cpp:937``),
   after the whole-column limiter (``:907-909``). Should they be excluded from
