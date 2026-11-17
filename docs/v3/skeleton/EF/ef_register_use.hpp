@@ -1,5 +1,5 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.1.1.
-// Register API = lane R's FROZEN header rev 4, happysky19/snapy 175af2fc
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.2.
+// Register API = lane R's FROZEN header rev 4.2, happysky19/snapy 4c59162a
 // docs/v3/skeleton/R/flux_register.hpp (Tianhao). EF calls it directly.
 #pragma once
 #include <torch/torch.h>
@@ -20,13 +20,14 @@ constexpr char const* kWithhold = "positivity.withhold";
 // P4/P5 on the scalar register (Q-R-b): add, then scale
 constexpr char const* kScalarUpper = "scalar.upper_bound";
 constexpr char const* kScalarWithhold = "scalar.positivity.withhold";
-// cell_amount(name, vol_du, 1.0, AmountKind::floor) in after_combine (R :24,:68-71)
+// cell_amount(name, vol_du[nvar,..], 1.0, AmountKind::floor), after_combine
+// after each stage's combine (R :22, :67-70)
 constexpr char const* kFloor = "eos.floor";
 constexpr char const* kBorrow = "eos.borrow";
 constexpr char const* kFixVapor = "eos.fix_vapor";
-// count (R :77): ef.floor_patch ef.nan ef.vapor_fail ef.heat_capacity
-// ef.pos_hits ef.pos_severe ef.scalar_pos_hits; record_min (:78): ef.pos_min;
-// flag_retry (:79): ef.floor_patch ef.nan ef.vapor_fail ef.heat_capacity
+// count (R :76): ef.floor_patch ef.nan ef.vapor_fail ef.heat_capacity
+// ef.pos_hits ef.pos_severe ef.scalar_pos_hits; record_min (:77): ef.pos_min;
+// flag_retry (:78): ef.floor_patch ef.nan ef.vapor_fail ef.heat_capacity
 }  // namespace EfPost
 //! Reads: total(d) in limit (R1); R2 = EF's P1 buffer; R3 =
 //! mass.dry.limited@d; R4 = R3 - covariance.dry@d (R.rst Q-R-c). Order: sweep

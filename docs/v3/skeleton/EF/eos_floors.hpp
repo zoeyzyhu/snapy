@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.1.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.2.
 #pragma once
 #include <torch/torch.h>
 

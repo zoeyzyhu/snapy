@@ -1,10 +1,10 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.1.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.2.
 #pragma once
 #include <torch/torch.h>
 
 namespace snap {
 
-//! Rev 3.1: slots move to R's monitor (175af2fc :77-79) in R's R-1.
+//! Slots move to R's monitor (4c59162a :76-78) in R's R-1.
 //! One persistent device tensor per MeshBlock. Every write is in place
 //! (logical_or_, add_, minimum_out), so a CUDA-graph replay updates it the
 //! same way eager does (roadmap G1, bullet 4). It replaces:
