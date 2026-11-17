@@ -3,8 +3,11 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 2.3 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
-           ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``).
+:Revision: 3 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+           ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
+           ``d874dd2b``). Rev 3: re-cited to lane R ``3490d7e1`` and lane S
+           rev 1.1 ``d03e4888``; ``bflux1`` removed (N13); answers to
+           Xinyue's round-2 notes (section 11); 17 FP64 sites (N15).
            Rev 2.3: lane R's provisional header ``543ff84f`` (Tianhao)
            replaces every guessed register name; namespace ``snap``.
            Rev 2.2: F6 status
@@ -123,7 +126,7 @@ lanes own them. Section 11 asks each owner.
   (``flux_positivity.cpp`` 195 -> 198, ``.hpp`` 151 -> 156, measured with
   ``git show 730b3500:<f> | wc -l``). The baseline stays at the pin
   (section 10 says how the design absorbs #370).
-* Inside the 36 non-turbulence EF files: 5 ``.item<>`` host reads, 16 hard
+* Inside the 36 non-turbulence EF files: 5 ``.item<>`` host reads, 17 hard
   FP64 dtype sites and 10 ``set_``/``set_data`` sites (section 7). The
   turbulence files are not compiled (C24), so none of their sites run.
 
@@ -472,68 +475,78 @@ per block, and the hydro and scalar modules write to it. Sedimentation keeps
 its options and ``SedKernelArgs``.
 
 **Data flow in one stage.** The names are lane R's provisional header
-``543ff84f`` (section 4). ``reg`` is the hydro ``snap::FluxRegister``.
+``3490d7e1`` (section 4). ``reg`` is the hydro ``snap::FluxRegister``; each
+Scalar module has its own.
 
 .. code-block:: text
 
-   hydro_u --EOS U'->W (Floors, SpeciesRepair -> EfStatus)--> w
-   [sweep]      x1 riemann: reg.slot(1,"riemann") / post_slot   (lane C, :845)
+   hydro_u --EOS U'->W (Floors, SpeciesRepair)--> w
+   [sweep]      x1 riemann: reg.slot(1,...) / post_slot          (lane C, :845)
                 Sedimentation(W->T, W->E) -> EF buffer sed
-                  reg.add(1,"sedimentation",rows,sed)          (P1, :861-866)
-   [reconcile]  reg.replace(1, <seam post>, seam)              (R rule, S transport, :882)
-   [sweep]      x2/x3 riemann, covariance                      (lane C, :1050-1152)
+                  reg.add(1,"sedimentation",rows,sed)             (P1, :861-866)
+                x2/x3 riemann, covariance                         (lane C, :1050-1152)
+   [reconcile]  reg.replace(d, faces, peer, SeamRule::mean|owner_copy)
+                reg.apply_prescribed(d)        (boundary.prescribed, S mask)
    [limit]      reg.total(d) -> theta, td; theta sync (exchange, Q-R-d)
-                reg.add(d,"positivity.carry",{IPR,IVX..IVZ},-c) (P3, x1: adv then sed)
-                reg.scale(d,"positivity.withhold",species,factor) (P2)
+                reg.add(d,"positivity.carry",{IPR},...), {IVX..IVZ}  (P3; x1 adv then sed)
+                reg.scale(d,"positivity.withhold",species,factor)   (P2)
+                reg.count("ef.pos_hits", ...) etc.
    [divergence] du reads reg.total(d)
-   scalars: own register (Q-R-b): riemann on hydro total[IDN] (R3, R4)
-            add(d,"scalar.upper_bound",...) (P4); scale(d,"scalar.positivity.withhold",...) (P5)
-   after the RK combine: EOS conserved limiter -> reg.cell_amount("eos.floor", vol_du)
-   check_redo: EfStatus.snapshot() inside X's one stacked read (meshblock.cpp:1566)
+   scalars (own register): add "scalar.upper_bound" (P4); scale (P5)
+   [after_combine] EOS conserved limiter, borrow, fix_vapor
+                -> reg.cell_amount("eos.floor"|"eos.borrow"|"eos.fix_vapor", vol_du)
+   step end: monitor counters, amounts, retry_flags in X's one read (meshblock.cpp:1566)
 
 4. Flux-register contract
 =========================
 
 **Source.** Lane R's provisional header ``docs/v3/skeleton/R/flux_register.hpp``
-(118 lines) at ``happysky19/snapy`` ``543ff84f4adb4b79c3f43fa7c2f0a5a6eb54fa48``,
-written by Tianhao as lane R's backup owner. I verified the sha with
-``git ls-remote`` and read the header in full. It replaces Linfeng's
-``fd3d68a`` answers, which revision 2.1 used. All names below are the
-header's (namespace ``snap``). Where the header does not cover something
-EF needs, I list it as an open question (**Q-R-a** to **Q-R-i**, end of this
-section) and do not invent a name. The *post names* (the ``name`` strings)
-are EF's own choice, because the header leaves names to the poster.
+(118 lines, "rev 3", with ``R.rst`` rev 1.2) at ``happysky19/snapy``
+``3490d7e1aee481684da998e3b9ba7ea12d697f84``, by Tianhao as lane R's backup
+owner. ``git ls-remote`` showed it as the head of ``v3-design/R`` when
+this revision was written. It supersedes ``543ff84f``, which revision 2.3
+cited. R rev 2's frozen sha is not posted yet; this section is re-cited to
+it when it is. Lines below are lines of that header (``:N``) unless named.
+Where the header does not cover something EF needs, it is an open question
+(**Q-R-a** to **Q-R-i**, end of this section), and I invent no name. The
+post names (the ``name`` strings) are EF's own; R accepts them
+(``R.rst:293-294``).
 
-**What EF uses from the header** (``flux_register.hpp:N`` is a line of the
-header):
+**What EF uses from the header:**
 
-* ``FluxRegister::add(dim, name, rows, increment)``: in place, in post
-  order (``:16``, ``:74-75``);
-* ``FluxRegister::scale(dim, name, rows, factor)``: ``total[rows] *=
-  factor``, bitwise ``F *= theta``; the amount ``(factor-1)*F`` goes to the
-  monitor (``:16-18``, ``:76-78``);
-* ``FluxRegister::total(dim)``: a view at the caller's phase (``:20``,
-  ``:89``);
-* ``FluxRegister::cell_amount(name, vol_du)``: a cell increment for fixers
-  and floors, kept as a monitor amount with no field (``:83-84``);
-* ``FluxRegister::enter(RegisterPhase)`` with phases ``sweep`` (riemann,
-  sedimentation, covariance), ``reconcile`` (seam ``replace``) and
-  ``limit`` (positivity: ``scale`` withholds, ``add`` carries)
-  (``:42-51``);
-* ``RegisterMonitor``, owned by R: per-post FP64 ``amounts(name)``,
-  ``counters()`` and ``retry_flags()``, stacked into X's one step-end read
-  (``:21-22``, ``:96-104``);
-* ``class Fixer`` (``:106-116``), the fixer and floor base;
-* the units (``:5-8``): a post is a flux density per unit face area and
-  time, before stage weights, in global components after coord's rotation.
-  EF's increments use the same units. The scale factors are
-  dimensionless;
-* the 108 ``hydro_forward.cpp`` lines are R's deletions (``:24``), and the
-  register makes no EOS call (``:20``).
+* ``add(dim, name, rows, increment)``: in place, in call order, never
+  pre-summed. The carry posts the x1 advected part, then the settling part,
+  before ``scale`` (``:17-18``, ``:70-71``);
+* ``scale(dim, name, rows, factor)``: ``total[rows] *= factor``, bitwise
+  ``F *= theta`` (``flux_positivity.cpp:99-121``). The amount
+  ``(factor-1)*F`` goes to the monitor (``:18-19``, ``:72-74``);
+* ``total(dim)`` (``:89``), ``enter(RegisterPhase)`` (``:65``) and the
+  phases ``sweep``, ``reconcile``, ``limit`` and ``after_combine``
+  (``:35-44``);
+* ``cell_amount(name, vol_du)`` for floors and repairs (``:82-83``), and
+  ``count(name, n)``, a device counter ``+= n`` (``:84-85``), with names
+  declared in ``RegisterRequest::counters`` (``:47-52``; "EF's 12",
+  ``:48``);
+* ``RegisterMonitor`` (``:96-106``): ``amounts``, ``counter(name)`` and
+  ``retry_flags()``, read once at step end (``:21-22``) and rolled back
+  with the register (``:93``, ``:100``);
+* ``class Fixer`` (``:107-117``);
+* ``replace(dim, faces, peer, SeamRule)`` with ``SeamRule::mean`` on x1
+  process seams and ``owner_copy`` on panel seams (``:45-46``,
+  ``:75-78``). ``set_prescribed``/``apply_prescribed`` book
+  ``boundary.prescribed`` (``:23-24``, ``:60-62``, ``:79``);
+* the units (``:5-7``): flux density per unit face area and time, before
+  stage weights. The frame (``:8-9``) is coord's ``flux2global<d>_``
+  output: x2/x3 momentum in the panel face basis, with panel seams rotated
+  by coord. EF's carry increments use that frame. #370's donor velocities
+  already go through ``flux2global2_``/``3_`` before the carry;
+* one register for hydro and **one per Scalar module** (``:56-57``);
+* no EOS call (``R.rst:288``), and the 108 ``hydro_forward.cpp`` lines are
+  R's (``R.rst:444``).
 
-.. list-table:: EF posts on lane R's register (header names; post names are EF's)
+.. list-table:: EF posts on lane R's register (``3490d7e1``)
    :header-rows: 1
-   :widths: 6 26 14 16 38
+   :widths: 6 28 14 16 36
 
    * - id
      - call
@@ -544,152 +557,157 @@ header):
      - ``add(1, "sedimentation", rows, sed)``
      - ``sweep``
      - species ``hydro_ids``, IVX..IVZ, IPR; x1
-     - ``sed_hydro.cpp:36-40`` adds into ``_flux1`` in place
-       (``hydro_forward.cpp:864``). ``sed`` is EF's own fixed buffer
-       (see "P1 buffer" below). It comes after the x1 riemann ``slot`` and
-       before the x1 seam ``replace`` (header order, ``:25``).
+     - ``sed_hydro.cpp:36-40``, which adds into ``_flux1`` at
+       ``hydro_forward.cpp:864``. ``sed`` is EF's fixed buffer (see "P1
+       buffer"). It falls inside ``T_1`` and so inside the x1 seam
+       ``replace`` (``R.rst``, answer to Z11).
    * - P3
-     - ``add(d, "positivity.carry", {IPR}, -c_E)`` and
-       ``add(d, "positivity.carry", {IVX,IVY,IVZ}, -c_m)``; on x1 one
-       pair for the advected part, then one for the settling part
+     - ``add(d, "positivity.carry", {IPR}, -c_E)``,
+       ``add(d, "positivity.carry", {IVX,IVY,IVZ}, -c_m)``; on x1 the
+       advected pair, then the settling pair
      - ``limit``
      - IPR, IVX..IVZ; x1, x2, x3
-     - ``flux_positivity.cpp:124-167``. Computed from the pre-scale species
-       rows of ``total(d)``.
+     - ``flux_positivity.cpp:124-167``, from the pre-scale species rows
    * - P2
-     - ``scale(d, "positivity.withhold", species, factor)`` with
-       ``factor = where(F > 0, theta_lo, theta_hi)``
+     - ``scale(d, "positivity.withhold", species, where(F > 0, th_lo, th_hi))``
      - ``limit``
-     - species rows; x1, x2, x3
-     - ``flux_positivity.cpp:99-121``. Bitwise by the header's definition.
+     - species; x1, x2, x3
+     - ``flux_positivity.cpp:99-121``
    * - P4
      - ``add(d, "scalar.upper_bound", rows, g - g*factor)``
-     - ``limit`` (scalar register, Q-R-b)
+     - ``limit`` (Scalar's register)
      - scalar rows
-     - ``scalar.cpp:199-214``, which adds ``h - g``.
+     - ``scalar.cpp:199-214``
    * - P5
      - ``scale(d, "scalar.positivity.withhold", rows, factor)``
-     - ``limit`` (scalar register)
+     - ``limit`` (Scalar's register)
      - scalar rows
-     - ``scalar.cpp:239``.
+     - ``scalar.cpp:239``
    * - F1
-     - ``cell_amount("eos.floor", vol_du)``
-     - after the RK combine (Q-R-e)
-     - IDN, IPR (the amounts ``floor_dm``, ``floor_de``)
-     - ``equation_of_state.cpp:213-290``. It replaces EF's own
-       ``floor_dm``/``floor_de`` slots once the monitor carries them.
+     - ``cell_amount("eos.floor", vol_du)``; ``"eos.borrow"``,
+       ``"eos.fix_vapor"``
+     - ``after_combine`` (``:43``)
+     - IDN, IPR; species
+     - ``equation_of_state.cpp:213-290,307-380``
+   * - C1
+     - ``count(<name>, n)`` for EF's 12 counters (below)
+     - where each event happens
+     - n/a
+     - today's ``EfStatus`` slots
 
-**Kept parts.** EF requests none. The header keeps a part as a field only
-if it is requested (``:9-12``), and ``replace()`` reconciles kept parts at
-seams (``:18-19``, ``:79-80``). EF's reads are:
+**EfStatus becomes register counters.** R adds ``count()`` (``:84-85``) and
+reserves "EF's 12" (``:48``). ``EfStatus`` (D4) keeps its role as EF's list
+of names. Its storage is the monitor's counters, and it is no longer a
+second device tensor. The names are ``ef.floor_patch``, ``ef.nan``,
+``ef.vapor_fail``, ``ef.heat_capacity``, ``ef.pos_hits``,
+``ef.pos_severe``, ``ef.pos_min``, ``ef.lim_cut``, ``ef.lim_flux``,
+``ef.scalar_pos_hits``, ``ef.floor_dm`` and ``ef.floor_de``. That is 12. The
+last two duplicate the ``eos.floor`` amounts and are dropped if R confirms
+that ``amounts("eos.floor")`` is enough. ``ef.pos_min`` is a minimum, not
+a sum: **Q-R-a**. The redo causes become ``retry_flags()`` (``:105``):
+**Q-R-a**.
 
-* R1: ``total(d)``, species and IDN rows, in phase ``limit``, for theta and
-  td.
-* R2: no register read. The settling part is EF's own P1 buffer.
-* R3: ``total(d)[IDN]`` of the hydro register, read by the scalar module
-  (``scalar.cpp:99,166,170``). Which phase's total it reads is **Q-R-c**.
-* R4: the hydro IDN row without the dry covariance post, for scalar
-  laterals (``scalar.cpp:161``). The header keeps ``riemann.central`` (one
-  summed dry + species mass row, ``:10-12``). **(hypothesis)** That is not
-  the same quantity as ``mass - flux_covariance_dry``. **Q-R-c.**
+**Solid cells and faces (lane S rev 1.1,** ``XinyueWang05/snapy``
+``v3-design/S`` ``d03e48880dc28b33eca6c62ff6ad8ad162bdcdb2``, ``S.rst:935-1000``):
 
-Gravity work is lane R's and I's matter. The header keeps ``bflux1``
-unscaled (``:19``), so EF's earlier offer is withdrawn.
+* S's ``bc.solid_face`` maps onto R's ``boundary.prescribed``. R calls
+  ``apply_prescribed(d)`` in ``reconcile`` after ``replace``, and again
+  after ``post_implicit``. S supplies ``set_prescribed(d, mask, value)``
+  when the solid field changes. The mask zeroes **mass, species, energy
+  and scalars** on wall and solid faces. **Normal momentum keeps the
+  mirror-Riemann flux**; no momentum row is prescribed.
+* Tangential momentum is **free-slip**, as at the pin (mirror state;
+  ``bc/internal_boundary.cpp:78-91``, ``bc/bc_func.cpp:10-34``). No
+  momentum row is prescribed; EF agreed this in the lane S thread. Whether
+  the tangential flux is zero to round-off is R's G-R9 **(hypothesis)**.
+* For EF (``S.rst:75-79,1013-1015``): a solid cell is a **column break**
+  in ``fix_vapor``, never a donor or receiver. Solid cells are excluded
+  from theta, the hit census and the neighbour minimum (``phi``). Because
+  ``boundary.prescribed`` acts in ``reconcile``, before ``limit``, theta
+  already sees zero species flux on solid faces.
 
-**Ordering** (the header's order, ``:25-28``, with EF's posts):
-``x1 riemann (:845) < P1 (:861-866) < x1 seam replace (:882) < x2/x3
-riemann, covariance (:1050-1152) < [limit] theta sync < {P3, P2} (:1154-1252)
-< divergence (:1254)``. On the scalar register: ``riemann_s, covariance_s <
-P4 < P5 < divergence_s``.
+**Reads.**
 
-**P1 buffer: unchanged, and now required.** The header has no per-face
-read of a non-kept part (``:12``) and only one in-place write: ``slot`` for
-the first post of a stage (``:71-73``). Sedimentation is not first, so P1
-must be an ``add()`` of an increment tensor. That tensor is EF's fixed
-buffer, filled by the sedimentation kernel, and EF reuses it as the
-settling part for the carry split and the phi mask. ``keep()`` would not
-reproduce the pin: a kept ``sedimentation`` part is reconciled at the x1
-seam (``:18-19``), while the pin's ``fsed1`` is formed **before** the seam
-average (``hydro_forward.cpp:865`` then ``:868-``). **(hypothesis)** At an
-internal x1 seam the pin's ``fsed1`` can differ between the two ranks, so
-the carry posted at that face may not be single-valued. That is the same
-at the pin, and it is **Q-R-i**.
+* R1: ``total(d)`` in ``limit``, species and IDN rows.
+* R2: EF's own P1 buffer (below), not a register read.
+* R3: the Scalar module upwinds on the hydro ``total(d)[IDN]``
+  (``scalar.cpp:99,166,170``). Which phase it reads is **Q-R-c**.
+* R4: answered by R (``R.rst:289-291``). The Scalar module requests
+  ``covariance.dry@2/@3``, and R4 is the summed total mass row minus that
+  part. That replaces ``mass - flux_covariance_dry`` (``scalar.cpp:161``).
 
-**Lane C's ``(theta-1)F`` form.** The header lists a conflict: C posts
-positivity as ``(theta-1)F``, while R scales (``:29``). EF follows R's
-``scale()``. An additive ``(theta-1)F`` summed onto ``F`` is not the same
-float as ``F*theta``, so the species rows would no longer be bitwise.
+**Gravity work.** EF depends on nothing here. Cheng removed the cell form,
+and ``:13`` reads: "No x1 Riemann-only row: bflux1 (:846-849) was the
+removed cell form". EF reads no Riemann-only x1 row and offers none.
 
-**Bitwise answer: carry plus scale; the conclusion is unchanged.** The
-header settles two of my conditions:
+**Ordering** (``:35-44``):
+``sweep: x1 riemann (:845) < P1 (:861-866) < x2/x3 riemann, covariance
+(:1050-1152)`` < ``reconcile: replace, apply_prescribed`` < ``limit: theta
+sync (Q-R-d) < P3 (add, in order) < P2 (scale)`` < ``divergence (:1254)``;
+``after_combine: F1``. On the Scalar's register: ``riemann_s,
+covariance_s < P4 < P5 < divergence_s``.
 
-* ``scale()`` is bitwise ``F *= theta`` (``:16-18``), so species rows stay
-  bitwise;
-* ``add()`` is in place and in post order (``:16``), so the carry's
-  ``E = (E - c_adv) - c_sed`` order is kept when EF posts the advected pair
-  before the settling pair. That reproduces ``flux_positivity.cpp:154-159``.
-  **(hypothesis until G-EF-1 runs.)**
+**P1 buffer: unchanged.** Only the first post of a stage, or a requested
+part, is written in place (``slot``/``part_slot``, ``:66-69``).
+Sedimentation is neither, so P1 is an ``add()`` of EF's fixed buffer, and
+EF reuses that buffer as the settling part. A kept ``sedimentation`` part
+would be reconciled by ``replace`` (``:75-76``), whereas the pin forms
+``fsed1`` before the seam average (``hydro_forward.cpp:865`` then
+``:868-``).
 
-The remaining difference is unchanged from revision 2.1. The pin's
-settling part is ``(F_adv + sed) - F_adv`` (``hydro_forward.cpp:862-865``),
-and EF uses ``sed``. That is a rounding change in the energy and momentum
-rows of sedimenting decks only. To be bitwise, EF would need the
-pre-sedimentation x1 species rows, a per-stage copy that requirement 9
-forbids. The order between P3 and P2 is free (disjoint rows, both from one
-pre-scale read). Scalars need only ``scale()``, plus the ``add()`` for P4.
-The census diagnostic ``lim_cut`` is computed from ``factor``. The header's
-monitor amount ``(factor-1)*F`` is signed, not ``|F|`` minus ``|F*theta|``, so
-it does not replace ``lim_cut``.
+**Bitwise answer: unchanged.** ``:17-19`` now state both conditions EF
+asked for: the carry's ``add`` calls run in call order, never pre-summed,
+before ``scale``; and ``scale`` is bitwise ``F *= theta``. So species rows
+stay bitwise, and the carry keeps ``E = (E - c_adv) - c_sed``
+(``flux_positivity.cpp:154-159``). The remaining difference is unchanged:
+EF uses ``sed``, not the pin's ``(F_adv + sed) - F_adv``
+(``hydro_forward.cpp:862-865``). That is a rounding change in the energy
+and momentum rows of sedimenting decks only, because a bitwise match would
+need a per-stage copy (requirement 9). **(Hypothesis until G-EF-1 runs.)**
+Lane C's ``(theta-1)F`` form would break bitwise on the species rows; EF
+follows ``scale()``.
 
-**Floors and fixers.** EF's floors and repairs are local: per cell (the
-conserved limiter, the cloud borrow) or per column (``fix_vapor``). None
-needs the global sums of ``Fixer::partial_sums``/``apply`` (``:112-115``).
-So EF proposes that they post ``cell_amount`` directly and are not
-``Fixer`` subclasses. Whether X's registry (X-2) requires every floor to be
-a ``Fixer`` is **Q-R-f**. The borrow and ``fix_vapor`` conserve mass by
-construction; they post their (round-off) amounts as ``"eos.borrow"`` and
-``"eos.fix_vapor"`` so that the monitor names them.
+**Lateral seams (N9): no replace after ``limit``.** On x2/x3 seams
+``replace(..., owner_copy)`` in ``reconcile`` makes the pre-limit totals
+bit-identical on both sides. EF's posts in ``limit`` are deterministic
+functions of inputs that are then also identical:
 
-**Monitor and EfStatus.** R owns the monitor (``:21-22``), which answers
-the old Q-R8. The header can read ``counters()`` and ``retry_flags()``
-(``:102-103``) but has **no call to write a counter or set a retry flag**.
-EF's counts are floor hits, NaN, vapor failures, heat capacity, positivity
-hits, severe hits, scalar hits, the minimum theta and ``lim_cut``/
-``lim_flux``. Until R adds such a call, ``EfStatus`` stays an EF-owned
-device tensor, stacked into X's one read. Then its slots move to the
-monitor (**Q-R-a**). ``floor_dm``/``floor_de`` move to
-``cell_amount`` (post F1) now.
+* the totals;
+* theta, synced as a raw copy (``flux_positivity.cpp:177-193``);
+* ``hspec`` and the donor velocities, synced by #370 (S exchange rows 17p
+  and 16r);
+* the same op order and dtype on both ranks.
 
-**Open questions for lane R (Tianhao), from the header:**
+So ``scale`` gives bit-identical species rows, and the carry gives
+bit-identical IPR rows, and no second ``replace`` is needed for them.
+**(Hypothesis.)** The momentum rows on **panel** seams are the exception.
+Each side's donor velocity is in its own face basis, and S expects them to
+agree only to the 16r rotation tolerance after #370 (``S.rst`` around
+``:925-933``), not bit for bit. On x2/x3 seams inside one panel (no
+rotation) they are bit-identical **(hypothesis)**. If R's G-R12 shows the
+panel-seam momentum rows two-valued, EF accepts S's fallback: one
+``owner_copy`` ``replace`` in ``limit`` after the carry, at +1 round. x1
+seams differ, because the settling part is not reconciled: **Q-R-i**.
 
-* **Q-R-a.** How does a poster add to ``counters()`` and set
-  ``retry_flags()``? There is no write call. EF also needs a minimum
-  (``pos_min``), not only sums.
-* **Q-R-b.** Are passive scalars a separate ``FluxRegister`` (nvar = the
-  number of scalars), or rows of the hydro register? P4 and P5 depend on
-  it.
-* **Q-R-c.** Which phase's ``total(d)[IDN]`` do scalars read (R3)? The pin
-  reads ``phydro->flux<d>()`` after the hydro forward. And how does EF
-  get the IDN row without the dry covariance post (R4)? A kept part, under
-  which name?
-* **Q-R-d.** The theta ghost sync is an exchange in phase ``limit``,
-  between the totals read and ``scale()``. Is an exchange allowed there, or
-  only in ``reconcile``?
-* **Q-R-e.** ``cell_amount`` outside a stage: the conserved limiter and
-  ``fix_vapor`` run after the RK combine (``meshblock.cpp:907-909``). Which
-  weight applies there, and what shape is ``vol_du`` (per row, or a field)?
-* **Q-R-f.** Must local floors be ``Fixer`` subclasses for X's registry,
-  or may they post ``cell_amount`` directly?
-* **Q-R-g.** The ``factor`` shape for ``scale()``: per face and per row
-  (theta differs by species). Is broadcasting over ``rows`` defined?
-* **Q-R-h.** Post-name convention: EF proposes ``sedimentation``,
-  ``positivity.carry``, ``positivity.withhold``, ``scalar.upper_bound``,
-  ``scalar.positivity.withhold``, ``eos.floor``, ``eos.borrow`` and
-  ``eos.fix_vapor``. Does that match yours?
-* **Q-R-i.** The carry at internal x1 seams: the settling part is
-  unreconciled, as at the pin. Should a second ``replace()`` follow the
-  carry ``add()`` on IPR and IVX..IVZ, or do you accept the pin's
-  behaviour? **(hypothesis: the carry may be two-valued there.)**
+**Open questions for lane R (Tianhao), against** ``3490d7e1``:
+
+* **Q-R-a.** ``count`` is a sum. ``ef.pos_min`` needs a minimum. And how
+  does a poster set a ``retry_flags()`` bit (floor patch, NaN, vapor
+  failure, heat capacity)?
+* **Q-R-b.** Answered: one register per Scalar module (``:56-57``).
+* **Q-R-c.** R3: which phase's hydro ``total(d)[IDN]`` does the Scalar
+  module read? The pin reads it after the hydro forward. (R4 is answered.)
+* **Q-R-d.** The theta sync is an exchange inside ``limit``, before the
+  carry and ``scale``. Is an exchange allowed there?
+* **Q-R-e.** Partly answered: the phase is ``after_combine`` (``:43``).
+  Still open: the weight, and the shape of ``vol_du``.
+* **Q-R-f.** Local floors: ``cell_amount`` directly, or ``Fixer``
+  subclasses? ``R.rst:293-294`` mentions ``Fixer`` subclasses for EF.
+* **Q-R-g.** The shape of ``scale``'s ``factor``: per face and per row?
+* **Q-R-h.** Answered: the names match (``R.rst:293-294``).
+* **Q-R-i.** x1 seams: should a second ``replace`` follow the carry
+  ``add`` on IPR and IVX..IVZ? **(hypothesis: two-valued at the pin
+  too.)**
 
 5. Invariants and gates
 =======================
@@ -868,7 +886,7 @@ Names that start with ``G-EF`` are new gates this design adds.
 
 Counted in the 36 EF files with
 ``grep -n "\.item<\|\.item()"``, ``grep -n "kFloat64\|kDouble"`` and
-``grep -n "\.set_(\|set_data("``: **5 host reads, 16 hard FP64 dtype sites,
+``grep -n "\.set_(\|set_data("``: **5 host reads, 17 hard FP64 dtype sites,
 10 set_/set_data sites.**
 
 .. list-table:: Host reads (``.item``)
@@ -1303,8 +1321,6 @@ Deletion ids:
 
 Lines touched outside EF that the design deletes are not counted here:
 
-* the ``bflux1`` clone and its seam row, ``hydro_forward.cpp:846-848,902-917``
-  (gravity work, lane I);
 * the ``HydroImpl`` positivity buffers, ``hydro.hpp:265-271,472,476`` and
   ``hydro.cpp:276-286`` (lane R);
 * the ``limiter_hits`` and ``floor_hit`` duplicates, ``meshblock.cpp:1417-1446``
@@ -1565,6 +1581,10 @@ What changes:
 My recommendation: do not do F5 in V3. Section 9 meets the ceiling without
 it, and its result change is likely beyond round-off.
 
+**D8 sedimentation target (recorded for Cheng).** D8's -400-line target
+(seven sedimentation files) carries the 80-line margin. It is a target and
+not measured, and it stays FOR CHENG until EF-6 is prototyped.
+
 **F6. Remove ``src/turbulence``** (D11, 402 lines). **Status: proceeding on
 EF's proposal. The deletion is counted in section 9, the rows are kept, and
 it is recorded for Cheng; nothing waits on it** (PM, EF lane thread).
@@ -1616,10 +1636,9 @@ Check against the ten register requirements
        area weighting.
      - EF owns no face flux of its own. It posts increments (P1-P5) onto
        lane R's register, in the frame of the row it corrects.
-     - Settled by the header's units (``flux_register.hpp:5-8``): flux
-       density per unit face area and time, global components after
-       rotation. P1 and P3 use them. #370's face-basis velocity is rotated
-       to global (``flux2global2_``/``3_``) before P3.
+     - Settled by R ``3490d7e1`` ``flux_register.hpp:5-9``: flux density
+       per unit face area and time; frame = ``flux2global<d>_`` output
+       (x2/x3 momentum in the panel face basis). P1 and P3 use it.
    * - 2
      - Named increments in a declared order.
      - P1-P5 and F1, header calls and phases (section 4).
@@ -1628,76 +1647,165 @@ Check against the ten register requirements
      - Stage fluxes accumulated with the stage weights into the step
        transfer.
      - EF posts are per stage. ``end_stage`` adds ``c_s*dt*total`` with all
-       posts in it (``flux_register.hpp:13-15``).
-     - Settled. ``cell_amount`` outside stages: Q-R-e.
+       posts in it (``flux_register.hpp:14-16``).
+     - Settled. Floors post in ``after_combine`` (``:43``); weight: Q-R-e.
    * - 4
      - The divergence and every flux-derived term read the register.
-     - AAM, gravity work and the scalar mass flux read the register (R3,
-       R4; Q-A1, Q-I3). The ``fadv`` clone goes (R2).
+     - AAM and the scalar mass flux read the register (R3, R4; Q-A1). The
+       ``fadv`` clone goes (R2). The gravity-work cell form is removed
+       (``flux_register.hpp:13``).
      - VIC species transfer (``vic_redistribute_impl.h:149-157``): Q-I2.
    * - 5
      - A shared face has two entries and one reconciliation rule.
-     - Theta is single-valued (I11). For #370's carry, the donor side's
-       values are authoritative (section 10).
-     - **Gap.** Today's reconciliation is an exchange of theta, not a
-       register rule. Q-S1, Q-S2.
+     - The rule is R's ``replace`` (``SeamRule::mean`` x1, ``owner_copy``
+       panels) in ``reconcile``, before EF posts. EF's ``limit`` posts are
+       functions of identical inputs (synced theta; #370's ``hspec`` and
+       donor velocities), so no ``replace`` after ``limit`` (section 4,
+       "Lateral seams").
+     - Open: panel-seam momentum rows agree only to the 16r tolerance
+       (S, **hypothesis**), with fallback ``owner_copy`` in ``limit``; x1
+       seams Q-R-i.
    * - 6
      - One device-side monitor (mass, species, E+PE, AAM, scalars); no host
        read inside a segment.
      - ``EfStatus`` is device-only. The 5 host reads are removed or moved
        out of stages (section 7).
-     - **Gap.** R owns the monitor (header ``:21-22``), but it has no write
-       call for counters or retry flags, so ``EfStatus`` stays separate for
-       now. Q-R-a, Q-O1.
+     - Settled for counts: EF's 12 are ``count()`` names (``:48``,
+       ``:84-85``); ``EfStatus`` is no longer a second tensor. Open:
+       ``pos_min`` (a minimum) and setting retry flags, Q-R-a; Q-O1.
    * - 7
      - Every fixer and floor registers what it added.
-     - Positivity: P2-P5. Conserved floors: ``floor_dm``/``floor_de``
-       (new in 1.1). Borrow and column repair: conservative, failure count.
-     - **Gap.** The face floors (``reconstruct.cpp:150-158``,
-       ``hydro_forward.cpp:594-614``) add nothing conserved directly, but
-       their hits are not counted anywhere. Q-C1. The turbulence clamp is
-       deleted (D11).
+     - Positivity: P2-P5 (``scale`` books ``(factor-1)*F``; the carry
+       ``add`` is named). Conserved floors, borrow and column repair:
+       ``cell_amount("eos.floor" | "eos.borrow" | "eos.fix_vapor")`` in
+       ``after_combine``, with counts via ``count()``. Solid faces:
+       ``boundary.prescribed`` (R, S).
+     - Face floors (``reconstruct.cpp:150-158``,
+       ``hydro_forward.cpp:594-614``) count through ``count()`` (header
+       ``:84`` names "face floors"); C posts them (Q-C1). The turbulence
+       clamp is deleted (D11).
    * - 8
      - Stated dtype under FP32; fixed storage a CUDA graph can capture.
      - Section 6 (dtypes), section 7 (fixed buffers, G1/G2).
      - kintera ``VU->T``/``PV->T`` host reads: Q-K1.
    * - 9
      - No added full-field copy per stage.
-     - Removes ``fadv`` (D10) and ``bflux1`` (offered to lane I).
-     - P2/P3 need no snapshot: both read the pre-scale ``total(d)`` in phase
-       ``limit`` before ``scale()``. The P1 buffer is fixed storage. **Gap:**
-       #370's ``zeros_like(w)`` pairs (section 10).
+     - Removes ``fadv`` (D10). The P1 buffer is fixed storage.
+     - P2/P3 need no snapshot: both read the pre-scale ``total(d)`` in
+       ``limit``. Not added versus the pin: the per-stage ``factor``
+       (``where``) temporary, as at ``flux_positivity.cpp:104``. **Gap:**
+       #370's ``zeros_like(w)`` pairs, replaced by fixed buffers (section
+       10). Cost is measured, not here, as R's requirement-9 count.
    * - 10
      - Rebuilt, never written to restart.
-     - ``EfStatus`` is reset each step. Floors, ``SedKernelArgs`` and the
-       sedimentation buffers are rebuilt from options at ``reset()``.
+     - EF's counters and amounts live in R's monitor, reset at
+       ``begin_stage(0)`` and rolled back on retry (``:93,99-100``); nothing
+       to restart. Floors, ``SedKernelArgs`` and the sedimentation buffers
+       are rebuilt from options at ``reset()``.
      - **Not checked:** whether restart serializes module buffers (D14
        renames them). Q-O2.
+
+Round-2 notes from Xinyue (against ``b58e12bb``)
+------------------------------------------------
+
+Status: **agreed** (no change needed), **changed** (this revision) or
+**open**. The full text of N1-N3, N5-N8, N10-N12 and N14 was not among
+this revision's inputs. Rather than guess at them, I mark them open, and
+they get answers by number in revision 3.1.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 6 12 82
+
+   * - N
+     - status
+     - answer
+   * - N1-N3
+     - open
+     - text not received; answered in rev 3.1
+   * - N4
+     - changed
+     - Every lane R name and line is re-cited to ``3490d7e1``
+       (``flux_register.hpp:N`` in section 4): ``add`` ``:70-71``,
+       ``scale`` ``:72-74``, ``replace``/``SeamRule`` ``:45-46,75-78``,
+       ``count`` ``:84-85``, ``cell_amount`` ``:82-83``, phases ``:35-44``,
+       ``Fixer`` ``:107-117``.
+   * - N5-N8
+     - open
+     - text not received; answered in rev 3.1
+   * - N9
+     - changed
+     - Lateral seams: no ``replace`` after ``limit``. ``owner_copy`` in
+       ``reconcile`` makes the pre-limit totals identical. Theta, ``hspec``
+       and the donor velocities are synced, so species and IPR totals are
+       bit-identical after ``limit`` **(hypothesis)**. Panel-seam momentum
+       agrees only to S's 16r tolerance, with fallback ``owner_copy`` in
+       ``limit`` if G-R12 fails (section 4).
+   * - N10-N12
+     - open
+     - text not received; answered in rev 3.1
+   * - N13
+     - changed
+     - The sentence that the header keeps ``bflux1`` unscaled is removed,
+       with its dependents (the outside-lines entry, requirement 9, Q-I3).
+       Per R ``3490d7e1`` ``flux_register.hpp:13``: "No x1 Riemann-only
+       row: bflux1 (:846-849) was the removed cell form".
+   * - N14
+     - open
+     - text not received; answered in rev 3.1
+   * - N15
+     - changed
+     - Recounted at the pin over the 36 non-turbulence files
+       (``grep -n 'kFloat64\|kDouble'`` per file; 17 lines, 17
+       occurrences): ``equation_of_state.cpp:45,277``; ``ideal_moist.cpp:35,42,53,89,179``;
+       ``moist_mixture.cpp:26-27``; ``scalar.cpp:63,66,69,72``;
+       ``sed_hydro.cpp:63``; ``sed_vel.cpp:25,28,31``. The text said 16; it now says 17. The host
+       reads (5) and ``set_``/``set_data`` (10) recount unchanged. No
+       budget change.
+   * - N16
+     - changed
+     - Requirements 5, 7, 9 and 10 are rewritten in the check above: R's
+       ``replace`` rule and EF's lateral-seam argument (5); ``cell_amount``,
+       ``count`` and ``boundary.prescribed`` (7); no snapshot, and #370's
+       pairs moved to fixed buffers (9); counters in R's monitor with
+       rollback, nothing restarted (10).
+   * - Q-I1-Q-I3
+     - changed
+     - Q-I1 and Q-I2 are adopted as EF proposals (lane I below), and Q-I3
+       is withdrawn (``bflux1`` removed).
+   * - F6, D8
+     - agreed
+     - Both stay FOR CHENG. F6 stays counted (-402); D8 (-400 target)
+       carries the 80-line margin (section 9).
 
 Questions by lane (ready to post)
 ---------------------------------
 
-**Lane R (Tianhao, backup owner; provisional header ``543ff84f``):** the
-header answers the old Q-R1 (kept parts only), Q-R2 (``scale()``), Q-R3
-(``replace()`` on the total and kept parts), Q-R4/Q5 (no EOS call), Q-R6
-(units), Q-R7 (``end_stage`` weights) and Q-R8 (R owns the monitor). Open:
-**Q-R-a** to **Q-R-i** (section 4, end). The split is agreed: the 108
-``hydro_forward.cpp`` lines (858-866, 1154-1252) are R's deletion
-(header ``:24``).
+**Lane R (Tianhao, backup owner; provisional header ``3490d7e1``):** the
+header answers the old Q-R1 to Q-R8, and of the new list Q-R-b and Q-R-h
+(and partly Q-R-e). Open: Q-R-a, c, d, e (weight), f, g, i (section 4,
+end). The 108 ``hydro_forward.cpp`` lines (858-866, 1154-1252) are R's
+deletion (``R.rst:444``).
 
 **Lane I (Xinyue):**
 
-* **Q-I1.** VIC keeps a 4096-ulp margin (``vic_redistribute_impl.h:155``),
-  while the FP32 positivity round-off bound is 64 ulp
-  (``flux_positivity.hpp:22``). Should VIC read one shared constant, and
-  which value applies in FP32?
-* **Q-I2.** The relax step assumes the implicit x1 refill returns a drained
-  species (``hydro_forward.cpp:1175-1179``). Does V3 VIC keep that, and will
-  its species transfer read the register total (requirement 4)?
-* **Q-I3.** Gravity work: the header keeps ``bflux1`` as an unscaled
-  kept part and reads the explicit x1 total in ``pre_implicit``
-  (``flux_register.hpp:19,48``). EF no longer offers a replacement; the
-  lines are yours and R's to book.
+* **Q-I1.** *EF adopts:* VIC's donor margin ``T(4096) * epsilon<T>``
+  (``vic_redistribute_impl.h:150-155``) and theta's margin
+  (``kPositivityRoundoffUlp * machine_epsilon``, ``flux_positivity.cpp:73``)
+  are the same 4096 ulp in both precisions. VIC reads the one constant
+  ``kPositivityRoundoffUlp``. The FP32 64-ulp ``kPositivityRoundoffUlpFloat``
+  (``flux_positivity.hpp:22``) is only the census/severe threshold, not a
+  margin. Bitwise **(hypothesis: same expression, a named constant)**. I to
+  confirm.
+* **Q-I2.** *EF adopts:* the relax keeps its refill assumption
+  (``hydro_forward.cpp:1175-1179``) as a modelling assumption, **not
+  tested**. VIC's species transfer is an ``add`` of ``vic.mass_species`` on
+  x1 in ``implicit`` (``R.rst``, I section; header ``:41``), so it is a
+  register post (requirement 4). I to confirm that V3 VIC keeps the
+  refill property.
+* **Q-I3.** *Withdrawn.* The gravity-work cell form and ``bflux1`` are
+  removed (lane R ``3490d7e1`` ``flux_register.hpp:13``; Cheng). EF
+  depends on no Riemann-only x1 row.
 
 **Lane C (Tianhao):**
 
@@ -1772,7 +1880,7 @@ header answers the old Q-R1 (kept parts only), Q-R2 (``scale()``), Q-R3
 
 ``docs/v3/skeleton/EF/`` holds declarations and comments only. It has no
 function bodies, and is not added to any build. Its register names are lane
-R's provisional header ``543ff84f`` (namespace ``snap``; section 4). Revision 1.1 adds the ``floor_dm``/``floor_de``
+R's provisional header ``3490d7e1`` (namespace ``snap``; section 4). Revision 1.1 adds the ``floor_dm``/``floor_de``
 slots to ``EfStatus`` and the #370 ``vface`` input to ``PositivityInputs``.
 
 .. list-table::
@@ -1783,8 +1891,9 @@ slots to ``EfStatus`` and the #370 ``vface`` input to ``PositivityInputs``.
      - declares
    * - ``ef_register_use.hpp``
      - EF's post names (``EfPost``) and its calls on lane R's
-       ``snap::FluxRegister`` (header ``543ff84f``): ``add``, ``scale``,
-       ``total``, ``cell_amount``, with phases. No EF wrapper functions.
+       ``snap::FluxRegister`` (header ``3490d7e1``): ``add``, ``scale``,
+       ``total``, ``cell_amount``, ``count``, with phases; EF's 12 counter
+       names. No EF wrapper functions.
    * - ``ef_status.hpp``
      - ``EfStatus``: slot enum, allocate, reset, snapshot.
    * - ``eos_floors.hpp``
