@@ -1,4 +1,4 @@
-// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.4.
+// V3 lane EF skeleton -- declarations only, not built. Pin snapy 9e5de2d4. Rev 3.5.
 #pragma once
 #include <torch/torch.h>
 
@@ -36,8 +36,8 @@ class EfStatus {
 
   //! Device view of one slot, for in-place writes inside a stage.
   torch::Tensor slot(Slot s) const;
-  //! Zero per-step slots; census (kPosHits..) via StepReset "ef.census"
-  //! commit/drop (X meshblock_parts.hpp:45) until R-1 moves it to R's monitor.
+  //! Zero per-step slots; census (kPosHits..) as at the pin until R-1, then
+  //! R's monitor, accepted steps only (RULING V3-2).
   void reset_step_();
 
   //! The values redo stacks into its single device-to-host copy

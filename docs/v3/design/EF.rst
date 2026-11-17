@@ -3,13 +3,17 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.4 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.5 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.4: F6 decided by Cheng (delete
+           ``d874dd2b``). Rev 3.5: RULING V3-2 (census in R's monitor from
+           R-1, accepted steps only, no interim hook; one "what changes"
+           row); ``docs/doxygen/SUMMARY.md:33-34`` goes with the
+           turbulence PR, uncounted; Xi takes EF's retry names (per the
+           PM). Rev 3.4: F6 decided by Cheng (delete
            ``src/turbulence``), so the budget has no condition; section 10
            lists what names it outside the directory. F3, F4, F5 and D8
            stay FOR CHENG. Rev 3.3: second last-stage limiter F1b (pin
-           ``meshblock.cpp:950-952``); EfStatus dtypes; census drop hook;
+           ``meshblock.cpp:950-952``); EfStatus dtypes;
            K rev 2.1 answers (Q-K1, Q-K2, section 8); Q-X1 bit table.
            Rev 3.2: re-cited to lane R rev 2.2 FROZEN
            ``4c59162a`` only; answers to R's Q-R-i and the tangential
@@ -651,17 +655,14 @@ EF file changes and the section 9 budget is unchanged.
      - n/a
      - today's ``EfStatus`` slots
 
-**Census across retries.** ``EfStatus::reset_step_()`` zeroes only the
-per-step slots. The census slots (``pos_hits`` through
-``scalar_pos_hits``) are lifetime sums. **Hypothesis:** before R-1, a
-rejected attempt's census is counted again when the step is retried,
-which is a double count; it is not tested. EF's fix, until R-1: register a
-``StepReset`` named ``"ef.census"`` (owner EF, phase ``kStageZero``) with X's
-``commit``/``drop`` hooks (``meshblock_parts.hpp:45`` at X ``bac201d1``).
-The attempt's census is kept apart, added into the lifetime census on
-``commit``, and zeroed on ``drop``. In R-1, the same PR that moves the
-slots, the census moves into R's monitor, where ``begin_step()`` (``:48``)
-and ``rollback()`` (``:86``) give that behaviour, and the hook goes.
+**Census across retries (RULING V3-2, PM, kickoff thread).** From R's PR
+R-1, the positivity census lives in R's monitor and counts **accepted
+steps only**: ``begin_step()`` zeroes it (``:48``), ``rollback()`` drops a
+rejected attempt (``:86``), and lane O's ``observe`` keeps the lifetime
+sums. Before R-1 the meters stay exactly as at the pin, rejected attempts
+included. EF adds no interim hook, so every EF PR before R-1 stays
+identical to main for these meters. The change in counts is listed in
+section 10, "What changes versus main".
 
 **EfStatus becomes monitor entries** (Q-R-a answered). The counts are
 ``count`` names: ``ef.floor_patch``, ``ef.nan``, ``ef.vapor_fail``,
@@ -1470,9 +1471,10 @@ CPU and CUDA at the same dtype, on the gates of section 5.
    * - EF-10
      - D11: remove ``src/turbulence``.
      - bitwise (not compiled)
-     - F6 decided (delete). EF deletes the three files. The other lines
-       that name it outside ``src/turbulence`` are other lanes' (section 10,
-       "F6, settled"). No build, test or deck changes.
+     - F6 decided (delete). EF deletes the three files and
+       ``docs/doxygen/SUMMARY.md:33-34`` (``docs/``, uncounted).
+       ``src/output/output_utils.cpp:53-55`` is lane O's (section 10, "F6,
+       settled"). No build, test or deck changes.
    * - EF-11
      - D12: the base ``W->U``/``U->W`` dispatch and ``_mom_from_vel_``.
      - bitwise
@@ -1531,6 +1533,23 @@ The design takes both in as follows:
    +49 net lines in ``hydro_forward.cpp`` are lane R's. Under the design,
    about 40 of them (the exchange block) move into the batched sync. That
    is a **target**, not counted here.
+
+**What changes versus main** (results and meters, not code):
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 18 60
+
+   * - item
+     - from
+     - what changes
+   * - positivity census (``ef.pos_hits``, ``ef.pos_severe``, ``ef.pos_min``,
+       ``ef.lim_cut``/``ef.lim_flux``, ``ef.scalar_pos_hits``)
+     - R's PR R-1
+     - Census counts differ from main on runs with retried steps. They count
+       accepted steps only, while the pin also counts rejected attempts
+       (RULING V3-2). Runs without retries are unchanged. No state or result
+       changes; only the meters.
 
 **Options and code paths removed:**
 
@@ -1701,18 +1720,19 @@ plus ``git grep -n -E '"(tke|mut|eps)"'`` for the output names. Results:
        ("turbulent ..."). No code at the pin produces them (the ``"mut"``
        grep's only other hit is a test variable, below).
      - O (output; Jiachen)
-     - 3 lines, counted by O, not by EF. To post in lane O's thread.
+     - 3 lines, counted by O, not by EF. The PM carried them to Jiachen
+       in lane O's thread.
    * - ``docs/doxygen/SUMMARY.md:33-34``
      - Doxygen summary heading "Turbulence Module (``src/turbulence/``)" and
        the ``turbulence_model.hpp`` entry
-     - **unclear**. ``docs/`` is outside every lane's ``src/`` baseline
-       I know of. O owns "output, input, utils, diagnostics", not docs.
-     - 2 lines, not in any ``src/`` budget; the owner is to be named by the
-       PM.
+     - none (resolved by the PM): ``docs/`` is outside every lane and
+       outside the line target
+     - 2 lines, uncounted. They are deleted in the same PR that deletes
+       ``src/turbulence`` (EF-10).
    * - ``docs/doxygen/Doxyfile:121,130``
      - ``INPUT = ../../src`` and ``RECURSIVE = YES``. These pick the module
        up implicitly and do not name it; ``EXCLUDE`` (``:131``) is empty.
-     - unclear (as above)
+     - none (``docs/``, outside every lane)
      - 0 lines: no edit needed after the deletion
 
 None in CMake, the ``#include``\ s outside the directory, ``python/``,
@@ -2024,8 +2044,12 @@ is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
 * **Q-X1.** Redo would read EF's retry causes inside the single
   device-to-host copy (``meshblock.cpp:1566``). The ``limiter_hits`` and
   ``floor_hit`` duplicates (``:1417-1446``) would go. Do you book those
-  lines and accept the cause mapping (gate G-EF-2)? **Proposed
-  name-to-bit table, pending Xi**, read from the pin's stack
+  lines and accept the cause mapping (gate G-EF-2)? **Status:** X rev 3.3
+  (``UCzhangxi/snapy`` ``0fe47c6f``, ``X.rst:204-206``) asks for a name
+  for the NaN mark at bit 3. Per the PM, Xi takes EF's four names
+  (``ef.nan`` for bit 3) and the bit table below. That is settled as far
+  as the PM's message goes; Xi's revision that adopts it is still to
+  come. The name-to-bit table, read from the pin's stack
   ``{floor, clamp, marks[0], marks[1], sat, solve, vapor, heat}``
   (``meshblock.cpp:1559-1560``) and ``read_redo_flags``
   (``:1565-1577``):
