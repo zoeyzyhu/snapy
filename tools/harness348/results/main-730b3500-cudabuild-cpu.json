@@ -1,0 +1,187 @@
+{
+ "device": "cpu",
+ "nstep": 10,
+ "dt": 304.16303230219506,
+ "wall_s": 0.92,
+ "pairwise_distinct": true,
+ "torch": "2.10.0+cu128",
+ "python": "3.12.3",
+ "decks": {
+  "full_face_cartesian": {
+   "sha256": "5de946b372e79f2d42365b50a0eeeb0cacfaf16626f99b63140a5792724f8c22",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "full_face_stretched": {
+   "sha256": "ea51d75147ed5f4c86a7a2dbc827e18ab5a468b6829448aab8a2fc1848b91619",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "full_face_spherical-polar": {
+   "sha256": "caef97578d7d1d3a70fc4986610e43b302badcc727152b2935ef209348d4ac4c",
+   "shape": [
+    10,
+    5,
+    1,
+    1,
+    51
+   ],
+   "finite": true
+  },
+  "full_face_gnomonic-equiangle": {
+   "sha256": "9214707a141e4ea2b09d80a12b93a1fde2d79d07aaca59142eff51ddd7e7dd40",
+   "shape": [
+    10,
+    5,
+    10,
+    10,
+    51
+   ],
+   "finite": true
+  },
+  "full_cell_cartesian": {
+   "sha256": "576d9cfb4b2560435b89156a5f7ed76d5b39d9e3a0f6d60437a80daf3411390f",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "full_cell_stretched": {
+   "sha256": "efd723adcdba550455f4817b482cf973efbb86a1018d5bdf4c579ed0583d8ac1",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "full_cell_spherical-polar": {
+   "sha256": "a81ffe897fb78b39b6e1b03dd26472a591f3afd677337c3edf09fbd1f6beb552",
+   "shape": [
+    10,
+    5,
+    1,
+    1,
+    51
+   ],
+   "finite": true
+  },
+  "full_cell_gnomonic-equiangle": {
+   "sha256": "3327eb0b2936a0fe4ba1532b0ddf4a27f73dbebd0b2a7beadbb7b47304389acf",
+   "shape": [
+    10,
+    5,
+    10,
+    10,
+    51
+   ],
+   "finite": true
+  },
+  "partial_face_cartesian": {
+   "sha256": "bed30fb5492ff97277a1df5b0b8727b79a7af6cb22d584af764de741ec805508",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "partial_face_stretched": {
+   "sha256": "43769744a24f91a4a9435b2f58e0547901e4ce83cf8386b2c301fa45a04b00b9",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "partial_face_spherical-polar": {
+   "sha256": "5af4200738f6523ac18795682e024c6c7ab2bc1e9ca27cd3779f834b3713ecc1",
+   "shape": [
+    10,
+    5,
+    1,
+    1,
+    51
+   ],
+   "finite": true
+  },
+  "partial_face_gnomonic-equiangle": {
+   "sha256": "069d91fdf6c8f4016a2f747b83924c25ac9452ed7395ab3509fa549de6886c8f",
+   "shape": [
+    10,
+    5,
+    10,
+    10,
+    51
+   ],
+   "finite": true
+  },
+  "partial_cell_cartesian": {
+   "sha256": "9a279f2f7bbd6a71ef7f110efbfafc83e7a1ed649345815ab6f549894fb36650",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "partial_cell_stretched": {
+   "sha256": "69e729ad2ab0bade72f03201a5e96e91d13e31acffc15eeaff5cf86ae6eecdf2",
+   "shape": [
+    10,
+    5,
+    1,
+    14,
+    51
+   ],
+   "finite": true
+  },
+  "partial_cell_spherical-polar": {
+   "sha256": "d76487377bd26afc2fee3474eb0fb14271ff18eacdaccf357f6583fc08ceaab4",
+   "shape": [
+    10,
+    5,
+    1,
+    1,
+    51
+   ],
+   "finite": true
+  },
+  "partial_cell_gnomonic-equiangle": {
+   "sha256": "52eebc278a059f968fd21726cfad1ef76e4c9f1466604ba329c424535c38ae62",
+   "shape": [
+    10,
+    5,
+    10,
+    10,
+    51
+   ],
+   "finite": true
+  }
+ }
+}
