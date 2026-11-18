@@ -3,11 +3,17 @@ V3 lane I: vertical implicit solver and gravity work
 
 :Lane: I (vertical implicit solver and gravity work)
 :Owner: Xinyue Wang (alternate: Tianhao Le)
-:Revision: 2.3 (section 11 brought up to date: every question to lanes A, C,
-           S and X answered and closed; lane R's confirmation and rev 2.4
-           recorded; X's answers applied to sections 6, 7 and the skeleton;
-           C-N5 stays a **hypothesis**; (c), the per-column FP64 retry,
-           stays open with Cheng). Revision 2.2: Tianhao's two rev 2.1
+:Revision: 2.4 (Tianhao's rev 2.3 fixups ``d892d5a3``: the per-column FP64
+           retry is proposed, **FOR CHENG** (c), and the whole-block retry
+           stays of record (``X.rst:296`` at ``36d4986f``); host-``dt``
+           recapture consequence (section 7); ``_hydro_ref_x1`` signature
+           cited at ``hydro.cpp:605-607``, call at
+           ``hydro_forward.cpp:682``). Revision 2.3: section 11 brought up
+           to date: every question to lanes A, C, S and X answered and
+           closed; lane R's confirmation and rev 2.4 recorded; X's answers
+           applied to sections 6, 7 and the skeleton; C-N5 stays a
+           **hypothesis**; (c), the per-column FP64 retry, stays open with
+           Cheng. Revision 2.2: Tianhao's two rev 2.1
            findings: the gravity-work remainder
            moves to ``post_implicit``; ``vic.momentum_t@1`` is the third kept
            part). Revision 2.1: re-cite to lane R's frozen header; backup owner Zoey Hu from
