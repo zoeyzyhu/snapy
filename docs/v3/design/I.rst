@@ -3,9 +3,13 @@ V3 lane I: vertical implicit solver and gravity work
 
 :Lane: I (vertical implicit solver and gravity work)
 :Owner: Xinyue Wang (alternate: Tianhao Le)
-:Revision: 2.4 (Tianhao's rev 2.3 fixups ``d892d5a3``: the per-column FP64
-           retry is proposed, **FOR CHENG** (c), and the whole-block retry
-           stays of record (``X.rst:296`` at ``36d4986f``); host-``dt``
+:Revision: 2.5 (Cheng's decision, 22:20 EST 2026-11-17: (c) is accepted;
+           the per-column FP64 retry is the approach of record, the
+           whole-block retry is the behaviour before the change; the FOR
+           CHENG marker on (c) is gone; section 11 closes (c)). Revision
+           2.4 (Tianhao's rev 2.3 fixups ``d892d5a3``: the per-column FP64
+           retry was then proposed, (c), and the whole-block retry
+           stayed of record (``X.rst:296`` at ``36d4986f``); host-``dt``
            recapture consequence (section 7); ``_hydro_ref_x1`` signature
            cited at ``hydro.cpp:605-607``, call at
            ``hydro_forward.cpp:682``). Revision 2.3: section 11 brought up
@@ -63,8 +67,9 @@ solve direction ``dir`` (0-based in the kernels) posts to register dim
 
 **Rulings (Cheng's decision, 2026-11-17).** (a) ``gravity-work: cell`` is
 removed. (b) The global gravity-work fixer is removed. Both are settled
-design below. (c) The per-column FP64 retry is still open: it stays as
-proposed and keeps its FOR CHENG row in section 10.
+design below. (c) The per-column FP64 retry is accepted (Cheng's decision,
+22:20 EST 2026-11-17) and is settled design below; its "what changes" row
+stays in section 10.
 
 .. contents::
    :local:
@@ -688,7 +693,7 @@ Every gate here is **specified, not run**: this round is design only.
   ``max |v|/c <= 1e-12`` (``C.rst:1284-1287``; **hypothesis**);
 - a sync-counter test: no host read between assemble and the last post;
 - a per-column status test: one NaN column is retried in FP64 and the
-  others keep FP32 (section 10(c); only if Cheng accepts (c)).
+  others keep FP32 (section 10(c); decided by Cheng).
 
 
 6. FP32 contract
@@ -700,16 +705,16 @@ Every gate here is **specified, not run**: this round is design only.
 - **G in FP32.** The coefficients difference the geometry before the cast
   (``gravity_work.hpp:9-11``), for all grids. The curved explicit formula,
   which differences the potential after the cast, is gone.
-- **Fallback, per column** (proposed; **FOR CHENG**, section 10(c)). Today
-  a failed FP32 block is re-solved whole in FP64 from ``rhs64``
-  (``hydro.cpp:527-535``). Under the proposal, in V3, after the FP32 stage,
+- **Fallback, per column** (decided by Cheng, 22:20 EST 2026-11-17;
+  section 10(c)). Before the change, a failed FP32 block is re-solved whole
+  in FP64 from ``rhs64`` (``hydro.cpp:527-535``). In V3, after the FP32 stage,
   the FP64 stage is launched once more without a condition. A column
   predicate makes every column whose status bit is clear return at once.
   The FP64 launch takes ``rhs64`` and the FP64 primitive ``wi64``, as today.
   I chose a second launch over an FP64 path inside the FP32 kernel because
   the K = 2 kernel is already register-bound (#358 runs it at 64 threads).
-  The result change is in section 10(c). Until Cheng rules, today's
-  whole-block FP64 retry is the behaviour of record.
+  Only the failed columns are solved again in FP64; the whole-block retry
+  is removed. The result change is in section 10(c).
 - **Map to lane X's rows** (Tianhao's note 13). The row names are those of
   lane X's ``PrecisionPolicy`` as lane C cites them (``kPrimitive``,
   ``kReference``, ``kGauge``, ``kFlux``, ``kRegister``). ``kImplicit`` is
@@ -799,13 +804,14 @@ Every gate here is **specified, not run**: this round is design only.
 - **FP64 retry: a predicated second FP64 launch, always run** (lane X's
   answer 1, ``X.rst:1011-1013``). There are no CUDA conditional nodes, so
   the launch count is fixed and eager runs the same ops as the replay.
-  X's answer settles the **launch mechanism** only. Whether the retry is
-  per column at all is (c), still **FOR CHENG** (section 10). X shows "FP64
-  retry per (failed) column" as its contract (``X.rst:296, 847``;
-  ``precision_policy.hpp:21``, at ``89415a6c``); lane I reads those rows as
-  pending Cheng's ruling on (c). If Cheng declines (c), the whole-block
-  FP64 retry stays, and its graph form (without the host read at
-  ``hydro.cpp:530``) is still to be agreed with lane X.
+  X's answer settles the **launch mechanism**; that the retry is per
+  column is (c), decided by Cheng (22:20 EST 2026-11-17; section 10). The
+  predicate is each column's ``col_status``, so the second launch solves
+  the failed columns only, with no host read (the pin's is at
+  ``hydro.cpp:530``). ``X.rst:296, 847`` at ``36d4986f`` (``:296, 853`` at
+  X's head ``7bed6980``) still mark the per-column retry as pending
+  Cheng; lane I cites Cheng's decision here, and X updates those rows in
+  its next revision.
 - **Fixed storage.** a, b, c, delta, z0, z1, du0 and ``col_status`` are
   allocated once per
   (shape, dtype, device) and never ``set_data``-replaced.
@@ -1009,7 +1015,8 @@ round-off; and why.
    ``mc / dt`` directly.
 #. **I-5 device status and the Woodbury 2x2 in the kernel.** Rounding on
    CUDA (**hypothesis**: FMA contraction); bitwise on CPU.
-#. **I-6 per-column FP64 retry.** See (c).
+#. **I-6 per-column FP64 retry** (decided, Cheng 22:20 EST 2026-11-17).
+   See (c).
 #. **I-7 removing ``gravity-work: cell`` and the global fixer** (settled,
    Cheng 2026-11-17). See (a) and (b). The lane I part is
    ``const_gravity.cpp`` and ``src/implicit``. The lane R and lane X parts
@@ -1023,7 +1030,7 @@ round-off; and why.
 - ``kVicFaceWork``, ``kVicDiffusiveCell`` and ``kVicCartesianFaceWork``;
 - the scheme-0 module (Python only: from YAML it already returns ``nullptr``,
   ``implicit_hydro.cpp:91``);
-- the whole-block FP64 retry (only if Cheng accepts (c));
+- the whole-block FP64 retry (Cheng's decision on (c));
 - the ``fixgrav=`` cycle meter (``meshblock.cpp:1336-1337``).
 
 **What each removal changes in results.**
@@ -1209,8 +1216,11 @@ Edited, not counted:
 ``docs/derivations/curved-gravity-work-weight.md:429, 433, 521, 525`` name
 the fixer and ``cell``; they are docs, not ``src``, and are edited with I-7.
 
-(c) **Per-column FP64 retry.** **FOR CHENG** (still open with Cheng; kept
-as proposed)
+(c) **Per-column FP64 retry.** **Decided: Cheng's decision, 22:20 EST
+2026-11-17 (accepted).** After a failed FP32 solve, only the columns whose
+``col_status`` failed are solved again in FP64, by the predicated second
+launch, in place of the whole-block retry (the behaviour before the
+change, ``hydro.cpp:527-535``). What changes:
 
 - A step where no FP32 column fails: **bitwise**. The predicated FP64
   launch does no column work.
@@ -1371,11 +1381,10 @@ All six are **closed (rev 2.3)** by ``X.rst:1009-1030`` at ``89415a6c``
 and applied in sections 6 and 7 and the skeleton:
 
 1. A predicated second FP64 launch, always run. There are no CUDA
-   conditional nodes. This settles the launch mechanism only: whether the
-   retry is per column is (c), still with Cheng (below). ``X.rst:296,
-   847`` and ``precision_policy.hpp:21`` show the per-column retry as X's
-   contract; lane I reads them as pending (c), as the X rev 3.14 review
-   asked X to mark them.
+   conditional nodes. This settles the launch mechanism; that the retry
+   is per column is (c), decided by Cheng (below). ``X.rst:296, 847`` at
+   ``36d4986f`` still mark it pending Cheng; X updates them in its next
+   revision (rev 2.5 does not claim X's agreement).
 2. ``kImplicit`` is X's row (``precision_policy.hpp:21``). The retry is
    that row forced to FP64, and the posts stay ``kFlux``.
 3. No: ``dt`` stays a host double keyed in ``GraphKey``, and a change
@@ -1388,10 +1397,9 @@ and applied in sections 6 and 7 and the skeleton:
 6. Yes in V3: FP32 stays restricted to Cartesian ideal-moist (pin
    ``hydro.cpp:502-507``).
 
-**Cheng:** (c) of section 10, the per-column FP64 retry, is **open**.
-(a) and (b) were ruled on 2026-11-17; no ruling on (c) is recorded. Lane
-X's answers 1 and 2 fix how a retry is launched and typed, not whether it
-is per column.
+**Cheng:** (c) of section 10, the per-column FP64 retry, is **closed
+(rev 2.5)**: accepted by Cheng's decision at 22:20 EST 2026-11-17. (a) and
+(b) were ruled on 2026-11-17. No question to Cheng is open in lane I.
 
 
 11.1 Answers to Tianhao's review notes (lane I, revision 1)
