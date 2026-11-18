@@ -3,9 +3,10 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
 =====================================================================
 
 :Lane: EF (owner Zoey Hu; alternate Linfeng Li)
-:Revision: 3.7 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
+:Revision: 3.8 (rev 1 ``16b8976a``, rev 1.1 ``de030195``, rev 2
            ``6adc7f74``, rev 2.1 ``7f70c735``, rev 2.2 ``8966a7f2``, rev 2.3
-           ``d874dd2b``). Rev 3.7: int64 census counts; Q-X1 and Q-X4
+           ``d874dd2b``). Rev 3.8: lane S re-cited to rev 2.1 ``4b96f4ea`` on
+           jihenghu/snapy; status of EF's notes on S (section 11). Rev 3.7: int64 census counts; Q-X1 and Q-X4
            answered by X rev 3.6; Z-K2 (EF-8 sizes ``ivol``/``temp`` once in
            eager code; the pin rebinds them with ``set_``) and Z-K3 (no
            ``prepare()`` in ``reset()``; +2 withdrawn). N10 stays open.
@@ -24,7 +25,7 @@ V3 design, lane EF: EOS, floors, positivity, tracers, sedimentation
            Rev 3.2: re-cited to lane R rev 2.2 FROZEN
            ``4c59162a`` only; answers to R's Q-R-i and the tangential
            option. Rev 3: re-cited to lane R's then-current header and lane S
-           rev 1.1 ``d03e4888``; ``bflux1`` removed (N13); answers to
+           rev 1.1; ``bflux1`` removed (N13); answers to
            Xinyue's round-2 notes (section 11); 17 FP64 sites (N15).
            Rev 3.1: N1-N16 answered by number from Xinyue's round-2 text;
            re-cited to lane R rev 2 (frozen); ``has_bf`` read at the pin.
@@ -684,8 +685,8 @@ until then ``EfStatus`` stays EF's tensor in X's stacked read. The +45
 lines stay counted (N7). R asks EF to name the vapor-repair retry cause
 (``R.rst:1606-1607``): it is ``ef.vapor_fail``.
 
-**Solid cells and faces (lane S rev 1.1,** ``XinyueWang05/snapy``
-``v3-design/S`` ``d03e48880dc28b33eca6c62ff6ad8ad162bdcdb2``, ``S.rst:935-1000``):
+**Solid cells and faces (lane S rev 2.1,** ``jihenghu/snapy``
+``v3-design/S`` ``4b96f4ea9a63fd6152e319a70930559cdfda0871``, ``S.rst:1189-1265``):
 
 * S's ``bc.solid_face`` maps onto R's ``boundary.prescribed``. R calls
   ``apply_prescribed(d)`` in ``reconcile`` after ``replace``, and again
@@ -695,9 +696,10 @@ lines stay counted (N7). R asks EF to name the vapor-repair retry cause
   mirror-Riemann flux**; no momentum row is prescribed.
 * Tangential momentum is **free-slip**, as at the pin (mirror state;
   ``bc/internal_boundary.cpp:78-91``, ``bc/bc_func.cpp:10-34``). No
-  momentum row is prescribed; EF agreed this in the lane S thread. Whether
+  momentum row is prescribed; EF agreed this in the lane S thread, and S
+  records it as settled (``S.rst:1237-1239``, ``1928-1931``). Whether
   the tangential flux is zero to round-off is R's G-R9 **(hypothesis)**.
-* For EF (``S.rst:75-79,1013-1015``): a solid cell is a **column break**
+* For EF (``S.rst:98-105, 1305-1307``): a solid cell is a **column break**
   in ``fix_vapor``, never a donor or receiver. Solid cells are excluded
   from theta, the hit census and the neighbour minimum (``phi``). Because
   ``boundary.prescribed`` acts in ``reconcile``, before ``limit``, theta
@@ -766,8 +768,8 @@ and the ``vol_du`` shape; floors are not ``Fixer`` subclasses; the
   ``limit``. If it fails, add S's second ``replace`` in ``limit``
   (``owner_copy``, +1 round). This is a **hypothesis until the gate runs**.
   It is the path in ``R.rst:623-627``.
-* **Tangential-momentum option (with lane S).** Free-slip, per S rev 1.1
-  ``d03e48880dc28b33eca6c62ff6ad8ad162bdcdb2``. No momentum row is
+* **Tangential-momentum option (with lane S).** Free-slip, per S rev 2.1
+  ``4b96f4ea9a63fd6152e319a70930559cdfda0871`` (``S.rst:1237-1239``, settled). No momentum row is
   prescribed at solid faces, and normal momentum keeps the mirror.
 * **Vapor-repair retry cause.** ``ef.vapor_fail``, as R noted. R.rst at
   ``4c59162a`` still asks for the name at ``:1606``; it is answered here.
@@ -1998,7 +2000,7 @@ Questions by lane (ready to post)
 answers Q-R-a to Q-R-h (``R.rst:579-627``). EF answers R's asks
 (``R.rst:1606-1607``) in section 4. Q-R-i: extend G-R2 through the end of
 ``limit``, then S's second ``replace`` if it fails (hypothesis until the
-gate runs). Tangential momentum: free-slip per S rev 1.1. The retry cause
+gate runs). Tangential momentum: free-slip per S rev 2.1 (settled). The retry cause
 is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
 1154-1252) are R's deletion (``R.rst:849``, D2).
 
@@ -2037,7 +2039,30 @@ is ``ef.vapor_fail``. The 108 ``hydro_forward.cpp`` lines (858-866,
   ``lmars.cpp:38,47`` and ``hllc.cpp:66,76`` go. Do you accept that
   contract for V3's solvers?
 
-**Lane S (Xinyue):**
+**Lane S (Jiheng; S rev 2.1, jihenghu/snapy ``v3-design/S`` ``4b96f4ea``).**
+
+*Status of EF's round-2 notes on S rev 2, at* ``4b96f4ea`` *(rev 3.8):*
+
+* **Note 1 (must-fix): closed.** The L-3 sentence left the normal-momentum
+  ``p*`` at solid faces out of ``boundary(dim)``. S now sums two disjoint
+  face sets: block faces of kind ``wall``, ``outflow`` and ``custom`` with a
+  fluid interior, and every fluid-solid face, selected by the solid mask
+  through ``PrescribedFaces::solid_face_sign``. It sums all rows, outward
+  from the fluid, and the reason it gives is the ``p* n`` mirror flux at
+  solid faces (``S.rst:243-275``). R agreed the same face set
+  (``R.rst:39-42, 632-645`` at ``a15af816``).
+* **Note 2: closed on R's side, per the PM** (R's agreed ``boundary(dim)``
+  face set, ``R.rst:39-42, 632-645``, answers EF's notes 1 and 2). S states
+  the same set at ``S.rst:243-265``. Note 2's own text was not among this
+  revision's inputs, so the S side is matched only through that set.
+* **Notes 3-5: not verified.** Their text was not among this revision's
+  inputs, and S rev 2.1 says Zoey's note "itself not seen here"
+  (``S.rst:2049``). They stay open until their text is matched against
+  ``4b96f4ea``.
+* Settled and consistent with EF: the solid-cell rules (column break, theta
+  and census exclusion; ``S.rst:98-105, 1305-1307``) and free-slip
+  (``S.rst:1237-1239, 1928-1931``).
+
 
 * **Q-S1.** Can the theta syncs (``"hydro_theta"``, up to two
   ``"scalar_theta"``) and #370's ``"hydro_hspec"`` and donor-velocity face
