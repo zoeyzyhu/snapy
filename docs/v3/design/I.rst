@@ -3,7 +3,11 @@ V3 lane I: vertical implicit solver and gravity work
 
 :Lane: I (vertical implicit solver and gravity work)
 :Owner: Xinyue Wang (alternate: Tianhao Le)
-:Revision: 2.7 (rulings of 2026-11-19: Cheng's agent's four conditions on
+:Revision: 2.8 (Xi's ruling of 2026-11-19, 1795132251: step I-8 in
+           wave 2 right after I-7 removes ``kVicFaceWork`` and refuses
+           implicit scheme 0, with its gate; I-7 keeps only the cell
+           path's ``kVicDiffusiveCell``; section 10). Revision
+           2.7 (rulings of 2026-11-19: Cheng's agent's four conditions on
            I-5 point 3, and the I-6 rulings of Xi with Tianhao as lane
            R owner, the fallback meters and the meaning of
            implicit.column; section 10). Revision
@@ -1100,14 +1104,31 @@ round-off; and why.
    ``const_gravity.cpp`` and ``src/implicit``. The lane R and lane X parts
    are in their own PRs (table below), merged together with I-7 so that no
    commit leaves a dangling ``gravity_work_fixer()`` call.
+#. **I-8 removing ``kVicFaceWork`` and refusing implicit scheme 0** (rev
+   2.8; Xi's ruling 1795132251, the 4524 rule: wave 2, right after I-7).
+   With ``gravity-work: cell`` gone in I-7, face work is always assembled:
+   the ``kVicFaceWork`` flag bit goes, and ``implicit-scheme: 0`` is
+   refused (the scheme-0 module, ``implicit_hydro.cpp:91``). Gate: every
+   #348 face deck and its zero-gravity variant within 1e-11 relative per
+   step against I-7, bitwise on CPU; on CUDA either within the measured
+   size below or bitwise under ``--fmad=false``. Measured before the
+   ruling (point 3, against I-6 ``6f4f9987`` with the two removals as a
+   scratch patch): the zero-gravity variants are bitwise on CPU and CUDA;
+   the real face decks are bitwise on CPU; on CUDA the worst is partial
+   gnomonic-equiangle, x1 momentum, 8.8e-13 relative per step, then
+   partial Cartesian 3.0e-15 and partial stretched 5.2e-17. That FMA
+   contraction causes the CUDA differences is a **hypothesis**, as for
+   I-4.FMA.
 
 **Options and paths removed.**
 
 - ``gravity-work: cell``;
 - ``gravity-work-fixer: true`` (``false`` is a deprecated no-op);
-- ``kVicFaceWork``, ``kVicDiffusiveCell`` and ``kVicCartesianFaceWork``;
-- the scheme-0 module (Python only: from YAML it already returns ``nullptr``,
-  ``implicit_hydro.cpp:91``);
+- ``kVicDiffusiveCell`` (the cell path; I-7); ``kVicCartesianFaceWork`` is
+  no longer in the code at I-6 ``6f4f9987``;
+- ``kVicFaceWork`` and the scheme-0 module (Python only: from YAML it
+  already returns ``nullptr``, ``implicit_hydro.cpp:91``) move to I-8
+  (rev 2.8);
 - the whole-block FP64 retry (Cheng's decision on (c));
 - the ``fixgrav=`` cycle meter (``meshblock.cpp:1336-1337``).
 
