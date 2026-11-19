@@ -3,7 +3,13 @@ V3 lane I: vertical implicit solver and gravity work
 
 :Lane: I (vertical implicit solver and gravity work)
 :Owner: Xinyue Wang (alternate: Tianhao Le)
-:Revision: 2.5 (Cheng's decision, 22:20 EST 2026-11-17: (c) is accepted;
+:Revision: 2.6 (rulings of 2026-11-19, Xi and Tianhao as lane R owner:
+           I-4 takes lane A's m1 register read and gate G-R11; RULINGS
+           I-4.tol, I-4.gr11 and I-4.FMA set I-4's tolerances; I-5's
+           scope, its implicit.column flag and its tolerance, with lane
+           R's and lane X's owners clearing points 1 and 3; sections 7
+           and 10). Revision
+           2.5 (Cheng's decision, 22:20 EST 2026-11-17: (c) is accepted;
            the per-column FP64 retry is the approach of record, the
            whole-block retry is the behaviour before the change; the FOR
            CHENG marker on (c) is gone; section 11 closes (c)). Revision
@@ -469,7 +475,7 @@ I would post zero there and set the column's status bit, which is unchecked.
   ``hydro_forward.cpp:1422-1425``.
 - In ``post_implicit``, after ``apply_prescribed(1)`` on the total and every
   x1 kept part (``R.rst:486-488``), and after the remainder: lane A's m1 reads ``reg.total(1)`` mass rows
-  (explicit + vic, today ``hydro_forward.cpp:1637-1646``); the axial source
+  (explicit + vic, today ``hydro_forward.cpp:1637-1646``; switched in I-4, rev 2.6); the axial source
   reads the kept ``vic.momentum_t`` (today ``picorr->correction()``, ``:1668-1669``);
   the tracer transfer reads ``reg.kept(1, "vic.mass_dry")``.
 - ``mass_correction()`` stops being public. ``correction()`` stays as an
@@ -787,7 +793,9 @@ Every gate here is **specified, not run**: this round is design only.
   ``flag_retry("implicit.column", any)`` (``R.hpp:78``) into lane R's
   ``retry_flags()`` (``R.hpp:102``). It reaches X's one stacked step-end
   read (``meshblock.cpp:1566``) as cause bit 5. Lane I makes no read of its
-  own (``X.rst:1019-1022``). The failure log
+  own (``X.rst:1019-1022``). Until lane X's step switches that read to
+  ``retry_flags``, its slot 5 reads ``solve_failed_tensor()``, the same OR
+  on the device (rev 2.6, section 10, I-5 point 1). The failure log
   (``implicit_hydro.cpp:219-239``) reads ``col_status`` on a redo only.
 - **dt is a host double, keyed in X's ``GraphKey``** (rev 2.3, lane X's
   answer 3, ``X.rst:1017-1018`` and ``:489``; replaces revision 2's device
@@ -867,7 +875,8 @@ pyminichem and pydisort are not touched.
 #. Lane R's register.
 #. The lane I PRs in the order of section 10, the ones that need no
    register first.
-#. Lane A's m1 register read, after I-4.
+#. Lane A's axial source and the tracer transfer read the kept parts, after
+   I-4. m1's register read is in I-4 (rev 2.6).
 
 
 9. Line budget
@@ -1012,9 +1021,55 @@ round-off; and why.
 #. **I-4 posting to the register** (after lane R). Rounding
    (**hypothesis**): the posts are divided by :math:`A_f\,\Delta t` and
    readers multiply back, where today ``hydro_forward.cpp:1646`` adds
-   ``mc / dt`` directly.
+   ``mc / dt`` directly. Rev 2.6 (rulings of 2026-11-19): once the posts
+   are in ``total(1)``, m1's separate ``mc / dt`` term would count the
+   implicit transfer twice, so I-4 also switches lane A's m1 to
+   :math:`A_f` ``total(1)`` on the mass rows, drops that term
+   (``hydro_forward.cpp:1626-1635`` at R-5 ``ef2e1dec``) and runs lane R's
+   G-R11. Lane R's R-6 keeps A's phases and ``Fixer``. In I-4 only lane
+   I's remainder and m1 read the register; the axial source and the
+   tracer transfer keep reading the solve's own fields, with unchanged
+   values, until their owners switch them. ``test_tracer_ratio``'s
+   stage-0 face ratio reads ``mass.dry.limited@1``. Gate (RULINGS
+   I-4.tol): every row of ``hydro_u`` within 1e-11 relative per step on
+   the #348 VIC decks, and bitwise wherever the implicit solve is off
+   (the #349 dump set, G-EF-2, the probes, straka). RULINGS I-4.gr11:
+   G-R11 within 4 ulp of the larger operand, :math:`\max(|A_f F|,
+   |m_c / \Delta t|)`, on every #348 deck (measured: at most 2.68 ulp on
+   CPU, 3.07 on CUDA). RULINGS I-4.FMA: the x1-momentum row of
+   ``full_face_gnomonic-equiangle`` on the CUDA default build only may
+   differ by at most 3e-12 absolute (about 1e-11 of the row's initial
+   scale), because the base and I-4 built with ``--fmad=false`` are
+   bitwise there; every other row and deck keeps I-4.tol. I-4 is
+   ``61523108`` (zoeyzyhu/snapy ``v3/wave1-I-4-on-ef2e1dec``).
 #. **I-5 device status and the Woodbury 2x2 in the kernel.** Rounding on
-   CUDA (**hypothesis**: FMA contraction); bitwise on CPU.
+   CUDA (**hypothesis**: FMA contraction); bitwise on CPU. Rev 2.6 (Xi's
+   rulings of 2026-11-19 on lane I's four proposals; lane R's and lane X's
+   owners cleared points 1 and 3):
+
+   1. I-5 adds ``implicit.column`` to the hydro register's
+      ``RegisterRequest::retry`` and flags it with the OR of
+      ``col_status``. ``solve_failed_tensor()`` stays the same device OR,
+      so slot 5 of X's stacked redo read (``meshblock.cpp:1535-1536`` at
+      I-4) is unchanged until a lane X step, which lane X names, reads
+      ``retry_flags`` instead. I-5 does not make that switch.
+   2. Until I-6, ``implicit.column`` is the OR after today's whole-block
+      FP64 fallback (``hydro.cpp:536-541`` at I-4); I-6 makes the retry
+      per column (``kVicFp64Retried``, ``kVicFp64Failed``).
+   3. I-5 removes only the in-solve screen read and its reject path and
+      the Woodbury host launches; failed columns are logged on a redo
+      only (``report_failure``, from the redo). The FP32 fallback's host
+      read stays for I-6. ``donor_cap`` stays in lane I as the skeleton
+      has it, and the I step that needs it also changes its call in
+      ``meshblock.cpp``.
+   4. Tolerance as I-4: bitwise on CPU; on CUDA every ``hydro_u`` row
+      within 1e-11 relative per step on the #348 decks, or bitwise with
+      ``--fmad=false``; bitwise wherever the implicit solve is off.
+
+   I-5 is ``10b38c6c`` (zoeyzyhu/snapy ``v3/wave1-I-5-on-61523108``):
+   CPU bitwise; on CUDA ``full_face_gnomonic-equiangle``'s x1 momentum
+   moves 8.6e-10 per step (2.1e-12 absolute) and is bitwise with
+   ``--fmad=false``, so point 4 holds.
 #. **I-6 per-column FP64 retry** (decided, Cheng 22:20 EST 2026-11-17).
    See (c).
 #. **I-7 removing ``gravity-work: cell`` and the global fixer** (settled,
