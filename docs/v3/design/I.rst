@@ -3,7 +3,11 @@ V3 lane I: vertical implicit solver and gravity work
 
 :Lane: I (vertical implicit solver and gravity work)
 :Owner: Xinyue Wang (alternate: Tianhao Le)
-:Revision: 2.6 (rulings of 2026-11-19, Xi and Tianhao as lane R owner:
+:Revision: 2.7 (rulings of 2026-11-19: Cheng's agent's four conditions on
+           I-5 point 3, and the I-6 rulings of Xi with Tianhao as lane
+           R owner, the fallback meters and the meaning of
+           implicit.column; section 10). Revision
+           2.6 (rulings of 2026-11-19, Xi and Tianhao as lane R owner:
            I-4 takes lane A's m1 register read and gate G-R11; RULINGS
            I-4.tol, I-4.gr11 and I-4.FMA set I-4's tolerances; I-5's
            scope, its implicit.column flag and its tolerance, with lane
@@ -1061,7 +1065,14 @@ round-off; and why.
       only (``report_failure``, from the redo). The FP32 fallback's host
       read stays for I-6. ``donor_cap`` stays in lane I as the skeleton
       has it, and the I step that needs it also changes its call in
-      ``meshblock.cpp``.
+      ``meshblock.cpp``. Cheng's agent, as lane X owner, cleared this
+      point with four conditions (Xi, 2026-11-19, in substance): that I
+      step changes only the ``donor_cap`` call and its block in
+      ``meshblock.cpp``; it leaves ``check_redo`` and the redo flag stack
+      alone; Cheng's agent reviews that hunk; and whichever of X5 and that
+      I step lands second rebases. The conditions do not constrain I-6's
+      FP32-fallback read; if I-6 touches ``meshblock.cpp``, the same review
+      of that hunk applies.
    4. Tolerance as I-4: bitwise on CPU; on CUDA every ``hydro_u`` row
       within 1e-11 relative per step on the #348 decks, or bitwise with
       ``--fmad=false``; bitwise wherever the implicit solve is off.
@@ -1071,7 +1082,19 @@ round-off; and why.
    moves 8.6e-10 per step (2.1e-12 absolute) and is bitwise with
    ``--fmad=false``, so point 4 holds.
 #. **I-6 per-column FP64 retry** (decided, Cheng 22:20 EST 2026-11-17).
-   See (c).
+   See (c). Rev 2.7 (Xi's rulings of 2026-11-19, with Tianhao agreeing as
+   lane R owner):
+
+   1. Both meters: lane I's ``fp64_fallbacks`` buffer stays and counts the
+      retried columns (``test_fp32_implicit.py`` reads it), and I-6
+      declares ``implicit.fp64_columns`` in the hydro register's
+      ``RegisterRequest::counters`` and counts the same columns into it
+      (``R.rst`` 4.5), as I-5 did for ``implicit.column``.
+   2. ``implicit.column`` flags every column whose last solve failed: the
+      ``kVicFp64Failed`` bit after an FP64 retry, or any failure bit when no
+      retry ran (an FP64 solve, or FP32 with the fallback off), so a
+      failure always reaches the redo. ``solve_failed_tensor()`` follows
+      it.
 #. **I-7 removing ``gravity-work: cell`` and the global fixer** (settled,
    Cheng 2026-11-17). See (a) and (b). The lane I part is
    ``const_gravity.cpp`` and ``src/implicit``. The lane R and lane X parts
