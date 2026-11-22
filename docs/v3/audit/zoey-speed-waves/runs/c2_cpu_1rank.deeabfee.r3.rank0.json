@@ -1,0 +1,92 @@
+{
+ "deck": "/mnt/data1/ai_workspace/worker2/spd/cart3d_pert_64.yaml",
+ "device": "cpu",
+ "precision": null,
+ "execution": null,
+ "dt_mode": "fixed",
+ "dt0": 0.023306639802554097,
+ "rank": 0,
+ "world_size": 1,
+ "driver": "block",
+ "capability": {
+  "eager_fp64": true,
+  "eager_fp32": false,
+  "graph_fp64": false,
+  "graph_fp32": false,
+  "eager_reasons": [
+   "the state is not on a CUDA device",
+   "more than one species (dry only)",
+   "reactions are set"
+  ]
+ },
+ "blocks_in_process": 1,
+ "cells": {
+  "nghost": 3,
+  "nx1": 64,
+  "nx2": 64,
+  "nx3": 64
+ },
+ "distribute": {
+  "layout": "slab",
+  "nb1": 1,
+  "nb2": 1,
+  "nb3": 1
+ },
+ "warmup": 3,
+ "steps": 30,
+ "warmup_seconds": 5.5616887379437685,
+ "threads": 8,
+ "median_s": 1.6851783259771764,
+ "min_s": 1.603815145092085,
+ "max_s": 1.7972560189664364,
+ "p10_s": 1.6287038091104478,
+ "p90_s": 1.782421845011413,
+ "mean_s": 1.6969801561518882,
+ "finite": true,
+ "times": [
+  1.654934145975858,
+  1.6287038091104478,
+  1.7618828238919377,
+  1.6235522390343249,
+  1.7972560189664364,
+  1.6341548778582364,
+  1.6477071959525347,
+  1.7614027138333768,
+  1.6739255478605628,
+  1.6851783259771764,
+  1.7813786698970944,
+  1.6234647121746093,
+  1.7741998869460076,
+  1.782421845011413,
+  1.7565136949997395,
+  1.6865376748610288,
+  1.7608344140462577,
+  1.7026934609748423,
+  1.6432032731827348,
+  1.7638185010291636,
+  1.696522586978972,
+  1.6344702118076384,
+  1.7873915932141244,
+  1.603815145092085,
+  1.6503645880147815,
+  1.6808322230353951,
+  1.6402095758821815,
+  1.778152487007901,
+  1.6583106049802154,
+  1.6355718369595706
+ ],
+ "gpu": null,
+ "torch": "2.10.0+cu128",
+ "snapy_file": "/mnt/data1/ai_workspace/worker2/spd/pkg-deeabfee/snapy/__init__.py",
+ "kintera": "2.6.11",
+ "native_sha256": {
+  "libsnap_cuda_release.so": "1e34bf7d9a9c4092",
+  "libsnap_release.so": "f36cd4b87f2ec81e"
+ },
+ "execution_report": {
+  "captures": 0,
+  "eager": 99,
+  "graphs": 0,
+  "replays": 0
+ }
+}

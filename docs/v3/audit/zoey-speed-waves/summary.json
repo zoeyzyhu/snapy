@@ -1,0 +1,439 @@
+{
+ "what": "V3 wave-boundary timings and Straka CPU profile (zoey-speed-waves.md)",
+ "harness": "cshsgy/snapy v3/audit-speed 80619cbcb4ef3173c1889bd0d9c803d8701036ad docs/v3/audit/speed/bench.py (sha256 8676ebb68563701c, unchanged) and cart3d_pert_64.yaml",
+ "trees": {
+  "730b3500": "730b35007d16389c64116e4bf9d2fe93707e29e9 (v2.14.1)",
+  "6007eaa9": "6007eaa9f1f3a66fdfd929616ca219ee3f560bd2 (v2.14.2, wave 1)",
+  "deeabfee": "deeabfee597cd83f68f4586d245b01f6091eaa6e (v2.14.3, wave 2)",
+  "d3178f20": "d3178f207b60663ff966b7c7ef20025821ef52fa (v3/wave3, waves 3-5)"
+ },
+ "host": {
+  "cpu": "AMD Ryzen 5 7600X 6-Core (12 threads)",
+  "gpu": "NVIDIA GeForce RTX 5090 32 GB, driver 580.178.04",
+  "os": "Ubuntu 24.04.5 LTS",
+  "gcc": "13.3.0",
+  "nvcc": "12.9.86",
+  "cmake": "3.30.0",
+  "python": "3.12.3",
+  "torch": "2.10.0+cu128",
+  "kintera": "2.6.11 (431fd1441fdc95c2bc93f7dc56e35adb1e1315fb, one package for all four builds)",
+  "pyharp": "2.8.1 (installed wheel, one package for all four builds)"
+ },
+ "build": "cmake -B build -DCMAKE_BUILD_TYPE=Release -DCUDA=ON -DCMAKE_CUDA_COMPILER=/usr/local/cuda-12.9/bin/nvcc -DNETCDF=OFF -DPNETCDF=OFF -DUCX=OFF -DBUILD_TESTS=OFF; cmake --build build --parallel 12; pip install --no-deps --no-build-isolation --target pkg-<sha> . (same command for all four; CUDA arch list from each tree's CMake: 60,61,70,75,80,86,89,90,120)",
+ "method": "3 runs per cell, trees interleaved per run; ms/step = median of per-step times after warm-up (CPU 3+30 steps, CUDA 5+100), 8 threads; value = median of the 3 run medians, spread = min-max",
+ "cells": {
+  "c1_cpu_fp64.730b3500": {
+   "run_medians_ms": [
+    29.7643740195781,
+    29.29896698333323,
+    29.5026539824903
+   ],
+   "median_ms": 29.5026539824903,
+   "min_ms": 29.29896698333323,
+   "max_ms": 29.7643740195781
+  },
+  "c1_cpu_fp64.6007eaa9": {
+   "run_medians_ms": [
+    29.75373389199376,
+    29.8513718880713,
+    29.70761200413108
+   ],
+   "median_ms": 29.75373389199376,
+   "min_ms": 29.70761200413108,
+   "max_ms": 29.8513718880713
+  },
+  "c1_cpu_fp64.deeabfee": {
+   "run_medians_ms": [
+    32.645182916894555,
+    32.50992111861706,
+    32.85243804566562
+   ],
+   "median_ms": 32.645182916894555,
+   "min_ms": 32.50992111861706,
+   "max_ms": 32.85243804566562
+  },
+  "c1_cpu_fp64.d3178f20": {
+   "run_medians_ms": [
+    32.60346199385822,
+    32.62016107328236,
+    33.24161400087178
+   ],
+   "median_ms": 32.62016107328236,
+   "min_ms": 32.60346199385822,
+   "max_ms": 33.24161400087178
+  },
+  "c1_cuda_fp64_eager.730b3500": {
+   "run_medians_ms": [
+    7.418931927531958,
+    7.364162942394614,
+    7.335942005738616
+   ],
+   "median_ms": 7.364162942394614,
+   "min_ms": 7.335942005738616,
+   "max_ms": 7.418931927531958
+  },
+  "c1_cuda_fp64_eager.6007eaa9": {
+   "run_medians_ms": [
+    7.322543999180198,
+    7.368823047727346,
+    7.474981946870685
+   ],
+   "median_ms": 7.368823047727346,
+   "min_ms": 7.322543999180198,
+   "max_ms": 7.474981946870685
+  },
+  "c1_cuda_fp64_eager.deeabfee": {
+   "run_medians_ms": [
+    9.181808913126588,
+    9.32989688590169,
+    9.126969147473574
+   ],
+   "median_ms": 9.181808913126588,
+   "min_ms": 9.126969147473574,
+   "max_ms": 9.32989688590169
+  },
+  "c1_cuda_fp64_eager.d3178f20": {
+   "run_medians_ms": [
+    9.297108044847846,
+    9.231588104739785,
+    9.261267958208919
+   ],
+   "median_ms": 9.261267958208919,
+   "min_ms": 9.231588104739785,
+   "max_ms": 9.297108044847846
+  },
+  "c2_cpu_1rank.730b3500": {
+   "run_medians_ms": [
+    1400.0983780715615,
+    1393.9209098462015,
+    1389.0066780149937
+   ],
+   "median_ms": 1393.9209098462015,
+   "min_ms": 1389.0066780149937,
+   "max_ms": 1400.0983780715615
+  },
+  "c2_cpu_1rank.6007eaa9": {
+   "run_medians_ms": [
+    1481.596210040152,
+    1481.0880599543452,
+    1452.4720490444452
+   ],
+   "median_ms": 1481.0880599543452,
+   "min_ms": 1452.4720490444452,
+   "max_ms": 1481.596210040152
+  },
+  "c2_cpu_1rank.deeabfee": {
+   "run_medians_ms": [
+    1675.949223805219,
+    1693.9018049743026,
+    1685.1783259771764
+   ],
+   "median_ms": 1685.1783259771764,
+   "min_ms": 1675.949223805219,
+   "max_ms": 1693.9018049743026
+  },
+  "c2_cpu_1rank.d3178f20": {
+   "run_medians_ms": [
+    1676.9413331057876,
+    1653.4775800537318,
+    1657.2178730275482
+   ],
+   "median_ms": 1657.2178730275482,
+   "min_ms": 1653.4775800537318,
+   "max_ms": 1676.9413331057876
+  }
+ },
+ "per_wave_deltas_ms": {
+  "c1_cpu_fp64": {
+   "wave1_ms": 0.25107990950345993,
+   "wave2_ms": 2.891449024900794,
+   "waves3to5_ms": -0.02502184361219406,
+   "total_ms": 3.11750709079206,
+   "speedup_v2141_over_d3178f20": 0.9044300522064109
+  },
+  "c1_cuda_fp64_eager": {
+   "wave1_ms": 0.004660105332732201,
+   "wave2_ms": 1.8129858653992414,
+   "waves3to5_ms": 0.0794590450823307,
+   "total_ms": 1.8971050158143044,
+   "speedup_v2141_over_d3178f20": 0.7951570968063001
+  },
+  "c2_cpu_1rank": {
+   "wave1_ms": 87.16715010814369,
+   "wave2_ms": 204.0902660228312,
+   "waves3to5_ms": -27.960452949628234,
+   "total_ms": 263.29696318134665,
+   "speedup_v2141_over_d3178f20": 0.8411210936916018
+  }
+ },
+ "profile": {
+  "tool": "py-spy 0.4.4 record --native -r 100 (perf unavailable: perf_event_paranoid=4, no root)",
+  "config": "Straka CPU, torch/OMP threads 1, 3+1500 steps; ms/step for attribution = unprofiled 1-thread medians",
+  "stages": {
+   "730b3500": {
+    "samples": 5573,
+    "ms_per_step": 29.56,
+    "stages": {
+     "flux register (FluxRegister::*, supply_prescribed)": {
+      "pct": 0.0,
+      "ms": 0.0,
+      "ms_sd": 0.0
+     },
+     "positivity limiter (PositivityLimiter / flux_positivity_theta)": {
+      "pct": 2.171182486990849,
+      "ms": 0.6418015431544949,
+      "ms_sd": 0.05770872428789418
+     },
+     "scalar transport (ScalarImpl::forward, incl. its reconstruction)": {
+      "pct": 31.544948860577787,
+      "ms": 9.324686883186793,
+      "ms_sd": 0.18400413030920307
+     },
+     "Riemann solve (HLLC, perturbation path)": {
+      "pct": 11.932531849991028,
+      "ms": 3.5272564148573475,
+      "ms_sd": 0.1283612580252369
+     },
+     "hydro reconstruction (ReconstructImpl::forward)": {
+      "pct": 15.89808002870985,
+      "ms": 4.699472456486632,
+      "ms_sd": 0.14478887805246698
+     },
+     "x1 hydrostatic reference (_hydro_ref_x1 / X1Reference / WellBalancedX1)": {
+      "pct": 13.332137089538849,
+      "ms": 3.940979723667683,
+      "ms_sd": 0.13459807148916228
+     },
+     "EOS (cons2prim, perturbations, compute)": {
+      "pct": 5.849632155033196,
+      "ms": 1.7291512650278125,
+      "ms_sd": 0.09292556220271098
+     },
+     "coordinate (divergence, vec raise)": {
+      "pct": 2.5300556253364435,
+      "ms": 0.7478844428494528,
+      "ms_sd": 0.062181372258447165
+     },
+     "ghost exchange and boundaries": {
+      "pct": 1.3457742687959806,
+      "ms": 0.3978108738560919,
+      "ms_sd": 0.0456251037028196
+     },
+     "rest of HydroImpl::forward": {
+      "pct": 11.250672887134398,
+      "ms": 3.3256989054369277,
+      "ms_sd": 0.12512142778599528
+     },
+     "rest of MeshBlock step (advance_local, integrator, executor)": {
+      "pct": 3.1401399605239546,
+      "ms": 0.928225372330881,
+      "ms_sd": 0.06905678087743292
+     },
+     "outside snap (python/pybind/torch dispatch only)": {
+      "pct": 1.0048447873676656,
+      "ms": 0.2970321191458819,
+      "ms_sd": 0.03949265857259905
+     }
+    }
+   },
+   "6007eaa9": {
+    "samples": 5493,
+    "ms_per_step": 29.65,
+    "stages": {
+     "flux register (FluxRegister::*, supply_prescribed)": {
+      "pct": 0.0,
+      "ms": 0.0,
+      "ms_sd": 0.0
+     },
+     "positivity limiter (PositivityLimiter / flux_positivity_theta)": {
+      "pct": 1.8933187693428,
+      "ms": 0.5613690151101401,
+      "ms_sd": 0.05452316531160127
+     },
+     "scalar transport (ScalarImpl::forward, incl. its reconstruction)": {
+      "pct": 32.313853995994904,
+      "ms": 9.58105770981249,
+      "ms_sd": 0.18709585694600872
+     },
+     "Riemann solve (HLLC, perturbation path)": {
+      "pct": 11.887857272892772,
+      "ms": 3.524749681412707,
+      "ms_sd": 0.1294760884485326
+     },
+     "hydro reconstruction (ReconstructImpl::forward)": {
+      "pct": 15.983979610413254,
+      "ms": 4.739249954487529,
+      "ms_sd": 0.14660318642160788
+     },
+     "x1 hydrostatic reference (_hydro_ref_x1 / X1Reference / WellBalancedX1)": {
+      "pct": 13.08938649189878,
+      "ms": 3.881003094847988,
+      "ms_sd": 0.13493230884465007
+     },
+     "EOS (cons2prim, perturbations, compute)": {
+      "pct": 5.91662115419625,
+      "ms": 1.754278172219188,
+      "ms_sd": 0.09438722808685089
+     },
+     "coordinate (divergence, vec raise)": {
+      "pct": 3.5135627161842344,
+      "ms": 1.0417713453486255,
+      "ms_sd": 0.07365918146645822
+     },
+     "ghost exchange and boundaries": {
+      "pct": 1.3835791006735845,
+      "ms": 0.41023120334971785,
+      "ms_sd": 0.04673007877150592
+     },
+     "rest of HydroImpl::forward": {
+      "pct": 10.340433278718368,
+      "ms": 3.0659384671399965,
+      "ms_sd": 0.12181130177382855
+     },
+     "rest of MeshBlock step (advance_local, integrator, executor)": {
+      "pct": 2.6761332605133807,
+      "ms": 0.7934735117422174,
+      "ms_sd": 0.0645629615764514
+     },
+     "outside snap (python/pybind/torch dispatch only)": {
+      "pct": 1.0012743491716731,
+      "ms": 0.2968778445294011,
+      "ms_sd": 0.039830086129713144
+     }
+    }
+   },
+   "deeabfee": {
+    "samples": 6379,
+    "ms_per_step": 33.2,
+    "stages": {
+     "flux register (FluxRegister::*, supply_prescribed)": {
+      "pct": 8.731776140460887,
+      "ms": 2.8989496786330147,
+      "ms_sd": 0.11734723976813084
+     },
+     "positivity limiter (PositivityLimiter / flux_positivity_theta)": {
+      "pct": 3.7936980717980875,
+      "ms": 1.259507759836965,
+      "ms_sd": 0.07941360751206838
+     },
+     "scalar transport (ScalarImpl::forward, incl. its reconstruction)": {
+      "pct": 26.43047499608089,
+      "ms": 8.774917698698856,
+      "ms_sd": 0.1833003282675159
+     },
+     "Riemann solve (HLLC, perturbation path)": {
+      "pct": 13.43470763442546,
+      "ms": 4.460322934629253,
+      "ms_sd": 0.14175807026669152
+     },
+     "hydro reconstruction (ReconstructImpl::forward)": {
+      "pct": 14.030412290327638,
+      "ms": 4.658096880388777,
+      "ms_sd": 0.14436749511249816
+     },
+     "x1 hydrostatic reference (_hydro_ref_x1 / X1Reference / WellBalancedX1)": {
+      "pct": 13.873647907195485,
+      "ms": 4.606051105188902,
+      "ms_sd": 0.14368953633210044
+     },
+     "EOS (cons2prim, perturbations, compute)": {
+      "pct": 5.910017244082145,
+      "ms": 1.9621257250352722,
+      "ms_sd": 0.09802296865754143
+     },
+     "coordinate (divergence, vec raise)": {
+      "pct": 1.8341432826461828,
+      "ms": 0.6089355698385328,
+      "ms_sd": 0.05577744838465614
+     },
+     "ghost exchange and boundaries": {
+      "pct": 1.2854679416836494,
+      "ms": 0.42677535663897165,
+      "ms_sd": 0.046825557131284654
+     },
+     "rest of HydroImpl::forward": {
+      "pct": 8.010659978052987,
+      "ms": 2.6595391127135914,
+      "ms_sd": 0.11284041718617743
+     },
+     "rest of MeshBlock step (advance_local, integrator, executor)": {
+      "pct": 1.912525474212259,
+      "ms": 0.63495845743847,
+      "ms_sd": 0.056934062438856334
+     },
+     "outside snap (python/pybind/torch dispatch only)": {
+      "pct": 0.7054397240946857,
+      "ms": 0.23420598839943568,
+      "ms_sd": 0.03479000305498827
+     }
+    }
+   },
+   "d3178f20": {
+    "samples": 6171,
+    "ms_per_step": 32.96,
+    "stages": {
+     "flux register (FluxRegister::*, supply_prescribed)": {
+      "pct": 8.928860800518555,
+      "ms": 2.942952519850915,
+      "ms_sd": 0.11964590543261952
+     },
+     "positivity limiter (PositivityLimiter / flux_positivity_theta)": {
+      "pct": 3.5164479014746393,
+      "ms": 1.1590212283260413,
+      "ms_sd": 0.07728374617663444
+     },
+     "scalar transport (ScalarImpl::forward, incl. its reconstruction)": {
+      "pct": 26.835196888672826,
+      "ms": 8.844880894506563,
+      "ms_sd": 0.18591435616361418
+     },
+     "Riemann solve (HLLC, perturbation path)": {
+      "pct": 12.315670069680765,
+      "ms": 4.059244854966781,
+      "ms_sd": 0.1378794195753276
+     },
+     "hydro reconstruction (ReconstructImpl::forward)": {
+      "pct": 15.848322800194458,
+      "ms": 5.223607194944093,
+      "ms_sd": 0.15322600272447143
+     },
+     "x1 hydrostatic reference (_hydro_ref_x1 / X1Reference / WellBalancedX1)": {
+      "pct": 13.838923999351806,
+      "ms": 4.561309350186356,
+      "ms_sd": 0.14488257260094678
+     },
+     "EOS (cons2prim, perturbations, compute)": {
+      "pct": 4.780424566520823,
+      "ms": 1.5756279371252635,
+      "ms_sd": 0.08951705478270354
+     },
+     "coordinate (divergence, vec raise)": {
+      "pct": 1.2639766650461837,
+      "ms": 0.4166067087992222,
+      "ms_sd": 0.04687235495214271
+     },
+     "ghost exchange and boundaries": {
+      "pct": 1.8149408523740074,
+      "ms": 0.5982045049424729,
+      "ms_sd": 0.05600971605467023
+     },
+     "rest of HydroImpl::forward": {
+      "pct": 7.810727596823853,
+      "ms": 2.5744158159131425,
+      "ms_sd": 0.11258884642311281
+     },
+     "rest of MeshBlock step (advance_local, integrator, executor)": {
+      "pct": 2.106627775076973,
+      "ms": 0.6943445146653703,
+      "ms_sd": 0.06025318064941102
+     },
+     "outside snap (python/pybind/torch dispatch only)": {
+      "pct": 0.8750607681088964,
+      "ms": 0.2884200291686923,
+      "ms_sd": 0.03907689100761065
+     }
+    }
+   }
+  }
+ }
+}

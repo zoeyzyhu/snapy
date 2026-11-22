@@ -1,0 +1,94 @@
+# prof/straka_cpu1.730b3500.collapsed: 5573 samples in step(), 163 outside; 29.56 ms/step (unprofiled, 1 thread)
+## self (leaf)
+ 33.90%   10.020 ms  c10::function_ref::callback_fn
+ 31.78%    9.394 ms  snap::weno5_point
+  6.60%    1.952 ms  snap::hllc_impl
+  2.24%    0.663 ms  [libc.so.6]
+  2.21%    0.652 ms  snap::hydro_ref_x1_cell_impl
+  2.05%    0.605 ms  snap::hydro_ref_x1_rop_smooth
+  2.03%    0.599 ms  at::native::anon::cat_serial_kernel
+  1.90%    0.562 ms  snap::hydro_ref_x1_rop_smooth::{lambda}::operator const
+  0.95%    0.281 ms  mkl_vml_kernel_dSqrt_EXHAynn
+  0.75%    0.223 ms  snap::hydro_ref_x1_cell_impl::{lambda}::operator const
+  0.63%    0.186 ms  c10::impl::OperatorEntry::lookup
+  0.63%    0.186 ms  brk
+  0.61%    0.180 ms  snap::hydro_ref_x1_wall_rop
+  0.48%    0.143 ms  at::native::anon::vectorized_outer_sum
+  0.47%    0.138 ms  snap::hydro_ref_x1_cpu
+  0.43%    0.127 ms  c10::intrusive_ptr::reset_not_null_
+  0.39%    0.117 ms  c10::impl::wrap_kernel_functor_unboxed_::call
+  0.38%    0.111 ms  malloc
+  0.27%    0.080 ms  at::TensorIteratorBase::compute_types
+  0.23%    0.069 ms  __tls_get_addr
+  0.22%    0.064 ms  at::TensorIteratorBase::serial_for_each
+  0.22%    0.064 ms  at::native::select_symint
+  0.20%    0.058 ms  c10::SymInt::SymInt
+  0.20%    0.058 ms  c10::TensorImpl::TensorImpl
+  0.20%    0.058 ms  c10::TensorImpl::set_sizes_and_strides
+  0.16%    0.048 ms  c10::TensorImpl::empty_tensor_restride
+  0.16%    0.048 ms  at::TensorIteratorBase::build
+  0.16%    0.048 ms  [libsnap_release.so]
+  0.16%    0.048 ms  at::_ops::as_strided::call
+  0.14%    0.042 ms  c10::TensorImpl::requires_grad
+## self by deepest snap:: frame (all time below it, torch included, charged to it)
+ 31.78%    9.394 ms  snap::weno5_point
+  6.60%    1.952 ms  snap::hllc_impl
+  6.33%    1.872 ms  snap::HydroImpl::forward
+  5.65%    1.671 ms  snap::call_poly_cpu
+  3.10%    0.918 ms  snap::HLLCSolverImpl::_forward
+  3.03%    0.896 ms  snap::CoordinateImpl::divergence
+  2.53%    0.748 ms  snap::HydroImpl::forward::{lambda}::operator const
+  2.21%    0.652 ms  snap::hydro_ref_x1_cell_impl
+  2.17%    0.642 ms  snap::flux_positivity_theta
+  2.12%    0.626 ms  snap::IdealMoistImpl::perturbations
+  2.05%    0.605 ms  snap::hydro_ref_x1_rop_smooth
+  1.97%    0.583 ms  snap::HydroReferenceX1Operator::evaluate_split
+  1.90%    0.562 ms  snap::hydro_ref_x1_rop_smooth::{lambda}::operator const
+  1.85%    0.546 ms  snap::HydroImpl::_hydro_ref_x1
+  1.60%    0.472 ms  snap::call_weno5_cpu
+  1.54%    0.456 ms  snap::ScalarImpl::forward::{lambda}::operator const
+  1.45%    0.430 ms  snap::MeshBlockImpl::advance_local
+  1.45%    0.430 ms  snap::MeshBlockImpl::advance_local::{lambda}::operator const
+  1.24%    0.366 ms  snap::_apply_inplace
+  1.11%    0.329 ms  snap::IdealMoistImpl::compute
+  1.06%    0.313 ms  snap::HydroImpl::scalar_flux_covariance
+  1.04%    0.308 ms  snap::call_coord_vec_raise_cpu
+  1.00%    0.297 ms  (no snap frame)
+  0.90%    0.265 ms  snap::LayoutImpl::fill_corners
+  0.88%    0.260 ms  snap::RiemannSolverImpl::forward
+  0.81%    0.239 ms  snap::BoundaryFuncOptions::~BoundaryFuncOptions
+  0.79%    0.233 ms  snap::ReconstructImpl::forward
+  0.77%    0.228 ms  snap::CorrectedPEFactors::operator
+  0.75%    0.223 ms  snap::hydro_ref_x1_cell_impl::{lambda}::operator const
+  0.74%    0.217 ms  snap::MoistEOSImpl::_cons2prim_layout
+## inclusive, snap:: frames
+ 99.00%   29.263 ms  snap::MeshBlockImpl::forward
+ 98.31%   29.061 ms  snap::MeshBlockImpl::advance_local
+ 60.79%   17.970 ms  snap::HydroImpl::forward
+ 40.21%   11.887 ms  snap::ReconstructImpl::forward
+ 39.42%   11.653 ms  snap::_apply_inplace
+ 39.08%   11.552 ms  snap::InterpImpl::forward
+ 33.72%    9.966 ms  snap::ScalarImpl::forward
+ 33.38%    9.866 ms  snap::call_weno5_cpu
+ 31.78%    9.394 ms  snap::weno5_point
+ 27.92%    8.253 ms  snap::ScalarImpl::forward::{lambda}::operator const
+ 22.54%    6.662 ms  snap::HydroImpl::forward::{lambda}::operator const
+ 17.33%    5.124 ms  snap::Weno5InterpImpl::left
+ 16.08%    4.753 ms  snap::Weno5InterpImpl::right
+ 13.33%    3.941 ms  snap::HydroImpl::_hydro_ref_x1
+ 11.93%    3.527 ms  snap::HLLCSolverImpl::forward_perturbations
+ 11.93%    3.527 ms  snap::HLLCSolverImpl::_forward
+ 10.10%    2.986 ms  snap::HydroReferenceX1Operator::evaluate_split
+  8.07%    2.387 ms  snap::hydro_ref_x1_cpu
+  7.52%    2.222 ms  snap::hydro_ref_x1_cell_impl
+  7.03%    2.079 ms  snap::call_hllc_cpu
+  6.60%    1.952 ms  snap::hllc_impl
+  5.65%    1.671 ms  snap::call_poly_cpu
+  4.56%    1.347 ms  snap::hydro_ref_x1_rop_smooth
+  4.34%    1.284 ms  snap::IdealMoistImpl::compute
+  3.30%    0.976 ms  snap::IdealMoistImpl::perturbations
+  3.05%    0.902 ms  snap::CoordinateImpl::divergence
+  2.87%    0.849 ms  snap::Center5InterpImpl::left
+  2.78%    0.822 ms  snap::Center5InterpImpl::right
+  2.53%    0.748 ms  snap::CoordinateImpl::forward
+  2.17%    0.642 ms  snap::flux_positivity_theta

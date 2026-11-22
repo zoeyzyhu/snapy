@@ -1,0 +1,17 @@
+19:50:57 730b3500 load=0.74 1.39 3.43
+19:51:55 730b3500 rc=0 rank 0: 1 blocks, median 35.500 ms/step (min 27.588, max 64.016), finite=True
+19:51:55 6007eaa9 load=0.94 1.34 3.29
+19:52:52 6007eaa9 rc=0 rank 0: 1 blocks, median 35.759 ms/step (min 27.659, max 75.233), finite=True
+19:52:52 deeabfee load=0.98 1.27 3.15
+19:53:58 deeabfee rc=0 rank 0: 1 blocks, median 41.013 ms/step (min 30.427, max 85.617), finite=True
+19:53:58 d3178f20 load=1.09 1.25 3.01
+19:55:02 d3178f20 rc=0 rank 0: 1 blocks, median 39.921 ms/step (min 30.463, max 83.439), finite=True
+unprofiled 730b3500: rank 0: 1 blocks, median 29.558 ms/step (min 28.164, max 31.591), finite=True
+unprofiled d3178f20: rank 0: 1 blocks, median 32.958 ms/step (min 30.597, max 35.055), finite=True
+unprofiled 730b3500: rank 0: 1 blocks, median 29.562 ms/step (min 28.014, max 32.538), finite=True
+unprofiled d3178f20: rank 0: 1 blocks, median 32.967 ms/step (min 30.685, max 39.217), finite=True
+PROFILE_DONE
+unprofiled 6007eaa9: rank 0: 1 blocks, median 29.649 ms/step (min 27.730, max 31.848), finite=True
+unprofiled deeabfee: rank 0: 1 blocks, median 32.483 ms/step (min 30.696, max 36.134), finite=True
+unprofiled 6007eaa9: rank 0: 1 blocks, median 29.556 ms/step (min 27.827, max 32.392), finite=True
+unprofiled deeabfee: rank 0: 1 blocks, median 32.865 ms/step (min 30.562, max 35.037), finite=True

@@ -1,0 +1,74 @@
+START 2026-11-22T19:36:27Z load=4.17 6.85 7.08 gpu=0%,280MiB apps=0
+19:36:27 c1_cpu_fp64 730b3500 r1 before: load=4.17 6.85 7.08 gpu=0%,280MiB apps=0
+19:36:29 c1_cpu_fp64 730b3500 r1 rc=0 after: load=4.17 6.85 7.08 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.764 ms/step (min 27.964, max 31.333), finite=True
+19:36:29 c1_cpu_fp64 6007eaa9 r1 before: load=4.17 6.85 7.08 gpu=0%,280MiB apps=0
+19:36:32 c1_cpu_fp64 6007eaa9 r1 rc=0 after: load=4.17 6.85 7.08 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.754 ms/step (min 28.046, max 31.515), finite=True
+19:36:32 c1_cpu_fp64 deeabfee r1 before: load=4.17 6.85 7.08 gpu=0%,280MiB apps=0
+19:36:34 c1_cpu_fp64 deeabfee r1 rc=0 after: load=3.92 6.75 7.05 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 32.645 ms/step (min 30.509, max 34.357), finite=True
+19:36:34 c1_cpu_fp64 d3178f20 r1 before: load=3.92 6.75 7.05 gpu=0%,280MiB apps=0
+19:36:36 c1_cpu_fp64 d3178f20 r1 rc=0 after: load=3.92 6.75 7.05 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 32.603 ms/step (min 31.037, max 35.872), finite=True
+19:36:36 c1_cpu_fp64 730b3500 r2 before: load=3.92 6.75 7.05 gpu=0%,280MiB apps=0
+19:36:38 c1_cpu_fp64 730b3500 r2 rc=0 after: load=3.76 6.67 7.02 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.299 ms/step (min 28.080, max 31.858), finite=True
+19:36:38 c1_cpu_fp64 6007eaa9 r2 before: load=3.76 6.67 7.02 gpu=0%,280MiB apps=0
+19:36:40 c1_cpu_fp64 6007eaa9 r2 rc=0 after: load=3.76 6.67 7.02 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.851 ms/step (min 28.026, max 31.083), finite=True
+19:36:40 c1_cpu_fp64 deeabfee r2 before: load=3.76 6.67 7.02 gpu=0%,280MiB apps=0
+19:36:43 c1_cpu_fp64 deeabfee r2 rc=0 after: load=3.54 6.58 6.99 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 32.510 ms/step (min 30.803, max 34.994), finite=True
+19:36:43 c1_cpu_fp64 d3178f20 r2 before: load=3.54 6.58 6.99 gpu=0%,280MiB apps=0
+19:36:45 c1_cpu_fp64 d3178f20 r2 rc=0 after: load=3.54 6.58 6.99 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 32.620 ms/step (min 31.018, max 36.027), finite=True
+19:36:45 c1_cpu_fp64 730b3500 r3 before: load=3.54 6.58 6.99 gpu=0%,280MiB apps=0
+19:36:47 c1_cpu_fp64 730b3500 r3 rc=0 after: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.503 ms/step (min 27.938, max 31.842), finite=True
+19:36:47 c1_cpu_fp64 6007eaa9 r3 before: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0
+19:36:49 c1_cpu_fp64 6007eaa9 r3 rc=0 after: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 29.708 ms/step (min 28.495, max 31.175), finite=True
+19:36:49 c1_cpu_fp64 deeabfee r3 before: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0
+19:36:52 c1_cpu_fp64 deeabfee r3 rc=0 after: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 32.852 ms/step (min 30.305, max 34.573), finite=True
+19:36:52 c1_cpu_fp64 d3178f20 r3 before: load=3.34 6.48 6.96 gpu=0%,280MiB apps=0
+19:36:54 c1_cpu_fp64 d3178f20 r3 rc=0 after: load=3.15 6.39 6.92 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 33.242 ms/step (min 31.355, max 36.429), finite=True
+19:36:54 c1_cuda_fp64_eager 730b3500 r1 before: load=3.15 6.39 6.92 gpu=0%,280MiB apps=0
+19:36:56 c1_cuda_fp64_eager 730b3500 r1 rc=0 after: load=3.15 6.39 6.92 gpu=58%,280MiB apps=0 | rank 0: 1 blocks, median 7.419 ms/step (min 7.349, max 7.642), finite=True
+19:36:57 c1_cuda_fp64_eager 6007eaa9 r1 before: load=3.15 6.39 6.92 gpu=58%,280MiB apps=0
+19:36:59 c1_cuda_fp64_eager 6007eaa9 r1 rc=0 after: load=2.98 6.30 6.89 gpu=59%,280MiB apps=0 | rank 0: 1 blocks, median 7.323 ms/step (min 7.260, max 7.674), finite=True
+19:36:59 c1_cuda_fp64_eager deeabfee r1 before: load=2.98 6.30 6.89 gpu=59%,280MiB apps=0
+19:37:02 c1_cuda_fp64_eager deeabfee r1 rc=0 after: load=2.98 6.30 6.89 gpu=56%,280MiB apps=0 | rank 0: 1 blocks, median 9.182 ms/step (min 9.113, max 9.477), finite=True
+19:37:02 c1_cuda_fp64_eager d3178f20 r1 before: load=2.98 6.30 6.89 gpu=56%,280MiB apps=0
+19:37:04 c1_cuda_fp64_eager d3178f20 r1 rc=0 after: load=2.82 6.21 6.86 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 9.297 ms/step (min 9.233, max 9.422), finite=True
+19:37:04 c1_cuda_fp64_eager 730b3500 r2 before: load=2.82 6.21 6.86 gpu=0%,280MiB apps=0
+19:37:07 c1_cuda_fp64_eager 730b3500 r2 rc=0 after: load=2.82 6.21 6.86 gpu=58%,280MiB apps=0 | rank 0: 1 blocks, median 7.364 ms/step (min 7.329, max 7.629), finite=True
+19:37:07 c1_cuda_fp64_eager 6007eaa9 r2 before: load=2.82 6.21 6.86 gpu=58%,280MiB apps=0
+19:37:09 c1_cuda_fp64_eager 6007eaa9 r2 rc=0 after: load=2.67 6.13 6.83 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 7.369 ms/step (min 7.327, max 8.077), finite=True
+19:37:09 c1_cuda_fp64_eager deeabfee r2 before: load=2.67 6.13 6.83 gpu=0%,280MiB apps=0
+19:37:12 c1_cuda_fp64_eager deeabfee r2 rc=0 after: load=2.67 6.13 6.83 gpu=56%,280MiB apps=0 | rank 0: 1 blocks, median 9.330 ms/step (min 9.227, max 9.513), finite=True
+19:37:12 c1_cuda_fp64_eager d3178f20 r2 before: load=2.67 6.13 6.83 gpu=56%,280MiB apps=0
+19:37:14 c1_cuda_fp64_eager d3178f20 r2 rc=0 after: load=3.10 6.16 6.83 gpu=57%,280MiB apps=0 | rank 0: 1 blocks, median 9.232 ms/step (min 9.179, max 9.326), finite=True
+19:37:14 c1_cuda_fp64_eager 730b3500 r3 before: load=3.10 6.16 6.83 gpu=57%,280MiB apps=0
+19:37:17 c1_cuda_fp64_eager 730b3500 r3 rc=0 after: load=3.10 6.16 6.83 gpu=58%,280MiB apps=0 | rank 0: 1 blocks, median 7.336 ms/step (min 7.283, max 7.861), finite=True
+19:37:17 c1_cuda_fp64_eager 6007eaa9 r3 before: load=3.10 6.16 6.83 gpu=58%,280MiB apps=0
+19:37:19 c1_cuda_fp64_eager 6007eaa9 r3 rc=0 after: load=2.93 6.07 6.80 gpu=11%,280MiB apps=0 | rank 0: 1 blocks, median 7.475 ms/step (min 7.414, max 7.931), finite=True
+19:37:19 c1_cuda_fp64_eager deeabfee r3 before: load=2.93 6.07 6.80 gpu=11%,280MiB apps=0
+19:37:22 c1_cuda_fp64_eager deeabfee r3 rc=0 after: load=2.93 6.07 6.80 gpu=57%,280MiB apps=0 | rank 0: 1 blocks, median 9.127 ms/step (min 9.062, max 9.501), finite=True
+19:37:22 c1_cuda_fp64_eager d3178f20 r3 before: load=2.93 6.07 6.80 gpu=57%,280MiB apps=0
+19:37:25 c1_cuda_fp64_eager d3178f20 r3 rc=0 after: load=2.78 5.99 6.77 gpu=57%,280MiB apps=0 | rank 0: 1 blocks, median 9.261 ms/step (min 9.176, max 9.375), finite=True
+19:37:25 c2_cpu_1rank 730b3500 r1 before: load=2.78 5.99 6.77 gpu=57%,280MiB apps=0
+19:38:13 c2_cpu_1rank 730b3500 r1 rc=0 after: load=1.77 5.22 6.47 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1400.098 ms/step (min 1332.244, max 1580.494), finite=True
+19:38:13 c2_cpu_1rank 6007eaa9 r1 before: load=1.77 5.22 6.47 gpu=0%,280MiB apps=0
+19:39:04 c2_cpu_1rank 6007eaa9 r1 rc=0 after: load=1.33 4.56 6.18 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1481.596 ms/step (min 1375.603, max 1638.996), finite=True
+19:39:04 c2_cpu_1rank deeabfee r1 before: load=1.33 4.56 6.18 gpu=0%,280MiB apps=0
+19:40:01 c2_cpu_1rank deeabfee r1 rc=0 after: load=1.19 3.98 5.88 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1675.949 ms/step (min 1489.221, max 1837.283), finite=True
+19:40:01 c2_cpu_1rank d3178f20 r1 before: load=1.19 3.98 5.88 gpu=0%,280MiB apps=0
+19:40:58 c2_cpu_1rank d3178f20 r1 rc=0 after: load=1.11 3.45 5.58 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1676.941 ms/step (min 1548.015, max 1835.047), finite=True
+19:40:58 c2_cpu_1rank 730b3500 r2 before: load=1.11 3.45 5.58 gpu=0%,280MiB apps=0
+19:41:46 c2_cpu_1rank 730b3500 r2 rc=0 after: load=1.10 3.12 5.36 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1393.921 ms/step (min 1351.082, max 1483.327), finite=True
+19:41:46 c2_cpu_1rank 6007eaa9 r2 before: load=1.10 3.12 5.36 gpu=0%,280MiB apps=0
+19:42:37 c2_cpu_1rank 6007eaa9 r2 rc=0 after: load=1.04 2.79 5.13 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1481.088 ms/step (min 1364.223, max 1626.679), finite=True
+19:42:37 c2_cpu_1rank deeabfee r2 before: load=1.04 2.79 5.13 gpu=0%,280MiB apps=0
+19:43:35 c2_cpu_1rank deeabfee r2 rc=0 after: load=1.12 2.49 4.88 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1693.902 ms/step (min 1519.262, max 1860.099), finite=True
+19:43:35 c2_cpu_1rank d3178f20 r2 before: load=1.12 2.49 4.88 gpu=0%,280MiB apps=0
+19:44:31 c2_cpu_1rank d3178f20 r2 rc=0 after: load=1.20 2.29 4.67 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1653.478 ms/step (min 1587.337, max 1779.448), finite=True
+19:44:31 c2_cpu_1rank 730b3500 r3 before: load=1.20 2.29 4.67 gpu=0%,280MiB apps=0
+19:45:19 c2_cpu_1rank 730b3500 r3 rc=0 after: load=1.09 2.09 4.48 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1389.007 ms/step (min 1318.342, max 1457.247), finite=True
+19:45:19 c2_cpu_1rank 6007eaa9 r3 before: load=1.09 2.09 4.48 gpu=0%,280MiB apps=0
+19:46:09 c2_cpu_1rank 6007eaa9 r3 rc=0 after: load=1.18 1.95 4.30 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1452.472 ms/step (min 1374.724, max 1686.881), finite=True
+19:46:09 c2_cpu_1rank deeabfee r3 before: load=1.18 1.95 4.30 gpu=0%,280MiB apps=0
+19:47:06 c2_cpu_1rank deeabfee r3 rc=0 after: load=1.11 1.80 4.12 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1685.178 ms/step (min 1603.815, max 1797.256), finite=True
+19:47:06 c2_cpu_1rank d3178f20 r3 before: load=1.11 1.80 4.12 gpu=0%,280MiB apps=0
+19:48:03 c2_cpu_1rank d3178f20 r3 rc=0 after: load=1.17 1.69 3.93 gpu=0%,280MiB apps=0 | rank 0: 1 blocks, median 1657.218 ms/step (min 1603.199, max 1764.609), finite=True
+DONE 2026-11-22T19:48:03Z load=1.17 1.69 3.93 gpu=0%,280MiB apps=0

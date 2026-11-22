@@ -1,0 +1,71 @@
+== d3178f20: register 551 of 6171 samples = 2.94 ms/step
+-- entry (caller -> register frame)
+   2.083 ms  snap::HydroImpl::forward -> snap::FluxRegister::apply_prescribed
+   0.230 ms  snap::HydroImpl::forward -> snap::supply_prescribed
+   0.214 ms  snap::MeshBlockImpl::advance_local -> snap::FluxRegister::end_stage
+   0.208 ms  snap::ScalarImpl::forward -> snap::FluxRegister::apply_prescribed
+   0.171 ms  snap::ScalarImpl::forward -> snap::supply_prescribed
+   0.016 ms  snap::PositivityLimiter::post_ -> snap::FluxRegister::scale
+-- snap path inside
+   1.191 ms  snap::FluxRegister::apply_prescribed > snap::FluxRegister::overwrite_
+   1.058 ms  snap::FluxRegister::apply_prescribed
+   0.374 ms  snap::supply_prescribed
+   0.198 ms  snap::FluxRegister::end_stage
+   0.027 ms  snap::FluxRegister::apply_prescribed > snap::FluxRegister::overwrite_ > snap::RegisterMonitor::book
+   0.016 ms  snap::FluxRegister::scale
+   0.016 ms  snap::FluxRegister::end_stage > snap::RegisterMonitor::end_stage
+   0.016 ms  snap::FluxRegister::keep
+-- leaf functions
+   2.168 ms  c10::function_ref::callback_fn
+   0.053 ms  at::native::anon::vectorized_inner_sum
+   0.048 ms  posix_memalign
+   0.027 ms  c10::intrusive_ptr::reset_not_null_
+   0.027 ms  c10::impl::OperatorEntry::lookup
+   0.021 ms  malloc
+   0.021 ms  free
+   0.021 ms  brk
+   0.016 ms  at::TensorIteratorBase::coalesce_dimensions
+   0.016 ms  at::native::slice
+== deeabfee: register 557 of 6379 samples = 2.90 ms/step
+-- entry (caller -> register frame)
+   2.217 ms  snap::HydroImpl::forward -> snap::FluxRegister::apply_prescribed
+   0.281 ms  snap::HydroImpl::forward -> snap::supply_prescribed
+   0.182 ms  snap::ScalarImpl::forward -> snap::FluxRegister::apply_prescribed
+   0.135 ms  snap::ScalarImpl::forward -> snap::supply_prescribed
+   0.042 ms  snap::PositivityLimiter::post_ -> snap::FluxRegister::scale
+   0.026 ms  snap::HydroImpl::forward -> snap::FluxRegister::keep
+-- snap path inside
+   1.395 ms  snap::FluxRegister::apply_prescribed > snap::FluxRegister::overwrite_
+   0.963 ms  snap::FluxRegister::apply_prescribed
+   0.401 ms  snap::supply_prescribed
+   0.042 ms  snap::FluxRegister::scale
+   0.036 ms  snap::FluxRegister::apply_prescribed > snap::FluxRegister::overwrite_ > snap::RegisterMonitor::book
+   0.026 ms  snap::FluxRegister::keep
+   0.010 ms  snap::supply_prescribed > snap::FluxRegister::set_prescribed
+   0.005 ms  snap::FluxRegister::end_stage
+-- leaf functions
+   2.134 ms  c10::function_ref::callback_fn
+   0.052 ms  at::native::anon::vectorized_inner_sum
+   0.047 ms  posix_memalign
+   0.036 ms  free
+   0.021 ms  c10::impl::wrap_kernel_functor_unboxed_::call
+   0.021 ms  brk
+   0.021 ms  at::TensorIteratorBase::compute_shape
+   0.021 ms  c10::impl::OperatorEntry::lookup
+   0.021 ms  at::native::select_symint
+   0.016 ms  at::TensorIteratorBase::allocate_or_resize_outputs
+-- d3178f20: aten op called from the deepest snap frame under the register
+   0.951 ms  snap::FluxRegister::apply_prescribed  ->  at::native::where
+   0.502 ms  snap::FluxRegister::overwrite_  ->  at::anon::wrapper_CPU_mul_Tensor
+   0.443 ms  snap::FluxRegister::overwrite_  ->  at::anon::wrapper_CPU_sub_Tensor
+   0.198 ms  snap::supply_prescribed  ->  at::native::repeat
+   0.150 ms  snap::FluxRegister::end_stage  ->  at::anon::wrapper_CPU_mul_Tensor
+   0.101 ms  snap::FluxRegister::overwrite_  ->  at::native::copy_
+   0.080 ms  snap::supply_prescribed  ->  at::native::zeros_like
+   0.069 ms  snap::FluxRegister::apply_prescribed  ->  at::native::copy_
+   0.059 ms  snap::supply_prescribed  ->  (none)
+   0.059 ms  snap::FluxRegister::overwrite_  ->  at::native::structured_sum_out::impl
+   0.037 ms  snap::FluxRegister::overwrite_  ->  at::Tensor::narrow
+   0.037 ms  snap::FluxRegister::overwrite_  ->  (none)
+   0.037 ms  snap::FluxRegister::apply_prescribed  ->  (none)
+   0.021 ms  snap::FluxRegister::end_stage  ->  at::native::structured_sum_out::impl

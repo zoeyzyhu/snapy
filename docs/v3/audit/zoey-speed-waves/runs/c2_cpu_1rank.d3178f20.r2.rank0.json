@@ -1,0 +1,90 @@
+{
+ "deck": "/mnt/data1/ai_workspace/worker2/spd/cart3d_pert_64.yaml",
+ "device": "cpu",
+ "precision": null,
+ "execution": null,
+ "dt_mode": "fixed",
+ "dt0": 0.023306639802554097,
+ "rank": 0,
+ "world_size": 1,
+ "driver": "block",
+ "capability": {
+  "eager_fp64": true,
+  "eager_fp32": false,
+  "graph_fp64": false,
+  "graph_fp32": false,
+  "eager_reasons": [
+   "the state is not on a CUDA device"
+  ]
+ },
+ "blocks_in_process": 1,
+ "cells": {
+  "nghost": 3,
+  "nx1": 64,
+  "nx2": 64,
+  "nx3": 64
+ },
+ "distribute": {
+  "layout": "slab",
+  "nb1": 1,
+  "nb2": 1,
+  "nb3": 1
+ },
+ "warmup": 3,
+ "steps": 30,
+ "warmup_seconds": 5.612518073990941,
+ "threads": 8,
+ "median_s": 1.6534775800537318,
+ "min_s": 1.5873372838832438,
+ "max_s": 1.7794484349433333,
+ "p10_s": 1.6054106559604406,
+ "p90_s": 1.7231953761074692,
+ "mean_s": 1.6509323742395887,
+ "finite": true,
+ "times": [
+  1.6845701220445335,
+  1.6534775800537318,
+  1.7231953761074692,
+  1.6209268649108708,
+  1.687288642162457,
+  1.641055878950283,
+  1.6268042929004878,
+  1.6495502889156342,
+  1.6602414848748595,
+  1.6561842858791351,
+  1.6581098821479827,
+  1.6570206959731877,
+  1.6636062590405345,
+  1.629731454886496,
+  1.6560460559558123,
+  1.7794484349433333,
+  1.6671742009930313,
+  1.6783575830049813,
+  1.6794500150717795,
+  1.7266037052031606,
+  1.6148549001663923,
+  1.6222638750914484,
+  1.6054106559604406,
+  1.6313055199570954,
+  1.605113027151674,
+  1.6410009700339288,
+  1.5881305730435997,
+  1.6143634850159287,
+  1.6193478328641504,
+  1.5873372838832438
+ ],
+ "gpu": null,
+ "torch": "2.10.0+cu128",
+ "snapy_file": "/mnt/data1/ai_workspace/worker2/spd/pkg-d3178f20/snapy/__init__.py",
+ "kintera": "2.6.11",
+ "native_sha256": {
+  "libsnap_cuda_release.so": "21bb6b3e06510cca",
+  "libsnap_release.so": "929ca5ee912fcfb7"
+ },
+ "execution_report": {
+  "captures": 0,
+  "eager": 99,
+  "graphs": 0,
+  "replays": 0
+ }
+}
